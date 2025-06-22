@@ -1,36 +1,52 @@
-import { toast } from 'sonner';
-import type { ApiResponse } from '@/shared/types';
-import { store } from '@/app/stores';
-import { logout } from '@/entities/auth/model';
+import { toast } from "sonner";
+import type { ApiResponse } from "@/shared/types";
+import { store } from "@/app/stores";
+import { logout } from "@/entities/auth/model";
+import { ROUTES } from "../routes";
+import I18n from "./initI18n";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { ERRORS_KEYS } from "@/shared/i18n/keys/keys";
+import { isPublicRoute } from "./auth/auth";
 
 export const handleError = (error: unknown) => {
   const navigate = (path: string) => {
     window.location.href = path;
   };
 
+  if (!error) {
+    toast.error(I18n.t(ERRORS_KEYS.unexpected, { ns: NAMESPACE_KEYS.common }));
+    return;
+  }
+
+  let errorMessage = I18n.t(ERRORS_KEYS.unexpected, {
+    ns: NAMESPACE_KEYS.common,
+  });
   if (error instanceof Error) {
-    toast.error(error.message);
+    toast.error(error.message || errorMessage);
     return;
   }
 
   const response = error as ApiResponse;
-  if(response.isSuccess)
-    return;
-  
+  if (response.isSuccess) return;
+
   const status = response.statusCode;
-  const errorMessage = response.errors?.[0]?.message ||  "An unexpected error occurred.";
+  if (response.errors?.[0]?.message) {
+    errorMessage = response.errors[0].message;
+  }
 
   switch (status) {
     case 400:
       toast.error(errorMessage);
       break;
     case 401:
-      toast.error("Unauthorized: Please log in again.");
+      toast.error(
+        I18n.t(ERRORS_KEYS.unauthorized, { ns: NAMESPACE_KEYS.common })
+      );
       store.dispatch(logout());
-      navigate('/login');
+      if (!isPublicRoute()) navigate(ROUTES.LOGIN);
       break;
     case 403:
-      toast.error("Access Denied: You don't have permission to access this.");
+      toast.error(I18n.t(ERRORS_KEYS.forbidden, { ns: NAMESPACE_KEYS.common }));
       break;
     case 404:
       toast.error(errorMessage);
@@ -44,4 +60,4 @@ export const handleError = (error: unknown) => {
       toast.error(errorMessage);
       break;
   }
-}; 
+};

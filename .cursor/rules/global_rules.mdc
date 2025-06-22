@@ -1,0 +1,235 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# MDC Global Routing Rules for Cursor IDE
+
+This document defines the global instructions and conventions for routing within our project. Follow these rules to ensure a consistent, maintainable, and scalable structure across our application.
+
+---
+
+## 1. Global Routes
+
+- **Location:** `src/shared/routes/routes.tsx`
+- **Purpose:** Define all global routes and import grouped routes (domain or entity-specific) from their respective files.
+- **Example:**
+
+  ```tsx
+  // src/shared/routes/routes.tsx
+  import { HomePage } from '@/Pages/HomePage';
+  import { LoginPage } from '@/Pages/LoginPage';
+  import { InternalServerErrorPage } from '@/Pages/InternalServerErrorPage';
+  import { userRoutes } from '@/entities/user/routes/userRoutes';
+  
+  export const ROUTES = {
+    HOME: '/',
+    LOGIN: '/login',
+    SERVERERROR: '/500'
+  } as const;
+  
+  // Global and grouped routes
+  export const routes = [
+    { path: ROUTES.HOME, element: <HomePage /> },
+    { path: ROUTES.LOGIN, element: <LoginPage /> },
+    { path: ROUTES.SERVERERROR, element: <InternalServerErrorPage /> },
+    userRoutes, // Grouped routes from the user domain
+  ];
+```
+## 2 . Grouping Entity-Specific Routes
+Each domain or feature group (e.g., user) must have its own routes file and route paths file. For example, with the User entity:
+### a. Routes Component
+- Filename: userRoutes.tsx
+- Location: src/entities/user/routes/
+- Purpose: Group all user-related route definitions under a parent <Route> (using a common protected layout).
+
+-**Example**
+```tsx
+import { Route } from "react-router-dom";
+import { ProtectedRoute } from "@/shared/ui/ProtectedRoute";
+import { UserLayout } from "@/Pages/userpages/UserLayout";
+import { UserProfilePage, UserSettingsPage, UserNotificationsPage } from "@/Pages/userpages";
+
+// Grouped routes for the user entity using a parent route
+export const userRoutes = (
+  <Route
+    path={USER_ROUTES.MAIN_PATH}
+    element={
+      <ProtectedRoute>
+        <UserLayout />
+      </ProtectedRoute>
+    }
+  >
+    <Route path={USER_ROUTES.PROFILE} element={<UserProfilePage />} />
+    <Route path={USER_ROUTES.SETTINGS} element={<UserSettingsPage />} />
+    <Route path={USER_ROUTES.NOTIFICATIONS} element={<UserNotificationsPage />} />
+  </Route>
+);
+```
+
+b. Routes Paths Definition
+- Filename: userRoutesPaths.ts
+- Location: src/entities/user/routes/
+- Purpose: Define all URL string constants for the user entity. Child route paths are defined relative to the parent path.
+
+
+```tsx
+// src/entities/user/routes/userRoutesPaths.ts
+export const USER_ROUTES = {
+  MAIN_PATH: "/user",          // Parent path for the user routes
+  PROFILE: "profile/:userId",  // Child route accepts a dynamic parameter
+  SETTINGS: "settings",
+  NOTIFICATIONS: "notifications",
+} as const;
+
+
+```
+3. Navigation Conventions
+Whenever you navigate (e.g., in a component, hook, or programmatically) always use the established ROUTES object. This ensures consistency across the whole application.
+
+Examples:
+```tsx
+// Using the navigate hook
+navigate(ROUTES.LOGIN);
+
+// Altering the window location
+window.location.href = ROUTES.LOGIN;
+
+// In a Link component
+<Link to={ROUTES.HOME} className="text-xl font-bold">Home</Link>
+```
+
+4. Passing URL Parameters
+For routes with URL parameters, always use generatePath to interpolate the dynamic values. This prevents issues with raw string concatenation and improves maintainability.
+
+Example:
+
+```tsx
+import { generatePath } from "react-router-dom";
+
+// Assume userId is a dynamic value passed to the component
+const url = generatePath(USER_ROUTES.PROFILE, { userId });
+navigate(url);
+
+```
+
+5. Group Layout Components
+For each entity group requiring a shared layout (usually wrapped by a ProtectedRoute or similar), create an entity-specific layout component.
+
+Filename: <entity>Layout.tsx (e.g., UserLayout.tsx)
+Location: Place it in the same folder as its related pages (e.g., src/Pages/userpages)
+
+Example:
+```tsx
+// src/Pages/userpages/UserLayout.tsx
+import React from 'react';
+
+export const UserLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="user-layout">
+      {children}
+    </div>
+  );
+};
+```
+
+6. Organizing Pages and Using Index Files
+
+Group related pages (for each entity) in a dedicated folder. For example, place all user-related pages under src/Pages/userpages.
+
+
+/src
+  /Pages
+    /userpages
+      UserProfilePage.tsx
+      UserSettingsPage.tsx
+      UserNotificationsPage.tsx
+      UserLayout.tsx
+      index.ts
+
+Index File: Create an index.ts in each folder at all app to centralize exports. For example:
+
+```tsx
+import {UserLayout} from "./UserLayout"
+import {UserNotificationsPage} from "./UserNotificationsPage"
+import {UserProfilePage} from "./UserProfilePage"
+import {UserSettingsPage} from "./UserSettingsPage"
+
+
+export {UserLayout, UserSettingsPage, UserProfilePage,UserNotificationsPage}
+
+```
+
+7. Shared UI Components
+Rule: When creating any new UI component, always try to reuse components as possible and get from the shared UI located at @shared/ui.
+
+Fallback: If the required UI component does not exist in @shared/ui, then refer primarily to the ShadCN component library to obtain or replicate a similar component.
+
+Advantages: This practice:
+Promotes consistency across the application.
+Reduces duplication of UI code.
+
+
+Ensures maintainability as all common UI elements are managed in one location.
+
+8. Form Validation Conventions
+Tooling: Use the zod package for schema-based form validation.
+Resolver: Leverage the zodResolver from @hookform/resolvers in combination with react-hook-form to manage forms.
+
+Example Implementation:
+
+```tsx
+// In your Login Form component file:
+import React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useTranslation } from "react-i18next";
+import { getLoginValidationSchema } from "@/entities/auth/model/loginValidationSchema";
+import { NAMESPACE_KEYS, AUTH_KEYS } from "@/shared/localization/keys"; // adjust to your localization structure
+
+// Infer the form data type from the schema function
+type LoginFormData = z.infer<ReturnType<typeof getLoginValidationSchema>>;
+
+interface LoginFormProps {
+  onSubmit: (data: LoginFormData) => void;
+  isLoading?: boolean;
+}
+
+export const LoginForm = ({ onSubmit, isLoading }: LoginFormProps) => {
+  const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.auth, NAMESPACE_KEYS.validator]);
+  
+  const loginSchema = getLoginValidationSchema(t);
+
+  const form = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  // ... form markup and handling
+};
+
+```
+
+Validation Schema Example:
+
+```tsx
+// src/entities/auth/model/loginValidationSchema.ts
+import { z } from "zod";
+import { TFunction } from "i18next";
+import { NAMESPACE_KEYS, AUTH_KEYS } from "@/shared/localization/keys"; // adjust paths as needed
+
+export const getLoginValidationSchema = (t: TFunction) => {
+  return z.object({
+    email: z.string()
+      .email({ message: t(AUTH_KEYS.errors.invalidEmail, { ns: NAMESPACE_KEYS.auth }) })
+      .min(1, { message: t(AUTH_KEYS.errors.emailRequired, { ns: NAMESPACE_KEYS.auth }) }),
+    password: z.string()
+      .min(6, { message: t(AUTH_KEYS.errors.passwordMinLength, { ns: NAMESPACE_KEYS.auth, count: 6 }) }),
+  });
+};
+```
+

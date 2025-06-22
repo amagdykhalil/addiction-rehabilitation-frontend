@@ -1,31 +1,10 @@
-import { Toaster } from "@/shared/ui/sonner";
-import { RouterProvider, StoreProvider, QueryProvider } from "@/app/providers";
 import { AppRouter } from "@/app/router";
-import { ErrorBoundaryProvider } from "./providers";
-import { useAutoRefreshToken } from "@/entities/auth/model/useAutoRefreshToken";
-
-function AppContent() {
-  useAutoRefreshToken();
-  
-  return (
-    <>
-      <ErrorBoundaryProvider>
-        <Toaster />
-        <QueryProvider>
-          <RouterProvider>
-            <AppRouter />
-          </RouterProvider>
-        </QueryProvider>
-      </ErrorBoundaryProvider>
-    </>
-  );
-}
-
+import AppProviders from "./providers/AppProviders";
 function App() {
   return (
-    <StoreProvider>
-      <AppContent />
-    </StoreProvider>
+    <AppProviders>
+      <AppRouter />
+    </AppProviders>
   );
 }
 

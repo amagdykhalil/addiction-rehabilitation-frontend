@@ -1,40 +1,34 @@
-import type { IAuthenticationResponse } from '@/entities/auth/model/types';
-import { setCredentials } from '@/entities/auth/model';
-import { refreshLock } from '../lib/auth';
-import { store } from '@/app/stores';
-import { retryQueuedRequests } from './requestQueue';
-import type { ApiResponse } from '../types';
-import { BROADCAST_TYPE } from '../types/broadcast';
-import { handleUnauthorized } from '../lib';
-import { broadcast } from '../lib/broadcasts';
+import type { IAuthenticationResponse } from "@/entities/auth/model/types";
+import { handleAuthorized } from "../lib/auth";
+import { retryQueuedRequests } from "./requestQueue";
+import type { ApiResponse } from "../types";
+import { handleUnauthorized } from "../lib";
+import { setRefreshing, isTokenRefreshing } from "../lib/auth/refreshState";
 
 const API_BASE = import.meta.env.APP_API_URL;
 
-export async function attemptRefresh(): Promise<IAuthenticationResponse | null> {
+export async function refreshToken(): Promise<IAuthenticationResponse | null> {
+  if (isTokenRefreshing()) return null;
+
+  setRefreshing(true);
   try {
     const res = await fetch(`${API_BASE}/auth/refresh-token`, {
-      method: 'POST',
-      credentials: 'include',
+      method: "POST",
+      credentials: "include",
     });
 
     if (!res.ok) {
-      handleUnauthorized();
-      return null;
+      throw new Error(`HTTP error! status: ${res.status}`);
     }
 
-    const data = await res.json() as ApiResponse<IAuthenticationResponse>;
-    
+    const data = (await res.json()) as ApiResponse<IAuthenticationResponse>;
+
     if (!data.isSuccess || !data.result) {
-      handleUnauthorized();
-      return null;
+      throw new Error("Invalid response data");
     }
 
-    store.dispatch(setCredentials(data.result));
-    broadcast.postMessage({ 
-      type: BROADCAST_TYPE.TOKEN_REFRESHED, 
-      payload: data.result 
-    });
-    
+    handleAuthorized(data.result);
+
     // Retry queued requests
     await retryQueuedRequests();
 
@@ -43,15 +37,6 @@ export async function attemptRefresh(): Promise<IAuthenticationResponse | null> 
     handleUnauthorized();
     return null;
   } finally {
-    refreshLock.unlock();
+    setRefreshing(false);
   }
 }
-
-export const refreshToken = async (): Promise<IAuthenticationResponse | null> => {
-  if (refreshLock.isLocked()) {
-    return null;
-  }
-
-  refreshLock.lock();
-  return attemptRefresh();
-};

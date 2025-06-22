@@ -1,8 +1,12 @@
-import { ErrorBoundary } from "react-error-boundary"
-import {ErrorBoundaryFallback} from "@/widgets/ui"
-import type { ReactNode } from "react"
+import { ErrorBoundary } from "react-error-boundary";
+import { ErrorBoundaryFallback } from "@/widgets/ui";
+import type { ReactNode } from "react";
 
-export const ErrorBoundaryProvider = ({ children }: { children: ReactNode }) => {
+export const ErrorBoundaryProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
   return (
     <ErrorBoundary
       FallbackComponent={ErrorBoundaryFallback}
@@ -10,5 +14,5 @@ export const ErrorBoundaryProvider = ({ children }: { children: ReactNode }) => 
     >
       {children}
     </ErrorBoundary>
-  )
-}
+  );
+};

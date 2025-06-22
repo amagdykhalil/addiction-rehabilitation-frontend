@@ -1,17 +1,11 @@
-import { Route, Routes } from "react-router-dom";
-import { HomePage } from "@/Pages/HomePage";
-import { LoginPage } from "@/Pages/LoginPage";
-import { InternalServerErrorPage } from "@/Pages/InternalServerErrorPage";
-import { ROUTES } from "@/shared/routes";
-import useGlobalLoading from "@/shared/hooks/useGlobalLoading";
+import { useRoutes } from "react-router-dom";
+import { AppLayout } from "../../Pages/AppLayout";
+import { routes } from "@/shared/routes";
+import { useAuthInitializer } from "@/features/auth/hooks";
 
 export const AppRouter = () => {
-  useGlobalLoading()
-  return (
-    <Routes>
-      <Route path={ROUTES.HOME} element={<HomePage />} />
-      <Route path={ROUTES.LOGIN} element={<LoginPage />} />
-      <Route path={ROUTES.SERVERERROR} element={<InternalServerErrorPage />} />
-    </Routes>
-  );
+  const routing = useRoutes(routes);
+  useAuthInitializer();
+
+  return <AppLayout>{routing}</AppLayout>;
 };

@@ -1,9 +1,9 @@
-export const LoginPage = () => {
-  return (
-    <div>
-      <h1>Login Page</h1>
-      <p>Please log in to continue.</p>
-      {/* Add your login form or components here */}
-    </div>
-  );
+import React from "react";
+import { LoginForm } from "@/features/auth/ui/LoginForm";
+import { useLogin } from "@/features/auth/hooks/useLogin";
+
+export const LoginPage: React.FC = () => {
+  const { login, isLoading, error } = useLogin();
+
+  return <LoginForm onSubmit={login} isLoading={isLoading} error={error} />;
 };

@@ -1,13 +1,12 @@
 // src/shared/services/api.ts
-import { store } from '@/app/stores';
-import { type IAuthenticationResponse } from '@/entities/auth/model';
-import { localStorageService } from '../lib';
-import { refreshLock } from '../lib/auth';
-import { AUTH_KEY } from '@/entities/auth/model/authSlice';
-import type { ApiResponse } from '../types';
-import { attemptRefresh } from './refreshToken';
-import { addToQueue } from './requestQueue';
-
+import { store } from "@/app/stores";
+import { type IAuthenticationResponse } from "@/entities/auth/model";
+import { localStorageService } from "../lib";
+import { attachAuthHeader, isTokenRefreshing } from "../lib/auth";
+import { AUTH_KEY } from "@/entities/auth/model/authSlice";
+import type { ApiResponse } from "../types";
+import { refreshToken } from "./refreshToken";
+import { addToQueue } from "./requestQueue";
 const API_BASE = import.meta.env.APP_API_URL;
 
 export async function BaseFetch<T = unknown>(
@@ -15,57 +14,58 @@ export async function BaseFetch<T = unknown>(
   init: RequestInit = {}
 ): Promise<ApiResponse<T>> {
   // Attach token
-  const authData = store.getState().authSlice.authData
-    || localStorageService.get<IAuthenticationResponse>(AUTH_KEY);
-    
+
+  const authData =
+    store.getState().authSlice.authData ||
+    localStorageService.get<IAuthenticationResponse>(AUTH_KEY);
+
   const token = authData?.accessToken;
   const headers = new Headers(init.headers);
-  if (token) headers.set('Authorization', `Bearer ${token}`);
+  if (token) attachAuthHeader(headers, token);
 
   let response = await fetch(`${API_BASE}${input}`, {
     ...init,
     headers,
-    credentials: 'include',
+    credentials: "include",
   });
-
   // If 401 → try refresh under lock
   if (response.status === 401) {
-    if (refreshLock.isLocked()) {
+    if (isTokenRefreshing()) {
       // Queue this request to be retried after refresh
       return new Promise((resolve) => {
         addToQueue(async () => {
-          try {
-            const retryResponse = await BaseFetch<T>(input, init);
-            resolve(retryResponse);
-            return retryResponse;
-          } catch (error) {
-            throw error;
-          }
+          const retryResponse = await BaseFetch<T>(input, init);
+          resolve(retryResponse);
+          return retryResponse;
         });
       });
     }
 
-    refreshLock.lock();
-    const newAuth = await attemptRefresh();
+    const newAuth = await refreshToken();
     if (newAuth) {
       // retry original request with fresh token
-      headers.set('Authorization', `Bearer ${newAuth.accessToken}`);
+      attachAuthHeader(headers, token);
       response = await fetch(`${API_BASE}${input}`, {
         ...init,
         headers,
-        credentials: 'include',
+        credentials: "include",
       });
     }
   }
 
-  const data = await response.json() as ApiResponse<T>;
-  
-  // Handle API errors
-  if (!data.isSuccess) {
-    const error = new Error(data.errors?.[0]?.message || 'An error occurred');
-    error.name = 'ApiError';
-    throw error;
+  // Handle 204 No Content response
+  if (response.status === 204) {
+    return {
+      statusCode: 204,
+      isSuccess: true,
+      result: null as unknown as T,
+      errors: [],
+    } as ApiResponse;
   }
 
+  const data = (await response.json()) as ApiResponse<T>;
+
+  // Return the ApiResponse object directly, even if it's not successful
+  // This allows the calling code to handle the error appropriately
   return data;
 }

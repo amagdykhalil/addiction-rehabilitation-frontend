@@ -2,10 +2,11 @@ export interface ApiError {
   message: string;
 }
 
-export interface ApiResponse<T = unknown> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface ApiResponse<T = any> {
   isSuccess: boolean;
   statusCode: number;
   successMessage?: string;
-  result?: T;
   errors?: ApiError[];
-} 
+  result?: T;
+}

@@ -1,7 +1,10 @@
 import type { FallbackProps } from "react-error-boundary";
 import { ErrorDisplay } from "@/shared/ui";
 
-export function ErrorBoundaryFallback({ error, resetErrorBoundary }: FallbackProps) {
+export function ErrorBoundaryFallback({
+  error,
+  resetErrorBoundary,
+}: FallbackProps) {
   return (
     <ErrorDisplay
       title="Something went wrong"

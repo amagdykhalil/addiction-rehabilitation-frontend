@@ -6,8 +6,15 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "jsx": "react-jsx",
+    "sourceMap": true,
+    "inlineSources": true,
+//    "importHelpers": false,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@test-utils": ["./__tests__/test-utils.tsx"],
+      "@mocks/*": ["./__mocks__/*"],
+      "tslib": ["path/to/node_modules/tslib/tslib.d.ts"]
     }
   }
 }

@@ -1,3 +1,4 @@
-import {ROUTES} from "./routes"
+import { ROUTES } from "./routesPaths";
+import { routes } from "./routes";
 
-export {ROUTES}
+export { routes, ROUTES };

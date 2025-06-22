@@ -1,0 +1,15 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "overview": "Overview",
+    "overviewDesc": "View your dashboard overview and analytics",
+    "projects": "Projects",
+    "projectsDesc": "Manage your projects and tasks"
+  },
+  "profile": {
+    "title": "Profile"
+  },
+  "settings": {
+    "title": "Settings"
+  }
+}

@@ -1,4 +1,4 @@
-import type { ApiResponse } from '../types';
+import type { ApiResponse } from "../types";
 
 // Queue to store failed requests during refresh
 export const requestQueue: Array<() => Promise<ApiResponse<unknown>>> = [];
@@ -15,4 +15,4 @@ export const retryQueuedRequests = async () => {
   const retryPromises = requestQueue.map((retryRequest) => retryRequest());
   await Promise.all(retryPromises);
   clearQueue();
-}; 
+};

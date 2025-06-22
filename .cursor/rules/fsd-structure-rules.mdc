@@ -1,0 +1,178 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# MDC Curser Rule File:
+## Guidelines for Structuring app Folders
+
+This document defines rules and best practices for organizing code into  folders as described by Feature-Sliced Design. The special goal is to enforce a clear separation between pure domain logic (Entities) and interactive, UI-related behaviors (Features).
+
+---
+
+## 1. Entities Folder
+
+### Purpose
+- **Pure Domain Logic:** Store data models, types, and validation schemas that represent real-world business concepts.
+- **Reusability & Consistency:** Provide a single source of truth for business rules and validation that is consumed across the application.
+- **Isolation from UI/State:** Remain free from UI state and interaction details.
+
+### What to Include
+- **Data Validation Schemas & Models (`model` subfolder):**  
+  Define and enforce the structure of business data.  
+- **Domain API Integrations (`api` subfolder):**  
+  Functions for CRUD operations that interact with backend services for that domain. all those api function included in same index.ts at this folder.
+  use `BaseFetch` function to create any api function.
+  [BaseFetch.ts](mdc:src/shared/api/BaseFetch.ts)
+- **Optional UI Components (`ui` subfolder):**  
+  Reusable representations of entities (e.g., a UserCard) that rely on the pure domain model.
+
+### Example Structure
+
+/entities /user /model user.ts 
+    // Business data model and validation for User 
+/api index.ts 
+    // API calls for user-related data management 
+/ui UserCard.tsx 
+    // Visual component to render User information
+
+
+
+### Example: `entities/user/model/user.ts`
+
+```typescript
+// File: entities/user/model/user.ts
+
+import { z } from 'zod';
+
+// Define a validation schema for the User entity
+export const UserSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string().email(),
+});
+
+// Infer the TypeScript type from the schema
+export type User = z.infer<typeof UserSchema>;
+
+// A helper function to validate any incoming user data
+//very basic example
+export function validateUser(data: any): User {
+  return UserSchema.parse(data);
+}
+```
+
+
+## 2. Features Folder
+### Purpose
+- **Interactive & Transient State:** Organize code that handles user interactions and manages temporary state.
+- **Feature-Specific Logic:** Encapsulate flows like login, logout, or user profile updates.
+= **Leverages Entities:** Use entities’ models for data validation and type-safety, but separately manage UI state and side effects.
+
+### What to Include
+- **Hooks for User Interaction:** Examples include useLogin, useLogout, or useUser—which orchestrate API calls and state updates.
+- **Local Models (model subfolder):** Validation and state models that are specific to a feature (e.g., form validation).
+- **UI Components (ui subfolder)**: The feature’s presentation components and form elements.
+- **Feature Flags (in Config):**
+    **Purpose:** Use feature flags to control whether certain functionalities are active, enable progressive rollouts, or perform A/B testing.
+    **Best Practices**: Place configuration files for feature flags within the appropriate config directories (commonly under Shared or within the feature if the flag is specific).
+
+### Example: features/auth/config/featureFlags.ts
+```typescript
+// File: features/auth/config/featureFlags.ts
+
+export const FEATURE_FLAGS = {
+  enableTwoFactorAuth: false, // Toggle two-factor authentication feature
+};
+```
+
+### Example Structure
+/features
+  /auth
+    /hooks
+      useLogin.ts    // Custom hook to manage login state and processes
+      useLogout.ts   // Custom hook for logging out
+    /model
+      authModel.ts   // Internal state model for the auth flow
+    /ui
+      LoginForm.tsx  // UI component for the login form
+
+
+
+3. Shared Folder
+Purpose
+- Foundation for Reusability: Provides code and assets that are used across the entire application regardless of business domain.
+- Global Infrastructure: Hosts configurations, utilities, and UI components that integrate with external libraries or system-wide settings.
+- Loose Coupling: Contains code that should remain independent of any specific business logic or feature, acting as a central repository for generic functionality.
+
+What to Include
+- API: The global API client and functions to make requests, often used across multiple features.
+- Config: Environment variables, global feature flags, route definitions, and other application-wide settings.
+- i18n: Configuration.
+- Lib: A collection of internal libraries or generic utility functions. Guideline: If a particular library covers multiple discrete topics (for example, date manipulation, text formatting, etc.), please create subfolders such as /dates, /text, /formatting to group related utilities.
+- UI: A central UI kit that provides common visual components. Guideline: The UI folder must be split into subfolders as needed to group related components (for example, /buttons, /forms, /layout, and so on). This allows the growing set of UI components to remain well-organized and easily discoverable.
+
+Example Folder Structure for Shared/shared
+  /api
+    apiClient.ts
+  /config
+    globalConfig.ts
+    featureFlags.ts
+  /i18n
+    i18nConfig.ts
+  /lib
+    /dates
+      dateFormatter.ts
+    /text
+      stringUtils.ts
+  /ui
+    /components
+      /buttons
+        PrimaryButton.tsx
+        SecondaryButton.tsx
+      /forms
+        TextInput.tsx
+      /layout
+        PageLayout.tsx
+    /icons
+      LogoIcon.tsx
+
+
+
+4- Pages Folder
+Purpose
+Represent Navigable Screens: Pages correspond to application routes (or screens) and form the main layout for different views in your application.
+
+
+4. Widgets Folder
+Purpose
+Encapsulated UI Components: Widgets provide reusable UI logic that integrates multiple shared or feature-specific components.   
+Maintainability & Organization: Each widget should group related components within its folder.
+Feature Independence: Widgets should not directly depend on business entities and should instead focus on UI logic.
+
+
+What to Include (examples)
+Header Widget: Contains a navigation bar, logo, and user menu.
+Footer Widget: Includes links to privacy policies, social media, and application metadata.
+Sidebar Widget: Handles navigation for complex UIs like dashboards.
+Notifications Widget: Displays interactive alerts or messages.
+Search Widget: Provides a universal search bar across the application
+
+/widgets
+  /header
+    Header.tsx
+    /components
+      NavBar.tsx
+      UserMenu.tsx
+  /footer
+    Footer.tsx
+    /components
+      FooterLinks.tsx
+      SocialMedia.tsx
+  /sidebar
+    Sidebar.tsx
+  /notifications
+    Notifications.tsx
+  /search
+    SearchBar.tsx
+

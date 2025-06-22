@@ -1,0 +1,115 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+### Some key aspects of React functional testing include:
+- Testing components in isolation to pinpoint issues
+- Avoiding testing implementation details
+- Using realistic component props and state
+- Interacting with components from the user's perspective
+- Structure tests using the AAA pattern - Arrange, Act, Assert. Each part should be has commit about it, Example
+```ts
+    it("should return the user object", () => {
+      // Arrange
+
+      //Act
+
+      //Assert
+    });
+```
+- Try to test one behavior per test case. Don't overload a single test with too many assertions.
+- Use React Testing Library utilities screen to query DOM elements and simulate browser interactions.
+
+### To keep test suites maintainable as the app grows:
+- **Test small units** - Target specific components rather than large sections of UI
+- **Avoid duplication** - Reuse test logic between components
+- **Isolate tests** - Components should not rely on other parts of the app to render properly
+
+### Query priorities
+1- getByRole
+2- getByLabelText 
+3- getByPlaceholderText 
+4- getByText 
+5- getByDisplayValue
+6- getByAltText 
+7- getByTitle 
+8- getByTestId 
+
+## Naming Convention
+- Tests should have meaningful names and should be nested properly by following the next pattern:
+
+ Example:
+ ```ts
+describe("useAuth", () => {
+  it("should throw context error", () => {
+    // ...
+  });
+  it("should toggle loading state", () => {
+    // ..
+  });
+
+  describe("when user exists", () => {
+    it("should return the user object", () => {
+      // ...
+    });
+    it("should log out user", () => {
+      // ...
+    });
+  });
+
+  describe("when user does not exist", () => {
+    it("should return guest user", () => {
+      // ...
+    });
+    it("should destroy session on window close", () => {
+      // ...
+    });
+  });
+});
+ ```
+
+ ### Testig types
+- **Unit tests** focus on specific functions/modules in isolation. Great for pure logic.
+- **Integration** tests check interactions between coupled modules. Useful for imperative workflows.
+- **Functional** tests validate components from a user perspective. Key for UX flows.
+
+use Custom render at [test-utils.tsx](mdc:__tests__/test-utils.tsx) when write tests.
+
+### Mock Service Worker
+- Each entity has its own handler at __mocks__ then import this handler at "__mocks__\handlers\index.ts" to mock api requests.
+- Sometimes we want our custom hook to return a mock response while we test component consuming it.
+- Instead of adding this behavior in the "./__mocks__/handlers.js", add a runtime override so that requests to "GET /user" always return an error.
+
+# Exampe
+```ts
+it('handles errors when fetching the user', () => {
+  // This test, however, needs a reliable way to reproduce
+  // a server error to test the UI.
+  server.use(
+    http.get('/user', () => {
+      return new HttpResponse(null, { status: 500 })
+    })
+  )
+ 
+  render(<UserComponent />)
+  expect(screen.getByRole('alert')).toHaveText('Error!')
+
+})
+```
+
+### What not to test?
+- Implementation details
+- Third party code
+
+### What to test when test components ?
+- Test component renders with props
+- Test component renders in different states
+- Test component reacts to events
+- And more based on situation.
+
+## All tests should be defined in the same directory where the file being tested is.
+Example
+Home.tsx
+Home.test.tsx

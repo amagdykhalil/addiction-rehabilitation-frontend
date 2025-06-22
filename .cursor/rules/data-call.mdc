@@ -1,0 +1,17 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# MDC Curser Rule File: API Functions & Hooks Guidelines
+
+This document defines best practices for creating API functions and hooks in the project. Follow these guidelines to ensure that all API interactions and hook implementations are consistent, maintainable, and scalable.
+
+
+### Purpose
+- **Standardization:** Ensure every API function use the `@BaseFetch.ts` utility.
+- **Centralized Management:** Aggregate related API functions in an `index.ts` file for easy discovery and use.
+
+
+- Use `useQuery` for data fetching and `useMutation` for data modifications to creatend reusable hooks

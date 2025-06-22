@@ -1,4 +1,3 @@
-import {STALE_TIME} from "./reactQuery"
- import {TOKEN_REFRESH_THRESHOLD,TOKEN_REFRESH_INTERVAL} from "./auth"
- 
-export { STALE_TIME, TOKEN_REFRESH_INTERVAL, TOKEN_REFRESH_THRESHOLD };
+import { STALE_TIME } from "./reactQuery";
+
+export { STALE_TIME };

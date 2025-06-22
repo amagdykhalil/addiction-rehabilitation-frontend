@@ -1,3 +1,3 @@
-import {mainQueryClient} from "./mainQueryClient"
+import { mainQueryClient } from "./mainQueryClient";
 
-export {mainQueryClient}
+export { mainQueryClient };

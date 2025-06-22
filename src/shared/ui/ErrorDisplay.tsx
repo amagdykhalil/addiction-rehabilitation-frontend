@@ -1,7 +1,14 @@
 import { Button } from "@/shared/ui";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/shared/ui";
 import { AlertTriangle, Home, RefreshCw, ArrowLeft, Bug } from "lucide-react";
 import type { ReactNode } from "react";
+import { ROUTES } from "../routes";
 
 interface ErrorDisplayProps {
   title: string;
@@ -24,10 +31,10 @@ export function ErrorDisplay({
   error,
   onReset,
   showTryAgain = false,
-  footerText
+  footerText,
 }: ErrorDisplayProps) {
   const handleGoHome = () => {
-    window.location.href = "/";
+    window.location.href = ROUTES.HOME;
   };
 
   const handleGoBack = () => {
@@ -45,7 +52,9 @@ export function ErrorDisplay({
               <AlertTriangle className="h-8 w-8 text-destructive" />
             </div>
             <CardTitle className="text-2xl font-bold">{title}</CardTitle>
-            <CardDescription className="text-lg font-medium text-foreground">{description}</CardDescription>
+            <CardDescription className="text-lg font-medium text-foreground">
+              {description}
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-2">
@@ -62,7 +71,9 @@ export function ErrorDisplay({
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="pt-0">
-                  <pre className="text-xs text-muted-foreground whitespace-pre-wrap break-words">{error.message}</pre>
+                  <pre className="text-xs text-muted-foreground whitespace-pre-wrap break-words">
+                    {error.message}
+                  </pre>
                   {error.stack && (
                     <details className="mt-2">
                       <summary className="text-xs cursor-pointer text-muted-foreground hover:text-foreground">
@@ -79,19 +90,31 @@ export function ErrorDisplay({
 
             <div className="space-y-3">
               {showTryAgain && onReset && (
-                <Button onClick={onReset} className="w-full cursor-pointer" variant="default">
+                <Button
+                  onClick={onReset}
+                  className="w-full cursor-pointer"
+                  variant="default"
+                >
                   <RefreshCw className="mr-2 h-4 w-4" />
                   Try Again
                 </Button>
               )}
 
               <div className="flex gap-2">
-                <Button onClick={handleGoBack} variant="outline" className="flex-1 cursor-pointer">
+                <Button
+                  onClick={handleGoBack}
+                  variant="outline"
+                  className="flex-1 cursor-pointer"
+                >
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Go Back
                 </Button>
 
-                <Button onClick={handleGoHome} variant="outline" className="flex-1 cursor-pointer">
+                <Button
+                  onClick={handleGoHome}
+                  variant="outline"
+                  className="flex-1 cursor-pointer"
+                >
                   <Home className="mr-2 h-4 w-4" />
                   Home
                 </Button>
@@ -115,4 +138,4 @@ export function ErrorDisplay({
       </div>
     </div>
   );
-} 
+}

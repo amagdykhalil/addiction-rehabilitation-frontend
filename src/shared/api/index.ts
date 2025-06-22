@@ -1,6 +1,17 @@
 import { BaseFetch } from "./BaseFetch";
-import { attemptRefresh } from "./refreshToken"
-import { requestQueue,addToQueue,clearQueue,retryQueuedRequests } from "./requestQueue";
+import { refreshToken } from "./refreshToken";
+import {
+  requestQueue,
+  addToQueue,
+  clearQueue,
+  retryQueuedRequests,
+} from "./requestQueue";
 
-
-export { requestQueue,addToQueue,clearQueue,retryQueuedRequests, attemptRefresh, BaseFetch}
+export {
+  requestQueue,
+  addToQueue,
+  clearQueue,
+  retryQueuedRequests,
+  refreshToken,
+  BaseFetch,
+};

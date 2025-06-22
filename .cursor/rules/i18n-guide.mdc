@@ -1,0 +1,45 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Standard practices for localization in React components
+globs:
+  - "src/**/*.tsx"
+alwaysApply: true
+---
+
+# 🛠️ i18n & Localization Standards
+
+When creating a React component, ensure examplar localization behavior:
+
+
+- **Always import** `useTranslation` from `react-i18next` and get `t` + `ready`.  
+- **Load appropriate namespaces**:  
+  - Common/shared text → `"common"`, `"validator"`, `"errors"`  
+  - Feature-specific text → one namespace per feature/entity, e.g. `"auth"`, `"user"`, `"order"`  
+  Use `useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.auth])`.
+- **Never use literal strings** in `t()`. Instead:
+  - Feature keys go in `src/entities/<entity>/lib/translationKeys.ts`
+  - Shared keys go in `src/shared/i18n/keys/<namespace>/index.ts`
+  - Example usage in component:
+    ```tsx
+    import { AUTH_KEYS } from '@/entities/auth/lib/translationKeys';
+    import { NAMESPACE_KEYS  } from '@/shared/i18n/keys/namespacesKeys''
+    const { t, ready } = useTranslation(['common','auth']);
+    if (!ready) return <Spinner />;
+    return <div>{t(AUTH_KEYS.login.title, {
+        ns: NAMESPACE_KEYS.auth
+    })}</div>;
+    ```
+- **Structure translation files** (`public/locales/en/common.json`, `auth.json`) into nested objects keyed by business function—**not component names**, to prevent rework when UI changes:
+  ```jsonc
+  {
+    "login": {  
+      "title": "...",
+      "submitButton": "..."
+    },
+    "logout": { "confirm": "..." }
+  }
+- always create translation files for ar (arabic) and en (english) 

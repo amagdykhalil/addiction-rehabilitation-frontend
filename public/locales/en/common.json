@@ -1,0 +1,8 @@
+{
+  "WelcomeMessage": "Welcome to addiction rehabilitation center",
+  "errors": {
+    "unauthorized": "Unauthorized: Please log in again.",
+    "forbidden": "Access Denied: You don't have permission to access this.",
+    "unexpected": "An unexpected error occurred."
+  }
+}
