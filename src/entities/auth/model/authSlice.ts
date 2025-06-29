@@ -10,7 +10,12 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  authData: localStorageService.get(AUTH_KEY) || null,
+  authData: localStorageService.get(AUTH_KEY)|| {
+    accessToken:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwiZW1haWwiOiJhaG1lZC5tYWdkeS5kZXY5QGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsIm5iZiI6MTc1MTExMjAwMSwiZXhwIjoxNzUxMTk4NDAxLCJpYXQiOjE3NTExMTIwMDEsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3QifQ.M19stb7YMS4vB4CJRK7EFpvItz-vSrDVhHEXICe3RJA",
+    expiresOn: "2026-06-29",
+    userId: "1",
+  },
 };
 
 const authSlice = createSlice({
