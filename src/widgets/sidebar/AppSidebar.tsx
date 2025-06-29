@@ -59,7 +59,7 @@ export function AppSidebar() {
         title: "users dashboard",
         url: "users"
         icon: IconUser,
-      },
+      }
     ],
     navSecondary: [
       {
