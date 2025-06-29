@@ -6,4 +6,5 @@ export const NAMESPACE_KEYS = {
   user: "user",
   sidebar: "sidebar",
   patient: "patient",
+  users: "user",
 } as const;

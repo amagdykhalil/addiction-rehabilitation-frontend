@@ -6,6 +6,7 @@ import { ForgotPasswordPage } from "@/Pages/Auth/ForgotPasswordPage";
 import { ResetPasswordPage } from "@/Pages/Auth/ResetPasswordPage";
 import { InternalServerErrorPage } from "@/Pages/InternalServerErrorPage";
 import { patientsRoutes } from "@/entities/patients/routes";
+import { usersRoutes } from "@/entities/users/routes";
 
 export const routes = [
   // global routes
@@ -16,4 +17,5 @@ export const routes = [
   { path: ROUTES.SERVERERROR, element: <InternalServerErrorPage /> },
   userRoutes,
   patientsRoutes,
+  usersRoutes,
 ];

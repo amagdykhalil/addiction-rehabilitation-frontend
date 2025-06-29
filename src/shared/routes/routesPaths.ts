@@ -1,5 +1,6 @@
 import { PATIENTS_ROUTES } from "@/entities/patients/routes";
 import { USER_ROUTES } from "@/entities/user/routes";
+import { USERS_ROUTES } from "@/entities/users/routes";
 
 export const ROUTES = {
   // Public routes
@@ -12,4 +13,5 @@ export const ROUTES = {
   // User routes
   USER: USER_ROUTES,
   PATIENT: PATIENTS_ROUTES,
+  USERS: USERS_ROUTES,
 } as const;

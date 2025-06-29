@@ -1,18 +1,134 @@
 {
-  "dashboard": {
-    "title": "Dashboard",
-    "overview": "Overview",
-    "overviewDesc": "View your dashboard overview and analytics",
-    "projects": "Projects",
-    "projectsDesc": "Manage your projects and tasks"
+  "backToList": "Back to List",
+  "loading": "Loading...",
+  "edit": "Edit User",
+  "deleting": "Deleting...",
+  "delete": {
+    "button": "Delete",
+    "confirm": "Are you sure you want to delete this user?"
   },
-  "profile": {
-    "title": "Profile"
+  "notFound": {
+    "title": "User Not Found",
+    "message": "The user you're looking for could not be found."
   },
-  "settings": {
-    "title": "Settings"
+  "list": {
+    "title": "Users",
+    "subtitle": "Manage user accounts",
+    "userRecords": "User Records",
+    "showingUsers": "Showing",
+    "ofUsers": "of",
+    "viewDetails": "View Details",
+    "actions": "Actions",
+    "noUsers": "No users found"
   },
-  "account": { "title": "Account" },
-  "notifications": { "title": "Notifications" },
-  "logout": { "title": "Log out" }
+  "search": {
+    "title": "Search Users",
+    "description": "Find users by ID or email",
+    "searchType": "Search Type",
+    "searchUser": "Search User",
+    "addUser": "Add User",
+    "cancel": "Cancel",
+    "search": "Search",
+    "searchPlaceholder": "Search by name, email, or ID..."
+  },
+  "filters": {
+    "allRoles": "All Roles",
+    "allStatuses": "All Statuses",
+    "country": "Country",
+    "selectCountry": "Select Country"
+  },
+  "table": {
+    "userId": "User ID",
+    "user": "User",
+    "email": "Email",
+    "role": "Role",
+    "status": "Status",
+    "gender": "Gender",
+    "contact": "Contact",
+    "idDocument": "ID Document",
+    "nationality": "Nationality",
+    "nationalId": "National ID",
+    "passport": "Passport",
+    "noDocument": "No Document",
+    "createdAt": "Created",
+    "lastLogin": "Last Login"
+  },
+  "details": {
+    "title": "User Information",
+    "subtitle": "View and manage user details",
+    "userId": "User ID",
+    "email": "Email",
+    "phone": "Phone",
+    "nationality": "Nationality",
+    "idDocument": "ID Document",
+    "nationalId": "National ID",
+    "passport": "Passport",
+    "notProvided": "Not provided",
+    "personalInfo": "Personal Information",
+    "firstName": "First Name",
+    "secondName": "Second Name",
+    "thirdName": "Third Name",
+    "lastName": "Last Name",
+    "fullName": "Full Name",
+    "gender": "Gender",
+    "contactAndId": "Contact & Identification",
+    "phoneNumber": "Phone Number",
+    "nationalIdNumber": "National ID Number",
+    "passportNumber": "Passport Number",
+    "role": "Role",
+    "status": "Status",
+    "createdAt": "Created At",
+    "lastLoginAt": "Last Login"
+  },
+  "form": {
+    "personalInfo": "Personal Info",
+    "contactAndId": "Contact & ID",
+    "additionalInfo": "Additional Info",
+    "accountInfo": "Account Info",
+    "personalInformation": "Personal Information",
+    "basicDetails": "Basic personal details of the user",
+    "firstName": "First Name",
+    "secondName": "Second Name",
+    "thirdName": "Third Name",
+    "lastName": "Last Name",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "contactAndIdentification": "Contact & Identification",
+    "contactDetails": "Contact information and identification documents",
+    "phoneNumber": "Phone Number",
+    "identificationDocument": "Identification Document",
+    "nationalId": "National ID",
+    "passport": "Passport",
+    "nationalIdNumber": "National ID Number",
+    "passportNumber": "Passport Number",
+    "nationality": "Nationality",
+    "selectNationality": "Select nationality",
+    "additionalInformation": "Additional Information",
+    "optionalInfo": "Optional additional user information",
+    "profileImageUrl": "Profile Image URL",
+    "upload": "Upload",
+    "updateUser": "Update User",
+    "addUser": "Add User",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "role": "Role",
+    "status": "Status"
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female"
+  },
+  "role": {
+    "admin": "Admin",
+    "doctor": "Doctor",
+    "nurse": "Nurse",
+    "receptionist": "Receptionist"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "suspended": "Suspended"
+  }
 }

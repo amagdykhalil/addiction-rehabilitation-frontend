@@ -1,18 +1,134 @@
 {
-  "dashboard": {
-    "title": "لوحة التحكم",
-    "overview": "نظرة عامة",
-    "overviewDesc": "عرض نظرة عامة وتحليلات لوحة التحكم الخاصة بك",
-    "projects": "المشاريع",
-    "projectsDesc": "إدارة مشاريعك ومهامك"
+  "backToList": "العودة إلى القائمة",
+  "loading": "جاري التحميل...",
+  "edit": "تعديل المستخدم",
+  "deleting": "جاري الحذف...",
+  "delete": {
+    "button": "حذف",
+    "confirm": "هل أنت متأكد من حذف هذا المستخدم؟"
   },
-  "profile": {
-    "title": "الملف الشخصي"
+  "notFound": {
+    "title": "المستخدم غير موجود",
+    "message": "المستخدم الذي تبحث عنه غير موجود."
   },
-  "settings": {
-    "title": "الإعدادات"
+  "list": {
+    "title": "المستخدمون",
+    "subtitle": "إدارة حسابات المستخدمين",
+    "userRecords": "سجلات المستخدمين",
+    "showingUsers": "عرض",
+    "ofUsers": "من",
+    "viewDetails": "عرض التفاصيل",
+    "actions": "الإجراءات",
+    "noUsers": "لا يوجد مستخدمون"
   },
-  "account": { "title": "الحساب" },
-  "notifications": { "title": "الإشعارات" },
-  "logout": { "title": "تسجيل الخروج" }
+  "search": {
+    "title": "البحث عن المستخدمين",
+    "description": "البحث عن المستخدمين بالمعرف أو البريد الإلكتروني",
+    "searchType": "نوع البحث",
+    "searchUser": "البحث عن مستخدم",
+    "addUser": "إضافة مستخدم",
+    "cancel": "إلغاء",
+    "search": "بحث",
+    "searchPlaceholder": "البحث بالاسم أو البريد الإلكتروني أو المعرف..."
+  },
+  "filters": {
+    "allRoles": "جميع الأدوار",
+    "allStatuses": "جميع الحالات",
+    "country": "البلد",
+    "selectCountry": "اختر البلد"
+  },
+  "table": {
+    "userId": "معرف المستخدم",
+    "user": "المستخدم",
+    "email": "البريد الإلكتروني",
+    "role": "الدور",
+    "status": "الحالة",
+    "gender": "الجنس",
+    "contact": "التواصل",
+    "idDocument": "وثيقة الهوية",
+    "nationality": "الجنسية",
+    "nationalId": "الهوية الوطنية",
+    "passport": "جواز السفر",
+    "noDocument": "لا توجد وثيقة",
+    "createdAt": "تاريخ الإنشاء",
+    "lastLogin": "آخر تسجيل دخول"
+  },
+  "details": {
+    "title": "معلومات المستخدم",
+    "subtitle": "عرض وإدارة تفاصيل المستخدم",
+    "userId": "معرف المستخدم",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "nationality": "الجنسية",
+    "idDocument": "وثيقة الهوية",
+    "nationalId": "الهوية الوطنية",
+    "passport": "جواز السفر",
+    "notProvided": "غير متوفر",
+    "personalInfo": "المعلومات الشخصية",
+    "firstName": "الاسم الأول",
+    "secondName": "الاسم الثاني",
+    "thirdName": "الاسم الثالث",
+    "lastName": "اسم العائلة",
+    "fullName": "الاسم الكامل",
+    "gender": "الجنس",
+    "contactAndId": "التواصل والهوية",
+    "phoneNumber": "رقم الهاتف",
+    "nationalIdNumber": "رقم الهوية الوطنية",
+    "passportNumber": "رقم جواز السفر",
+    "role": "الدور",
+    "status": "الحالة",
+    "createdAt": "تاريخ الإنشاء",
+    "lastLoginAt": "آخر تسجيل دخول"
+  },
+  "form": {
+    "personalInfo": "المعلومات الشخصية",
+    "contactAndId": "التواصل والهوية",
+    "additionalInfo": "معلومات إضافية",
+    "accountInfo": "معلومات الحساب",
+    "personalInformation": "المعلومات الشخصية",
+    "basicDetails": "التفاصيل الشخصية الأساسية للمستخدم",
+    "firstName": "الاسم الأول",
+    "secondName": "الاسم الثاني",
+    "thirdName": "الاسم الثالث",
+    "lastName": "اسم العائلة",
+    "gender": "الجنس",
+    "male": "ذكر",
+    "female": "أنثى",
+    "contactAndIdentification": "التواصل والهوية",
+    "contactDetails": "معلومات التواصل ووثائق الهوية",
+    "phoneNumber": "رقم الهاتف",
+    "identificationDocument": "وثيقة الهوية",
+    "nationalId": "الهوية الوطنية",
+    "passport": "جواز السفر",
+    "nationalIdNumber": "رقم الهوية الوطنية",
+    "passportNumber": "رقم جواز السفر",
+    "nationality": "الجنسية",
+    "selectNationality": "اختر الجنسية",
+    "additionalInformation": "معلومات إضافية",
+    "optionalInfo": "معلومات إضافية اختيارية للمستخدم",
+    "profileImageUrl": "رابط صورة الملف الشخصي",
+    "upload": "رفع",
+    "updateUser": "تحديث المستخدم",
+    "addUser": "إضافة مستخدم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "role": "الدور",
+    "status": "الحالة"
+  },
+  "gender": {
+    "male": "ذكر",
+    "female": "أنثى"
+  },
+  "role": {
+    "admin": "مدير",
+    "doctor": "طبيب",
+    "nurse": "ممرض",
+    "receptionist": "موظف استقبال"
+  },
+  "status": {
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "suspended": "معلق"
+  }
 }
