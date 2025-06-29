@@ -57,7 +57,7 @@ export function AppSidebar() {
       },
       {
         title: "users dashboard",
-        url: "users"
+        url: "users",
         icon: IconUser,
       }
     ],
