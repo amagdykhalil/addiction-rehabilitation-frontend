@@ -1,28 +1,21 @@
 import { Button } from "@/shared/ui/button";
 import { Globe } from "lucide-react";
-import type { TFunction } from "i18next";
 import {
   LOCALE_CODES,
   LOCALE_NAMES,
   type Locale,
 } from "@/shared/i18n/constants/locales";
+import { useUpdateLanguage } from "@/features/settings/hooks";
+import I18n from "@/shared/lib/initI18n";
 
-interface LanguageToggleProps {
-  currentLanguage: Locale;
-  onLanguageChange?: (language: Locale) => void;
-  disabled?: boolean;
-  t?: TFunction;
-  className?: string;
-}
+export const LanguageToggle = ({ className }: { className?: string }) => {
+  const { changeLanguage, isLoading } = useUpdateLanguage();
+  const currentLanguage = I18n.language as Locale;
+  const onLanguageChange = (language: Locale) => {
+    changeLanguage(language);
+  };
 
-export const LanguageToggle = ({
-  currentLanguage,
-  onLanguageChange,
-  disabled,
-  className,
-}: LanguageToggleProps) => {
   const handleLanguageToggle = () => {
-    if (disabled) return;
     const newLanguage =
       currentLanguage === LOCALE_CODES.English
         ? LOCALE_CODES.Araic
@@ -36,7 +29,7 @@ export const LanguageToggle = ({
       size="sm"
       onClick={handleLanguageToggle}
       className={`flex items-center gap-2 space-x-2 cursor-pointer ${className}`}
-      disabled={disabled}
+      disabled={isLoading}
     >
       <Globe className="mr-2 ml-0 h-4 w-4" />
       <span className="text-sm font-medium">

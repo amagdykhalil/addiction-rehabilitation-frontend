@@ -2,11 +2,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/shared/ui/sheet";
 import { Button } from "@/shared/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import { MobileNavigation } from "./MobileNavigation";
-import type { MobileMenuProps } from "../types/MobileMenuProps";
+import { UnAuthenticatedSidebar } from "../sidebar";
+import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
 
-export const MobileMenu = (props: MobileMenuProps) => {
+export const MobileMenu = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isArabic } = useCurrentLanguage();
   return (
     <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
       <SheetTrigger asChild>
@@ -14,9 +15,12 @@ export const MobileMenu = (props: MobileMenuProps) => {
           <Menu className="h-5 w-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-[250px] sm:w-[300px]">
+      <SheetContent
+        side={isArabic ? "right" : "left"}
+        className="w-[250px] sm:w-[300px]"
+      >
         <div className="flex flex-col space-y-4 mt-10">
-          <MobileNavigation {...props} />
+          <UnAuthenticatedSidebar />
         </div>
       </SheetContent>
     </Sheet>

@@ -12,4 +12,13 @@ export const USER_KEYS = {
   settings: {
     title: "settings.title",
   },
+  account: {
+    title: "account.title",
+  },
+  notifications: {
+    title: "notifications.title",
+  },
+  logout: {
+    title: "logout.title",
+  },
 } as const;

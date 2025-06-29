@@ -1,0 +1,113 @@
+{
+  "backToList": "العودة إلى القائمة",
+  "loading": "جاري التحميل...",
+  "edit": "تعديل المريض",
+  "deleting": "جاري الحذف...",
+  "delete": {
+    "button": "حذف",
+    "confirm": "هل أنت متأكد من حذف هذا المريض؟"
+  },
+  "notFound": {
+    "title": "المريض غير موجود",
+    "message": "المريض الذي تبحث عنه غير موجود."
+  },
+  "list": {
+    "title": "المرضى",
+    "subtitle": "إدارة سجلات المرضى",
+    "patientRecords": "سجلات المرضى",
+    "showingPatients": "عرض",
+    "ofPatients": "من",
+    "viewDetails": "عرض التفاصيل",
+    "actions": "الإجراءات",
+    "noPatients": "لا يوجد مرضى"
+  },
+  "search": {
+    "title": "البحث عن المرضى",
+    "description": "البحث عن المرضى بالاسم أو الهاتف أو وثيقة الهوية",
+    "searchType": "نوع البحث",
+    "searchPatient": "البحث عن مريض",
+    "addPatient": "إضافة مريض",
+    "cancel": "إلغاء",
+    "search": "بحث",
+    "searchPlaceholder": "البحث بالاسم أو الهاتف أو الهوية أو جواز السفر..."
+  },
+  "filters": {
+    "allGenders": "جميع الأجناس",
+    "country": "البلد",
+    "selectCountry": "اختر البلد"
+  },
+  "table": {
+    "patientId": "رقم المريض",
+    "patient": "المريض",
+    "age": "العمر",
+    "gender": "الجنس",
+    "contact": "التواصل",
+    "idDocument": "وثيقة الهوية",
+    "nationality": "الجنسية",
+    "nationalId": "الهوية الوطنية",
+    "passport": "جواز السفر",
+    "noDocument": "لا توجد وثيقة"
+  },
+  "details": {
+    "title": "معلومات المريض",
+    "subtitle": "عرض وإدارة تفاصيل المريض",
+    "patientId": "رقم المريض",
+    "age": "العمر",
+    "yearsOld": "سنة",
+    "years": "سنوات",
+    "phone": "الهاتف",
+    "nationality": "الجنسية",
+    "idDocument": "وثيقة الهوية",
+    "nationalId": "الهوية الوطنية",
+    "passport": "جواز السفر",
+    "notProvided": "غير متوفر",
+    "personalInfo": "المعلومات الشخصية",
+    "firstName": "الاسم الأول",
+    "secondName": "الاسم الثاني",
+    "thirdName": "الاسم الثالث",
+    "lastName": "اسم العائلة",
+    "fullName": "الاسم الكامل",
+    "birthDate": "تاريخ الميلاد",
+    "gender": "الجنس",
+    "contactAndId": "التواصل والهوية",
+    "phoneNumber": "رقم الهاتف",
+    "nationalIdNumber": "رقم الهوية الوطنية",
+    "passportNumber": "رقم جواز السفر"
+  },
+  "form": {
+    "personalInfo": "المعلومات الشخصية",
+    "contactAndId": "التواصل والهوية",
+    "additionalInfo": "معلومات إضافية",
+    "personalInformation": "المعلومات الشخصية",
+    "basicDetails": "التفاصيل الشخصية الأساسية للمريض",
+    "firstName": "الاسم الأول",
+    "secondName": "الاسم الثاني",
+    "thirdName": "الاسم الثالث",
+    "lastName": "اسم العائلة",
+    "birthDate": "تاريخ الميلاد",
+    "pickDate": "اختر تاريخ",
+    "gender": "الجنس",
+    "male": "ذكر",
+    "female": "أنثى",
+    "contactAndIdentification": "التواصل والهوية",
+    "contactDetails": "معلومات التواصل ووثائق الهوية",
+    "phoneNumber": "رقم الهاتف",
+    "identificationDocument": "وثيقة الهوية",
+    "nationalId": "الهوية الوطنية",
+    "passport": "جواز السفر",
+    "nationalIdNumber": "رقم الهوية الوطنية",
+    "passportNumber": "رقم جواز السفر",
+    "nationality": "الجنسية",
+    "selectNationality": "اختر الجنسية",
+    "additionalInformation": "معلومات إضافية",
+    "optionalInfo": "معلومات إضافية اختيارية للمريض",
+    "profileImageUrl": "رابط صورة الملف الشخصي",
+    "upload": "رفع",
+    "updatePatient": "تحديث المريض",
+    "addPatient": "إضافة مريض"
+  },
+  "gender": {
+    "male": "ذكر",
+    "female": "أنثى"
+  }
+}

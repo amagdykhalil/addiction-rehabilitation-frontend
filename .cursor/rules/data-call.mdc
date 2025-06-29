@@ -15,3 +15,68 @@ This document defines best practices for creating API functions and hooks in the
 
 
 - Use `useQuery` for data fetching and `useMutation` for data modifications to creatend reusable hooks
+useQuery example
+```ts
+import { useQuery } from "@tanstack/react-query";
+import { patientsApi } from "@/entities/patients/api";
+import type { Patient } from "@/entities/patients/model";
+import type { ApiResponse } from "@/shared/types";
+import { patientsKeys } from "./patientsKeys";
+
+export function useGetPatient(id: string) {
+  const query = useQuery<ApiResponse<Patient>, Error>({
+    queryKey: patientsKeys.detail(id),
+    queryFn: () => patientsApi.getPatient(id),
+  });
+
+  return {
+    patient: query.data?.result ?? null,
+    isLoading: query.isLoading,
+    error: query.error,
+    refetch: query.refetch,
+  };
+}
+
+export default useGetPatient;
+
+```
+
+useMutation example
+```ts
+export function useAddPatient() {
+  const queryClient = useQueryClient();
+  const mutation = useMutation<
+    ApiResponse<Patient>,
+    Error,
+    Omit<Patient, "Id" | "FullName">
+  >({
+    mutationFn: patientsApi.addPatient,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: patientsKeys.all });
+    },
+  });
+
+  return {
+    addPatient: mutation.mutate,
+    isLoading: mutation.isPending,
+    error: mutation.error,
+    data: mutation.data?.result ?? null,
+  };
+}
+
+export default useAddPatient;
+```
+
+query keys Example
+```ts
+export const patientsKeys = {
+  all: ["patients"] as const,
+  lists: () => [...patientsKeys.all, "list"] as const,
+  list: (filter?: Record<string, unknown>) =>
+    [...patientsKeys.lists(), { filter }] as const,
+  details: () => [...patientsKeys.all, "detail"] as const,
+  detail: (id: string) => [...patientsKeys.details(), { id }] as const,
+  countries: () => ["countries"] as const,
+};
+
+```

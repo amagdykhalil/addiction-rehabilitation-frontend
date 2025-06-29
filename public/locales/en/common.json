@@ -1,8 +1,48 @@
 {
   "WelcomeMessage": "Welcome to addiction rehabilitation center",
+  "loading": "Loading...",
+  "saving": "Saving...",
+  "error": "Error",
   "errors": {
     "unauthorized": "Unauthorized: Please log in again.",
     "forbidden": "Access Denied: You don't have permission to access this.",
     "unexpected": "An unexpected error occurred."
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page",
+    "of": "of"
+  },
+  "filters": {
+    "title": "Filters & Search",
+    "search": "Search",
+    "searchPlaceholder": "Search...",
+    "sortBy": "Sort by",
+    "sortByPlaceholder": "Sort by",
+    "order": "Order",
+    "orderPlaceholder": "Order",
+    "ascending": "Ascending",
+    "descending": "Descending",
+    "clearAll": "Clear All",
+    "expandFilters": "Expand filters",
+    "collapseFilters": "Collapse filters",
+    "activeFilters": "Active filters:"
+  },
+  "actions": {
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "viewDetails": "View Details"
+  },
+  "delete": {
+    "button": "Delete"
+  },
+  "deleting": "Deleting...",
+  "cancel": {
+    "button": "Cancel"
+  },
+  "confirm": {
+    "text": "Are you sure you want to proceed?"
   }
 }

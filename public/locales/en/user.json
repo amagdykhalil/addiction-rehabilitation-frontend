@@ -11,5 +11,8 @@
   },
   "settings": {
     "title": "Settings"
-  }
+  },
+  "account": { "title": "Account" },
+  "notifications": { "title": "Notifications" },
+  "logout": { "title": "Log out" }
 }

@@ -20,7 +20,7 @@ export const isPublicRoute = () => {
   const currentPath = window.location.pathname.toLowerCase();
 
   return PUBLIC_ROUTES.some((route) =>
-    currentPath.startsWith(route.toLowerCase())
+    currentPath.startsWith(route.toLowerCase()),
   );
 };
 

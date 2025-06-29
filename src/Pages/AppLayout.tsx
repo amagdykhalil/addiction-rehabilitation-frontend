@@ -1,6 +1,7 @@
-import { Header } from "@/widgets/header/Header";
-import { Footer } from "@/widgets/footer/Footer";
+import { AppSidebar } from "@/widgets/sidebar";
 import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { SidebarInset, SidebarProvider } from "@/shared/ui/sidebar";
+import { Header } from "@/widgets/header/Header";
 import { useAuth } from "@/entities/auth/model/useAuth";
 
 interface AppLayoutProps {
@@ -8,13 +9,26 @@ interface AppLayoutProps {
 }
 
 export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
-  const { dir } = useCurrentLanguage();
+  const { dir, isArabic } = useCurrentLanguage();
   const { isAuthenticated } = useAuth();
   return (
-    <div dir={dir} className="flex flex-col min-h-screen">
-      <Header isAuthenticated={isAuthenticated} />
-      <main className="flex-grow">{children}</main>
-      <Footer />
-    </div>
+    <SidebarProvider className="w-full">
+      {!isArabic && <AppSidebar />}
+      <SidebarInset
+        className={`${isAuthenticated && "m-2 ml-0 px-6"} flex flex-col overflow-hidden `}
+      >
+        <Header />
+        {isAuthenticated ? (
+          <main className="py-6" dir={dir}>
+            {children}
+          </main>
+        ) : (
+          <main className=" bg-gray-50 " dir={dir}>
+            {children}
+          </main>
+        )}
+      </SidebarInset>
+      {isArabic && <AppSidebar />}
+    </SidebarProvider>
   );
 };

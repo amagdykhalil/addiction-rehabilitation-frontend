@@ -80,7 +80,7 @@ export const ForgotPasswordForm = ({
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         <Card className="w-full max-w-md">
           <CardHeader className="space-y-1 text-center">
             <div className="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
@@ -138,7 +138,7 @@ export const ForgotPasswordForm = ({
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 pt-28">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
@@ -182,7 +182,7 @@ export const ForgotPasswordForm = ({
                             AUTH_KEYS.forgotPassword.emailPlaceholder,
                             {
                               ns: NAMESPACE_KEYS.auth,
-                            }
+                            },
                           )}
                           className="pl-10"
                           disabled={isLoading}

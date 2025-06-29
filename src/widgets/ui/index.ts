@@ -1,3 +1,3 @@
 import { ErrorBoundaryFallback } from "./ErrorBoundaryFallback";
-
-export { ErrorBoundaryFallback };
+import InternalServerError from "./InternalServerError";
+export { ErrorBoundaryFallback, InternalServerError };

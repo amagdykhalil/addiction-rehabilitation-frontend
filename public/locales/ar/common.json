@@ -1,8 +1,48 @@
 {
-  "WelcomeMessage": "أهلا بك في مركز التأهيل من الادمان",
+  "WelcomeMessage": "مرحباً بكم في مركز إعادة التأهيل من الإدمان",
+  "loading": "جاري التحميل...",
+  "saving": "جاري الحفظ...",
+  "error": "خطأ",
   "errors": {
     "unauthorized": "غير مصرح: يرجى تسجيل الدخول مرة أخرى.",
     "forbidden": "تم رفض الوصول: ليس لديك إذن للوصول إلى هذا.",
     "unexpected": "حدث خطأ غير متوقع."
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "page": "الصفحة",
+    "of": "من"
+  },
+  "filters": {
+    "title": "المرشحات والبحث",
+    "search": "بحث",
+    "searchPlaceholder": "بحث...",
+    "sortBy": "ترتيب حسب",
+    "sortByPlaceholder": "ترتيب حسب",
+    "order": "الترتيب",
+    "orderPlaceholder": "الترتيب",
+    "ascending": "تصاعدي",
+    "descending": "تنازلي",
+    "clearAll": "مسح الكل",
+    "expandFilters": "توسيع المرشحات",
+    "collapseFilters": "طي المرشحات",
+    "activeFilters": "المرشحات النشطة:"
+  },
+  "actions": {
+    "view": "عرض",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "viewDetails": "عرض التفاصيل"
+  },
+  "delete": {
+    "button": "حذف"
+  },
+  "deleting": "جاري الحذف...",
+  "cancel": {
+    "button": "إلغاء"
+  },
+  "confirm": {
+    "text": "هل أنت متأكد أنك تريد المتابعة؟"
   }
 }

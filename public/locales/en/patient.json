@@ -1,0 +1,113 @@
+{
+  "backToList": "Back to List",
+  "loading": "Loading...",
+  "edit": "Edit Patient",
+  "deleting": "Deleting...",
+  "delete": {
+    "button": "Delete",
+    "confirm": "Are you sure you want to delete this patient?"
+  },
+  "notFound": {
+    "title": "Patient Not Found",
+    "message": "The patient you're looking for could not be found."
+  },
+  "list": {
+    "title": "Patients",
+    "subtitle": "Manage patient records",
+    "patientRecords": "Patient Records",
+    "showingPatients": "Showing",
+    "ofPatients": "of",
+    "viewDetails": "View Details",
+    "actions": "Actions",
+    "noPatients": "No patients found"
+  },
+  "search": {
+    "title": "Search Patients",
+    "description": "Find patients by name, phone, or ID document",
+    "searchType": "Search Type",
+    "searchPatient": "Search Patient",
+    "addPatient": "Add Patient",
+    "cancel": "Cancel",
+    "search": "Search",
+    "searchPlaceholder": "Search by name, phone, ID document..."
+  },
+  "filters": {
+    "allGenders": "All Genders",
+    "country": "Country",
+    "selectCountry": "Select Country"
+  },
+  "table": {
+    "patientId": "Patient ID",
+    "patient": "Patient",
+    "age": "Age",
+    "gender": "Gender",
+    "contact": "Contact",
+    "idDocument": "ID Document",
+    "nationality": "Nationality",
+    "nationalId": "National ID",
+    "passport": "Passport",
+    "noDocument": "No Document"
+  },
+  "details": {
+    "title": "Patient Information",
+    "subtitle": "View and manage patient details",
+    "patientId": "Patient ID",
+    "age": "Age",
+    "yearsOld": "years old",
+    "years": "years",
+    "phone": "Phone",
+    "nationality": "Nationality",
+    "idDocument": "ID Document",
+    "nationalId": "National ID",
+    "passport": "Passport",
+    "notProvided": "Not provided",
+    "personalInfo": "Personal Information",
+    "firstName": "First Name",
+    "secondName": "Second Name",
+    "thirdName": "Third Name",
+    "lastName": "Last Name",
+    "fullName": "Full Name",
+    "birthDate": "Birth Date",
+    "gender": "Gender",
+    "contactAndId": "Contact & Identification",
+    "phoneNumber": "Phone Number",
+    "nationalIdNumber": "National ID Number",
+    "passportNumber": "Passport Number"
+  },
+  "form": {
+    "personalInfo": "Personal Info",
+    "contactAndId": "Contact & ID",
+    "additionalInfo": "Additional Info",
+    "personalInformation": "Personal Information",
+    "basicDetails": "Basic personal details of the patient",
+    "firstName": "First Name",
+    "secondName": "Second Name",
+    "thirdName": "Third Name",
+    "lastName": "Last Name",
+    "birthDate": "Birth Date",
+    "pickDate": "Pick a date",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "contactAndIdentification": "Contact & Identification",
+    "contactDetails": "Contact information and identification documents",
+    "phoneNumber": "Phone Number",
+    "identificationDocument": "Identification Document",
+    "nationalId": "National ID",
+    "passport": "Passport",
+    "nationalIdNumber": "National ID Number",
+    "passportNumber": "Passport Number",
+    "nationality": "Nationality",
+    "selectNationality": "Select nationality",
+    "additionalInformation": "Additional Information",
+    "optionalInfo": "Optional additional patient information",
+    "profileImageUrl": "Profile Image URL",
+    "upload": "Upload",
+    "updatePatient": "Update Patient",
+    "addPatient": "Add Patient"
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female"
+  }
+}

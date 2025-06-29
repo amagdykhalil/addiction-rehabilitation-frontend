@@ -10,7 +10,7 @@ export const ToasterProvider = ({
 
   return (
     <>
-      <Toaster dir={dir} position="top-center" richColors theme="light" />
+      <Toaster position="top-center" richColors theme="light" dir={dir} />
       {children}
     </>
   );

@@ -9,7 +9,7 @@ export function resetAuthInitializerPromiseState() {
 
 export function setAuthInitializerPromise(
   p: Promise<void> | null,
-  status: "pending" | "fulfilled" | "rejected" | null
+  status: "pending" | "fulfilled" | "rejected" | null,
 ) {
   _initPromise = p;
   _statusPromise = status;

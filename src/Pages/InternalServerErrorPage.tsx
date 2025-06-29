@@ -1,4 +1,4 @@
-import InternalServerError from "./ui/InternalServerError";
+import InternalServerError from "../widgets/ui/InternalServerError";
 
 export const InternalServerErrorPage = () => {
   return <InternalServerError />;

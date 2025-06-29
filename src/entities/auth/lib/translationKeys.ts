@@ -44,6 +44,11 @@ export const AUTH_KEYS = {
     requirements: "resetPassword.requirements",
     requirementMinLength: "resetPassword.requirementMinLength",
     requirementMatch: "resetPassword.requirementMatch",
+    requirementDigit: "resetPassword.requirementDigit",
+    requirementUpper: "resetPassword.requirementUpper",
+    requirementLower: "resetPassword.requirementLower",
+    requirementNonAlpha: "resetPassword.requirementNonAlpha",
+    requirementMaxLength: "resetPassword.requirementMaxLength",
     failTitle: "resetPassword.failTitle",
   },
   errors: {
@@ -63,5 +68,10 @@ export const AUTH_KEYS = {
     resetLinkExpired: "errors.resetLinkExpired",
     requestNewLink: "errors.requestNewLink",
     forgotPasswordPage: "errors.forgotPasswordPage",
+    passwordDigit: "errors.passwordDigit",
+    passwordUpper: "errors.passwordUpper",
+    passwordLower: "errors.passwordLower",
+    passwordNonAlpha: "errors.passwordNonAlpha",
+    passwordMaxLength: "errors.passwordMaxLength",
   },
 } as const;

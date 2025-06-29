@@ -3,7 +3,7 @@ import { LoginForm } from "@/features/auth/ui/LoginForm";
 import { useLogin } from "@/features/auth/hooks/useLogin";
 
 export const LoginPage: React.FC = () => {
-  const { login, isLoading, error } = useLogin();
+  const { login, isLoading } = useLogin();
 
-  return <LoginForm onSubmit={login} isLoading={isLoading} error={error} />;
+  return <LoginForm onSubmit={login} isLoading={isLoading} />;
 };

@@ -40,16 +40,15 @@ export function ResetPasswordContent() {
           onSettled: (data) => {
             setIsSuccess(data?.isSuccess);
           },
-        }
+        },
       );
     }
   };
-
   // Check if required query parameters are present
   if (!email || !resetCode) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <main className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="bg-gray-50">
+        <main className="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 pt-28">
           <Card className="w-full max-w-md">
             <CardHeader className="space-y-1 text-center">
               <div className="mx-auto w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
@@ -88,8 +87,8 @@ export function ResetPasswordContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <main className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="">
+      <main className="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         <ResetPasswordForm
           onSubmit={handleResetPassword}
           isLoading={isLoading}

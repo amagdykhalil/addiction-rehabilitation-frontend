@@ -9,7 +9,7 @@ export const ForgotPasswordPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div>
       <ForgotPasswordForm
         onSubmit={handleSubmit}
         isLoading={isLoading}

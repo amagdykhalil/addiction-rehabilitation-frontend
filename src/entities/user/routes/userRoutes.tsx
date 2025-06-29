@@ -4,7 +4,7 @@ import {
   UserSettingsPage,
   UserNotificationsPage,
 } from "@/Pages/userPages";
-import { UserLayout } from "../../../Pages/userPages/UserLayout";
+import { UserLayout } from "@/Pages/userPages/UserLayout";
 import { USER_ROUTES } from "./userRoutePaths";
 
 export const userRoutes = {

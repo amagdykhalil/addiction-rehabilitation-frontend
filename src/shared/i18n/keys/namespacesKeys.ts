@@ -4,4 +4,6 @@ export const NAMESPACE_KEYS = {
   validator: "validator",
   errors: "errors",
   user: "user",
+  sidebar: "sidebar",
+  patient: "patient",
 } as const;

@@ -5,7 +5,7 @@ import { logout } from "@/entities/auth/model";
 import { ROUTES } from "../routes";
 import I18n from "./initI18n";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { ERRORS_KEYS } from "@/shared/i18n/keys/keys";
+import { ERRORS_KEYS } from "@/shared/i18n/keys/errorKeys";
 import { isPublicRoute } from "./auth/auth";
 
 export const handleError = (error: unknown) => {
@@ -40,7 +40,7 @@ export const handleError = (error: unknown) => {
       break;
     case 401:
       toast.error(
-        I18n.t(ERRORS_KEYS.unauthorized, { ns: NAMESPACE_KEYS.common })
+        I18n.t(ERRORS_KEYS.unauthorized, { ns: NAMESPACE_KEYS.common }),
       );
       store.dispatch(logout());
       if (!isPublicRoute()) navigate(ROUTES.LOGIN);

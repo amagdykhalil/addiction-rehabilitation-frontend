@@ -36,6 +36,7 @@ describe("useAuthInitializer", () => {
       authData: null,
       setCredentials: vi.fn(),
       logout: vi.fn(),
+      isAuthenticated: false,
     });
 
     // Act
@@ -55,6 +56,7 @@ describe("useAuthInitializer", () => {
       },
       setCredentials: vi.fn(),
       logout: vi.fn(),
+      isAuthenticated: true,
     });
     isAtLoginPageMock.mockReturnValue(true);
     goToHomeMock.mockReturnValue(undefined as unknown as "/");
@@ -82,6 +84,7 @@ describe("useAuthInitializer", () => {
       },
       setCredentials: vi.fn(),
       logout: vi.fn(),
+      isAuthenticated: true,
     });
     refreshTokenMock.mockReturnValue(new Promise(() => {}));
 
@@ -89,11 +92,85 @@ describe("useAuthInitializer", () => {
     render(
       <Suspense fallback="Suspended">
         <TestComponentNotReady />
-      </Suspense>
+      </Suspense>,
     );
 
     //Assert
     screen.debug();
     expect(screen.getByText("Suspended")).toBeInTheDocument();
+  });
+
+  it("should schedule timer with correct msUntilThreshold", () => {
+    // Arrange
+    const threshold = 5000;
+    const expiresOn = new Date(Date.now() + 20000).toISOString();
+    const oldEnv = import.meta.env.APP_TOKEN_REFRESH_THRESHOLD;
+    import.meta.env.APP_TOKEN_REFRESH_THRESHOLD = threshold;
+    useAuthMock.mockReturnValue({
+      authData: {
+        userId: "id",
+        accessToken: "token",
+        expiresOn,
+      },
+      setCredentials: vi.fn(),
+      logout: vi.fn(),
+      isAuthenticated: true,
+    });
+    isAtLoginPageMock.mockReturnValue(false);
+
+    // Act
+    renderHook(() => useAuthInitializer());
+
+    // Assert
+    expect(vi.getTimerCount()).toBe(1);
+    // Clean up
+    import.meta.env.APP_TOKEN_REFRESH_THRESHOLD = oldEnv;
+  });
+
+  it("should handle refreshToken failure and log error", async () => {
+    // Arrange
+    useAuthMock.mockReturnValue({
+      authData: null,
+      setCredentials: vi.fn(),
+      logout: vi.fn(),
+      isAuthenticated: false,
+    });
+    const error = new Error("refresh failed");
+    refreshTokenMock.mockRejectedValue(error);
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+
+    // Act
+    renderHook(() => useAuthInitializer());
+    await Promise.resolve(); // flush microtasks
+
+    // Assert
+    expect(errorSpy).toHaveBeenCalledWith("Token refresh failed:", error);
+    errorSpy.mockRestore();
+  });
+
+  it("should schedule next refresh and go home after successful refresh", async () => {
+    // Arrange
+    const newAuth = {
+      userId: "id",
+      accessToken: "token",
+      expiresOn: new Date(Date.now() + 30000).toISOString(),
+    };
+    useAuthMock.mockReturnValue({
+      authData: null,
+      setCredentials: vi.fn(),
+      logout: vi.fn(),
+      isAuthenticated: false,
+    });
+    refreshTokenMock.mockResolvedValue(newAuth);
+    isAtLoginPageMock.mockReturnValue(true);
+    goToHomeMock.mockReturnValue(undefined as unknown as "/");
+
+    // Act
+    renderHook(() => useAuthInitializer());
+    await Promise.resolve(); // flush microtasks
+
+    // Assert
+    expect(goToHomeMock).toHaveBeenCalled();
+    expect(vi.getTimerCount()).toBe(1);
   });
 });

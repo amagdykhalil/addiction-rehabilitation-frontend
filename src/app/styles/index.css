@@ -169,3 +169,67 @@
 .animate-fade-in-up {
   animation: fade-in-up 2s ease-out infinite;
 }
+
+.custom-scrollbar {
+  scrollbar-width: thin; /* Firefox: thin scrollbar */
+  scrollbar-color: hsl(0, 1%, 71%) #fff; /* Firefox: color */
+  -ms-overflow-style: none; /* IE/Edge: hide scrollbar arrows */
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Chrome/Safari: thin scrollbar */
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+@keyframes collapsible-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+}
+@keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+.data-[state="open"].animate-collapsible-down {
+  animation: collapsible-down 0.3s cubic-bezier(0.87, 0, 0.13, 1);
+}
+.data-[state="closed"].animate-collapsible-up {
+  animation: collapsible-up 0.3s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+/* Visually indicate disabled state for any element with [disabled] attribute */
+[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+/* RTL-aware table header text alignment */
+.text-align-dir {
+  text-align: left;
+}
+
+[dir="rtl"] .text-align-dir {
+  text-align: right;
+}
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}

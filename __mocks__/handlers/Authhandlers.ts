@@ -16,7 +16,7 @@ export const Authhandlers = [
       },
       {
         status: 200,
-      }
+      },
     );
   }),
 ];

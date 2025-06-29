@@ -26,7 +26,7 @@ export const useAuthInitializer = () => {
 
     const expiresAt = new Date(newAuthData.expiresOn).getTime();
     const refreshThreshold = Number(
-      import.meta.env.APP_TOKEN_REFRESH_THRESHOLD
+      import.meta.env.APP_TOKEN_REFRESH_THRESHOLD,
     );
     const msUntilThreshold = expiresAt - Date.now() - refreshThreshold;
 
@@ -72,7 +72,7 @@ export const useAuthInitializer = () => {
             setAuthInitializerPromise(Promise.resolve(), "fulfilled");
           }
         })(),
-        "pending"
+        "pending",
       );
     }
   }

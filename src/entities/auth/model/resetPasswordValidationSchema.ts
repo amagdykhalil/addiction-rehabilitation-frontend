@@ -8,13 +8,33 @@ export const getResetPasswordValidationSchema = (t: TFunction) => {
     .object({
       newPassword: z
         .string()
-        .min(1, {
-          message: t(AUTH_KEYS.errors.passwordRequired, {
+        .min(8, {
+          message: t(AUTH_KEYS.errors.passwordTooShort, {
             ns: NAMESPACE_KEYS.auth,
           }),
         })
-        .min(8, {
-          message: t(AUTH_KEYS.errors.passwordTooShort, {
+        .max(20, {
+          message: t(AUTH_KEYS.errors.passwordMaxLength, {
+            ns: NAMESPACE_KEYS.auth,
+          }),
+        })
+        .regex(/[0-9]/, {
+          message: t(AUTH_KEYS.errors.passwordDigit, {
+            ns: NAMESPACE_KEYS.auth,
+          }),
+        })
+        .regex(/[A-Z]/, {
+          message: t(AUTH_KEYS.errors.passwordUpper, {
+            ns: NAMESPACE_KEYS.auth,
+          }),
+        })
+        .regex(/[a-z]/, {
+          message: t(AUTH_KEYS.errors.passwordLower, {
+            ns: NAMESPACE_KEYS.auth,
+          }),
+        })
+        .regex(/[^a-zA-Z0-9]/, {
+          message: t(AUTH_KEYS.errors.passwordNonAlpha, {
             ns: NAMESPACE_KEYS.auth,
           }),
         }),

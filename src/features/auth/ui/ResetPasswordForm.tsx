@@ -108,7 +108,7 @@ export const ResetPasswordForm = ({
                           AUTH_KEYS.resetPassword.newPasswordPlaceholder,
                           {
                             ns: NAMESPACE_KEYS.auth,
-                          }
+                          },
                         )}
                         className="pl-10 pr-10"
                         disabled={isLoading}
@@ -152,7 +152,7 @@ export const ResetPasswordForm = ({
                           AUTH_KEYS.resetPassword.confirmPasswordPlaceholder,
                           {
                             ns: NAMESPACE_KEYS.auth,
-                          }
+                          },
                         )}
                         className="pl-10 pr-10"
                         disabled={isLoading}
@@ -187,6 +187,31 @@ export const ResetPasswordForm = ({
               <ul className="list-disc list-inside mt-1 space-y-1">
                 <li>
                   {t(AUTH_KEYS.resetPassword.requirementMinLength, {
+                    ns: NAMESPACE_KEYS.auth,
+                  })}
+                </li>
+                <li>
+                  {t(AUTH_KEYS.resetPassword.requirementMaxLength, {
+                    ns: NAMESPACE_KEYS.auth,
+                  })}
+                </li>
+                <li>
+                  {t(AUTH_KEYS.resetPassword.requirementDigit, {
+                    ns: NAMESPACE_KEYS.auth,
+                  })}
+                </li>
+                <li>
+                  {t(AUTH_KEYS.resetPassword.requirementUpper, {
+                    ns: NAMESPACE_KEYS.auth,
+                  })}
+                </li>
+                <li>
+                  {t(AUTH_KEYS.resetPassword.requirementLower, {
+                    ns: NAMESPACE_KEYS.auth,
+                  })}
+                </li>
+                <li>
+                  {t(AUTH_KEYS.resetPassword.requirementNonAlpha, {
                     ns: NAMESPACE_KEYS.auth,
                   })}
                 </li>

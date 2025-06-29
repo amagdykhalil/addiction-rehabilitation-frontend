@@ -11,5 +11,8 @@
   },
   "settings": {
     "title": "الإعدادات"
-  }
+  },
+  "account": { "title": "الحساب" },
+  "notifications": { "title": "الإشعارات" },
+  "logout": { "title": "تسجيل الخروج" }
 }

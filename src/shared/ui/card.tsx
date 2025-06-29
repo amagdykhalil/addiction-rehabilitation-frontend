@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { cn } from "@/shared/lib/index";
+import { useCurrentLanguage } from "../hooks/useCurrentLanguage";
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -16,9 +17,11 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
+  const { dir } = useCurrentLanguage();
   return (
     <div
       data-slot="card-header"
+      dir={dir}
       className={cn(
         "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
         className,
@@ -62,9 +65,11 @@ function CardAction({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function CardContent({ className, ...props }: React.ComponentProps<"div">) {
+  const { dir } = useCurrentLanguage();
   return (
     <div
       data-slot="card-content"
+      dir={dir}
       className={cn("px-6", className)}
       {...props}
     />

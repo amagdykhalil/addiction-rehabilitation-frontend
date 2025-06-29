@@ -13,6 +13,6 @@ export const ButtonLink = forwardRef<HTMLButtonElement, ButtonLinkProps>(
     <Button asChild {...buttonProps} ref={ref}>
       <Link to={to}>{children}</Link>
     </Button>
-  )
+  ),
 );
 ButtonLink.displayName = "ButtonLink";

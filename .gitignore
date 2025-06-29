@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 coverage
-.husky
+.husky/_
 
 # Editor directories and files
 .vscode/*
@@ -23,5 +23,5 @@ coverage
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.sw?   
 

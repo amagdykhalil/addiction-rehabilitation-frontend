@@ -49,6 +49,7 @@ describe("useLogin", () => {
       authData: null,
       setCredentials: setCredentialsFn,
       logout: logoutFn,
+      isAuthenticated: false,
     });
 
     t = ((str: string) => str) as TFunction<string, KeyPrefix<string>>;
@@ -181,7 +182,7 @@ describe("useLogin", () => {
       // Assert
       await waitFor(() => {
         expect(result.current.error).not.toBeNull();
-        expect(typeof result.current.error).toBe("string");
+        expect(typeof result.current.error).toBe("object");
       });
     });
   });
