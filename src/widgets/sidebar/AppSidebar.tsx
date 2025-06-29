@@ -55,7 +55,7 @@ export function AppSidebar() {
         url: ROUTES.USER.MAIN_PATH,
         icon: IconUser,
       },
-        {
+      {
         title: "users dashboard",
         url: "users"
         icon: IconUser,
