@@ -1,11 +1,11 @@
 import { useQueryState, parseAsInteger } from "nuqs";
 import { useGetUsers } from "@/features/users/hooks/useGetUsers";
 import {
-  Gender,
   UserSortBy,
   UserRole,
   UserStatus,
 } from "@/entities/users/model/user";
+import { Gender } from "@/entities/patients/model";
 import { SortDirection } from "@/entities/patients/model";
 import { isNotNil } from "@/shared/lib/utils";
 import type {
