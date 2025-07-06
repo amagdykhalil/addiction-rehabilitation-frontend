@@ -35,7 +35,7 @@ export const handleError = (error: unknown) => {
       break;
     case 401:
       toast.error(
-        I18n.t(ERRORS_KEYS.unauthorized, { ns: NAMESPACE_KEYS.common })
+        I18n.t(ERRORS_KEYS.unauthorized, { ns: NAMESPACE_KEYS.common }),
       );
       store.dispatch(logout());
       if (!isPublicRoute()) navigate(ROUTES.LOGIN);

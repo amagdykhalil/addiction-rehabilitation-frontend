@@ -50,7 +50,7 @@ export function EditRoleDialog({ role }: { role: RoleDto }) {
         onSuccess: () => {
           close();
         },
-      }
+      },
     );
   };
 

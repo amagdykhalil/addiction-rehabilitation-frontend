@@ -31,10 +31,10 @@ export const ProfilePage = () => {
       {
         onSuccess: () => {
           toast.success(
-            t(USER_KEYS.profile.updated, { ns: NAMESPACE_KEYS.user })
+            t(USER_KEYS.profile.updated, { ns: NAMESPACE_KEYS.user }),
           );
         },
-      }
+      },
     );
   };
 

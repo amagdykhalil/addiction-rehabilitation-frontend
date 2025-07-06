@@ -30,7 +30,7 @@ export const FilterBadges: React.FC<FilterBadgesProps> = ({
         >
           ×
         </button>
-      </span>
+      </span>,
     );
   }
   filters.forEach((filter) => {
@@ -45,7 +45,7 @@ export const FilterBadges: React.FC<FilterBadgesProps> = ({
         if (!valueLabel) return;
       } else if (filter.type === "combobox" && filter.options) {
         const found = filter.options.find(
-          (opt) => String(opt.value) === String(filter.value)
+          (opt) => String(opt.value) === String(filter.value),
         );
         if (found) valueLabel = found.label;
       }
@@ -62,7 +62,7 @@ export const FilterBadges: React.FC<FilterBadgesProps> = ({
           >
             ×
           </button>
-        </span>
+        </span>,
       );
     }
   });

@@ -22,7 +22,7 @@ export interface GetPatientsParams {
 
 async function getPatients(
   params: GetPatientsParams = {},
-  signal?: AbortSignal
+  signal?: AbortSignal,
 ) {
   const query = new URLSearchParams();
   if (params.pageNumber)
@@ -40,7 +40,7 @@ async function getPatients(
     `/Patients?${query.toString()}`,
     {
       signal,
-    }
+    },
   );
 
   return result;
@@ -89,14 +89,14 @@ async function existsById(id: string) {
 // Check if patient exists by passport number
 async function existsByPassport(passportNumber: string) {
   return BaseFetch<number | undefined>(
-    `/Patients/exists-by-passport/${passportNumber}`
+    `/Patients/exists-by-passport/${passportNumber}`,
   );
 }
 
 // Check if patient exists by national ID
 async function existsByNationalId(nationalId: string) {
   return BaseFetch<number | undefined>(
-    `/Patients/exists-by-national-id/${nationalId}`
+    `/Patients/exists-by-national-id/${nationalId}`,
   );
 }
 

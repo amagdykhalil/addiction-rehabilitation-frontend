@@ -99,7 +99,7 @@ export const UsersPageHeader = () => {
                     (prev: { type: UserSearchType; value: string }) => ({
                       ...prev,
                       type: value as UserSearchType,
-                    })
+                    }),
                   )
                 }
               >
@@ -155,7 +155,7 @@ export const UsersPageHeader = () => {
                     (prev: { type: UserSearchType; value: string }) => ({
                       ...prev,
                       value: e.target.value,
-                    })
+                    }),
                   )
                 }
                 placeholder={

@@ -96,7 +96,7 @@ export function NavUser({ user, loading }: { user?: User; loading: boolean }) {
             <DropdownMenuGroup>
               <Link
                 to={generatePath(
-                  `${ROUTES.USER.MAIN_PATH}/${ROUTES.USER.PROFILE}`
+                  `${ROUTES.USER.MAIN_PATH}/${ROUTES.USER.PROFILE}`,
                 )}
               >
                 <DropdownMenuItem className="cursor-pointer">
@@ -107,7 +107,7 @@ export function NavUser({ user, loading }: { user?: User; loading: boolean }) {
               <Link
                 to={
                   generatePath(
-                    `${ROUTES.USER.MAIN_PATH}/${ROUTES.USER.SETTINGS}`
+                    `${ROUTES.USER.MAIN_PATH}/${ROUTES.USER.SETTINGS}`,
                   ) + "?section=notifications"
                 }
               >

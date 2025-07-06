@@ -46,7 +46,7 @@ export const PaginationBar: React.FC<PaginationBarProps> = ({
           currentPage,
           currentPage + 1,
           "ellipsis",
-          totalPages
+          totalPages,
         );
       }
     }
@@ -86,7 +86,7 @@ export const PaginationBar: React.FC<PaginationBarProps> = ({
                 {page}
               </PaginationButton>
             </PaginationItem>
-          )
+          ),
         )}
         <PaginationItem>
           <PaginationNext

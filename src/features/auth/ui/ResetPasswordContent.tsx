@@ -40,7 +40,7 @@ export function ResetPasswordContent() {
           onSettled: (data) => {
             setIsSuccess(data?.isSuccess);
           },
-        }
+        },
       );
     }
   };

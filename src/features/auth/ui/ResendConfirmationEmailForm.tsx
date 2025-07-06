@@ -68,7 +68,7 @@ export const ResendConfirmationEmailForm = ({
       setLocalError(
         t(AUTH_KEYS.errors.failedToSendConfirmation, {
           ns: NAMESPACE_KEYS.auth,
-        })
+        }),
       );
     }
   };

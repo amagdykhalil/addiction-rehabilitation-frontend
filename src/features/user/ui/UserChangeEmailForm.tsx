@@ -46,11 +46,11 @@ export const UserChangeEmailForm = () => {
           toast.success(
             t(AUTH_KEYS.settings?.changeEmailSuccess, {
               ns: NAMESPACE_KEYS.auth,
-            })
+            }),
           );
           form.reset();
         },
-      }
+      },
     );
   };
 

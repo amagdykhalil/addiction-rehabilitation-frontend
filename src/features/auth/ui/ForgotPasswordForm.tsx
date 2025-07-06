@@ -178,7 +178,7 @@ export const ForgotPasswordForm = ({
                             AUTH_KEYS.forgotPassword.emailPlaceholder,
                             {
                               ns: NAMESPACE_KEYS.auth,
-                            }
+                            },
                           )}
                           className="pl-10"
                           disabled={isLoading}

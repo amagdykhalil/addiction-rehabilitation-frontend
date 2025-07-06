@@ -37,7 +37,7 @@ export function CountrySelect({
   const { countries, isLoading } = useGetCountries();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [contentWidth, setContentWidth] = useState<number | undefined>(
-    undefined
+    undefined,
   );
 
   useLayoutEffect(() => {
@@ -45,7 +45,7 @@ export function CountrySelect({
       setContentWidth(
         triggerRef.current.offsetWidth <= MIN_DIALOG_WIDTH
           ? MIN_DIALOG_WIDTH
-          : triggerRef.current.offsetWidth
+          : triggerRef.current.offsetWidth,
       );
     }
   }, [open, className]);
@@ -61,9 +61,9 @@ export function CountrySelect({
         (country) =>
           country.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           country.code.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          country.iso3.toLowerCase().includes(searchQuery.toLowerCase())
+          country.iso3.toLowerCase().includes(searchQuery.toLowerCase()),
       ),
-    [countries, searchQuery]
+    [countries, searchQuery],
   );
 
   const handleSelect = (country: Country) => {
@@ -91,7 +91,7 @@ export function CountrySelect({
           aria-expanded={open}
           className={cn(
             "justify-between h-10 cursor-pointer w-full",
-            className
+            className,
           )}
         >
           <div className="flex items-center gap-2 flex-1 min-w-0">

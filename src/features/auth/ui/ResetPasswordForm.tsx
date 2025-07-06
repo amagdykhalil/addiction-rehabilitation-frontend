@@ -108,7 +108,7 @@ export const ResetPasswordForm = ({
                           AUTH_KEYS.resetPassword.newPasswordPlaceholder,
                           {
                             ns: NAMESPACE_KEYS.auth,
-                          }
+                          },
                         )}
                         className="pl-10 pr-10"
                         disabled={isLoading}
@@ -152,7 +152,7 @@ export const ResetPasswordForm = ({
                           AUTH_KEYS.resetPassword.confirmPasswordPlaceholder,
                           {
                             ns: NAMESPACE_KEYS.auth,
-                          }
+                          },
                         )}
                         className="pl-10 pr-10"
                         disabled={isLoading}

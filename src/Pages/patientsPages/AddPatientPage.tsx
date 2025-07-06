@@ -35,8 +35,8 @@ export default function AddPatientPage() {
               `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.DETAIL}`,
               {
                 patientId: String(response.result),
-              }
-            )
+              },
+            ),
           );
         } else {
           // Fallback to patients list if no id returned

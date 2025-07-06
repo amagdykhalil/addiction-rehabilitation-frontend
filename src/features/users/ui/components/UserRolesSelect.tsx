@@ -28,7 +28,7 @@ export function UserRolesSelect() {
       setContentWidth(
         triggerRef.current.offsetWidth <= MIN_DIALOG_WIDTH
           ? MIN_DIALOG_WIDTH
-          : triggerRef.current.offsetWidth
+          : triggerRef.current.offsetWidth,
       );
     }
   }, [popoverOpen]);
@@ -81,7 +81,9 @@ export function UserRolesSelect() {
                             field.onChange([...(field.value || []), role.id]);
                           } else {
                             field.onChange(
-                              (field.value || []).filter((id) => id !== role.id)
+                              (field.value || []).filter(
+                                (id) => id !== role.id,
+                              ),
                             );
                           }
                         }}

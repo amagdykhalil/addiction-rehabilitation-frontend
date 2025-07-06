@@ -63,7 +63,7 @@ export function PatientContactSection({ patient }: PatientContactSectionProps) {
                     if (patient?.nationalIdNumber) {
                       form.setValue(
                         "NationalIdNumber",
-                        patient.nationalIdNumber
+                        patient.nationalIdNumber,
                       );
                     } else {
                       form.setValue("NationalIdNumber", undefined);

@@ -25,7 +25,7 @@ export const createPatientFormSchema = (t: TFunction) =>
             ns: NAMESPACE_KEYS.validator,
             min: 2,
             max: 50,
-          })
+          }),
         )
         .max(
           50,
@@ -33,7 +33,7 @@ export const createPatientFormSchema = (t: TFunction) =>
             ns: NAMESPACE_KEYS.validator,
             min: 2,
             max: 50,
-          })
+          }),
         ),
       SecondName: z
         .string()
@@ -44,7 +44,7 @@ export const createPatientFormSchema = (t: TFunction) =>
             ns: NAMESPACE_KEYS.validator,
             min: 2,
             max: 50,
-          })
+          }),
         )
         .max(
           50,
@@ -52,7 +52,7 @@ export const createPatientFormSchema = (t: TFunction) =>
             ns: NAMESPACE_KEYS.validator,
             min: 2,
             max: 50,
-          })
+          }),
         ),
       ThirdName: z
         .string()
@@ -62,7 +62,7 @@ export const createPatientFormSchema = (t: TFunction) =>
             ns: NAMESPACE_KEYS.validator,
             min: 2,
             max: 50,
-          })
+          }),
         )
         .max(
           50,
@@ -70,7 +70,7 @@ export const createPatientFormSchema = (t: TFunction) =>
             ns: NAMESPACE_KEYS.validator,
             min: 2,
             max: 50,
-          })
+          }),
         )
         .optional()
         .or(z.literal("")),
@@ -83,7 +83,7 @@ export const createPatientFormSchema = (t: TFunction) =>
             ns: NAMESPACE_KEYS.validator,
             min: 2,
             max: 50,
-          })
+          }),
         )
         .max(
           50,
@@ -91,7 +91,7 @@ export const createPatientFormSchema = (t: TFunction) =>
             ns: NAMESPACE_KEYS.validator,
             min: 2,
             max: 50,
-          })
+          }),
         ),
       Gender: z.nativeEnum(Gender, {
         errorMap: () => ({
@@ -105,7 +105,7 @@ export const createPatientFormSchema = (t: TFunction) =>
           /^(010|011|012|015)[0-9]{8}$/,
           t(VALIDATOR_KEYS.phoneNumberInvalid, {
             ns: NAMESPACE_KEYS.validator,
-          })
+          }),
         ),
       NationalIdNumber: z.string().optional(),
       PassportNumber: z.string().optional(),
@@ -126,7 +126,7 @@ export const createPatientFormSchema = (t: TFunction) =>
           ns: NAMESPACE_KEYS.validator,
         }),
         path: ["idDocumentType"],
-      }
+      },
     )
     .refine(
       (data) => {
@@ -141,7 +141,7 @@ export const createPatientFormSchema = (t: TFunction) =>
           ns: NAMESPACE_KEYS.validator,
         }),
         path: ["NationalIdNumber"],
-      }
+      },
     )
     .refine(
       (data) => {
@@ -156,7 +156,7 @@ export const createPatientFormSchema = (t: TFunction) =>
           ns: NAMESPACE_KEYS.validator,
         }),
         path: ["PassportNumber"],
-      }
+      },
     );
 
 export type PatientFormData = z.infer<

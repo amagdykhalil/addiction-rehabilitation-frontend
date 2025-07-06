@@ -105,7 +105,7 @@ export function UserForm({ userId, onSubmit, isLoading }: UserFormProps) {
               value="personal"
               className={cn(
                 "w-full md:w-auto relative",
-                hasPersonalErrors() && "text-destructive border-destructive"
+                hasPersonalErrors() && "text-destructive border-destructive",
               )}
             >
               {t(USERS_KEYS.form.personalInfo, {
@@ -119,7 +119,7 @@ export function UserForm({ userId, onSubmit, isLoading }: UserFormProps) {
               value="contact"
               className={cn(
                 "w-full md:w-auto relative",
-                hasContactErrors() && "text-destructive border-destructive"
+                hasContactErrors() && "text-destructive border-destructive",
               )}
             >
               {t(USERS_KEYS.form.contactAndId, {
@@ -133,7 +133,7 @@ export function UserForm({ userId, onSubmit, isLoading }: UserFormProps) {
               value="additional"
               className={cn(
                 "w-full md:w-auto relative",
-                hasAdditionalErrors() && "text-destructive border-destructive"
+                hasAdditionalErrors() && "text-destructive border-destructive",
               )}
             >
               {t(USERS_KEYS.form.additionalInfo, {

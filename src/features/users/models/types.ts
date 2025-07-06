@@ -15,7 +15,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
           ns: NAMESPACE_KEYS.validator,
           min: 2,
           max: 50,
-        })
+        }),
       )
       .max(
         50,
@@ -23,7 +23,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
           ns: NAMESPACE_KEYS.validator,
           min: 2,
           max: 50,
-        })
+        }),
       ),
     SecondName: z
       .string()
@@ -34,7 +34,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
           ns: NAMESPACE_KEYS.validator,
           min: 2,
           max: 50,
-        })
+        }),
       )
       .max(
         50,
@@ -42,7 +42,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
           ns: NAMESPACE_KEYS.validator,
           min: 2,
           max: 50,
-        })
+        }),
       ),
     ThirdName: z
       .string()
@@ -52,7 +52,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
           ns: NAMESPACE_KEYS.validator,
           min: 2,
           max: 50,
-        })
+        }),
       )
       .max(
         50,
@@ -60,7 +60,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
           ns: NAMESPACE_KEYS.validator,
           min: 2,
           max: 50,
-        })
+        }),
       )
       .optional()
       .or(z.literal("")),
@@ -73,7 +73,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
           ns: NAMESPACE_KEYS.validator,
           min: 2,
           max: 50,
-        })
+        }),
       )
       .max(
         50,
@@ -81,7 +81,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
           ns: NAMESPACE_KEYS.validator,
           min: 2,
           max: 50,
-        })
+        }),
       ),
     Gender: z.nativeEnum(Gender, {
       errorMap: () => ({
@@ -95,7 +95,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
         /^(010|011|012|015)[0-9]{8}$/,
         t(VALIDATOR_KEYS.phoneNumberInvalid, {
           ns: NAMESPACE_KEYS.validator,
-        })
+        }),
       ),
     NationalIdNumber: z.string().optional(),
     PassportNumber: z.string().optional(),
@@ -120,7 +120,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
           ns: NAMESPACE_KEYS.validator,
         }),
         path: ["idDocumentType"],
-      }
+      },
     )
     .refine(
       (data) => {
@@ -135,7 +135,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
           ns: NAMESPACE_KEYS.validator,
         }),
         path: ["NationalIdNumber"],
-      }
+      },
     )
     .refine(
       (data) => {
@@ -150,7 +150,7 @@ export const createUserFormSchema = (t: TFunction, isEdit = false) => {
           ns: NAMESPACE_KEYS.validator,
         }),
         path: ["PassportNumber"],
-      }
+      },
     )
     .superRefine((data, ctx) => {
       // Email validation logic

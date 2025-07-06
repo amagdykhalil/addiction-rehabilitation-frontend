@@ -59,7 +59,7 @@ export default function PatientDetailsPage() {
               `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.EDIT}`,
               {
                 patientId,
-              }
+              },
             ),
             variant: "outline",
             size: "default",
