@@ -1,4 +1,3 @@
-import React from "react";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { useTranslation } from "react-i18next";
