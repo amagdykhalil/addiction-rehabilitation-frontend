@@ -8,113 +8,63 @@ import {
   TableEmpty,
 } from "@/shared/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
-import { Badge } from "@/shared/ui/badge";
-
-import type { User, UserRole, UserStatus } from "@/entities/users/model/user";
+import type { User } from "@/entities/users/model";
 import { TableSkeletonRows } from "./TableSkeletonRows";
 import { useTranslation } from "react-i18next";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { USER_KEYS } from "@/entities/users/lib/translationKeys";
+import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 import { UserMenuAction } from "./UserMenuAction";
-import { formatDate } from "@/shared/lib/date";
+import { NotProvidedText } from "@/shared/ui/NotProvidedText";
+import { ActiveStatusText } from "@/shared/ui/ActiveStatusText";
 
 interface UsersTableProps {
   users: User[];
   isLoading: boolean;
-  handleDelete: (id: string) => void;
 }
 
-export const UsersTable = ({
-  users,
-  isLoading,
-}: UsersTableProps) => {
-  const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.user]);
-
-  const getRoleLabel = (role: UserRole) => {
-    switch (role) {
-      case UserRole.Admin:
-        return t(USER_KEYS.role.admin, { ns: NAMESPACE_KEYS.user });
-      case UserRole.Doctor:
-        return t(USER_KEYS.role.doctor, { ns: NAMESPACE_KEYS.user });
-      case UserRole.Nurse:
-        return t(USER_KEYS.role.nurse, { ns: NAMESPACE_KEYS.user });
-      case UserRole.Receptionist:
-        return t(USER_KEYS.role.receptionist, { ns: NAMESPACE_KEYS.user });
-      default:
-        return "Unknown";
-    }
-  };
-
-  const getStatusLabel = (status: UserStatus) => {
-    switch (status) {
-      case UserStatus.Active:
-        return t(USER_KEYS.status.active, { ns: NAMESPACE_KEYS.user });
-      case UserStatus.Inactive:
-        return t(USER_KEYS.status.inactive, { ns: NAMESPACE_KEYS.user });
-      case UserStatus.Suspended:
-        return t(USER_KEYS.status.suspended, { ns: NAMESPACE_KEYS.user });
-      default:
-        return "Unknown";
-    }
-  };
-
-  const getStatusVariant = (status: UserStatus) => {
-    switch (status) {
-      case UserStatus.Active:
-        return "default";
-      case UserStatus.Inactive:
-        return "secondary";
-      case UserStatus.Suspended:
-        return "destructive";
-      default:
-        return "outline";
-    }
-  };
+export const UsersTable = ({ users, isLoading }: UsersTableProps) => {
+  const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.users]);
 
   return (
     <div className="w-full max-w-full overflow-x-auto rounded-md border">
-      <Table className="min-w-[1000px]">
+      <Table className="min-w-[800px]">
         <TableHeader>
           <TableRow>
             <TableHead>
-              {t(USER_KEYS.table.userId, { ns: NAMESPACE_KEYS.user })}
+              {t(USERS_KEYS.table.userId, { ns: NAMESPACE_KEYS.users })}
             </TableHead>
             <TableHead>
-              {t(USER_KEYS.table.user, { ns: NAMESPACE_KEYS.user })}
+              {t(USERS_KEYS.table.user, { ns: NAMESPACE_KEYS.users })}
             </TableHead>
             <TableHead>
-              {t(USER_KEYS.table.email, { ns: NAMESPACE_KEYS.user })}
+              {t(USERS_KEYS.table.gender, { ns: NAMESPACE_KEYS.users })}
             </TableHead>
             <TableHead>
-              {t(USER_KEYS.table.role, { ns: NAMESPACE_KEYS.user })}
+              {t(USERS_KEYS.table.roles, { ns: NAMESPACE_KEYS.users })}
             </TableHead>
             <TableHead>
-              {t(USER_KEYS.table.status, { ns: NAMESPACE_KEYS.user })}
+              {t(USERS_KEYS.table.isActive, { ns: NAMESPACE_KEYS.users })}
             </TableHead>
             <TableHead>
-              {t(USER_KEYS.table.contact, { ns: NAMESPACE_KEYS.user })}
+              {t(USERS_KEYS.table.contact, { ns: NAMESPACE_KEYS.users })}
             </TableHead>
             <TableHead>
-              {t(USER_KEYS.table.nationality, { ns: NAMESPACE_KEYS.user })}
+              {t(USERS_KEYS.table.nationality, { ns: NAMESPACE_KEYS.users })}
             </TableHead>
             <TableHead>
-              {t(USER_KEYS.table.createdAt, { ns: NAMESPACE_KEYS.user })}
-            </TableHead>
-            <TableHead>
-              {t(USER_KEYS.list.actions, { ns: NAMESPACE_KEYS.user })}
+              {t(USERS_KEYS.list.actions, { ns: NAMESPACE_KEYS.users })}
             </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {isLoading ? (
-            // Render skeleton rows
             Array.from({ length: 5 }).map((_, idx) => (
               <TableSkeletonRows key={`skeleton-${idx}`} />
             ))
           ) : users.length === 0 ? (
             <TableEmpty
-              message={t(USER_KEYS.list.noUsers, {
-                ns: NAMESPACE_KEYS.user,
+              message={t(USERS_KEYS.list.noUsers, {
+                ns: NAMESPACE_KEYS.users,
               })}
             />
           ) : (
@@ -146,33 +96,50 @@ export const UsersTable = ({
                           .join(" ")}
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        {user.firstName} {user.lastName}
+                        {user.email}
                       </div>
                     </div>
                   </div>
                 </TableCell>
                 <TableCell>
-                  <div className="text-sm">{user.email}</div>
+                  {user.gender === 0
+                    ? t(USERS_KEYS.gender.male, {
+                        ns: NAMESPACE_KEYS.users,
+                      })
+                    : t(USERS_KEYS.gender.female, {
+                        ns: NAMESPACE_KEYS.users,
+                      })}
                 </TableCell>
                 <TableCell>
-                  <Badge variant="outline">
-                    {getRoleLabel(user.role)}
-                  </Badge>
+                  {user.roles.length > 0 ? (
+                    user.roles.join(", ")
+                  ) : (
+                    <NotProvidedText>
+                      {t(USERS_KEYS.details.notProvided, {
+                        ns: NAMESPACE_KEYS.users,
+                      })}
+                    </NotProvidedText>
+                  )}
                 </TableCell>
                 <TableCell>
-                  <Badge variant={getStatusVariant(user.status) as any}>
-                    {getStatusLabel(user.status)}
-                  </Badge>
+                  <ActiveStatusText isActive={user.isActive}>
+                    {user.isActive
+                      ? t(USERS_KEYS.filters.active, {
+                          ns: NAMESPACE_KEYS.users,
+                        })
+                      : t(USERS_KEYS.filters.inactive, {
+                          ns: NAMESPACE_KEYS.users,
+                        })}
+                  </ActiveStatusText>
                 </TableCell>
                 <TableCell>{user.callPhoneNumber}</TableCell>
                 <TableCell>{user.nationalityName}</TableCell>
-                <TableCell>
-                  <div className="text-sm">
-                    {formatDate(user.createdAt)}
-                  </div>
-                </TableCell>
-                <TableCell className="text-right">
-                  <UserMenuAction id={user.id} />
+                <TableCell className="text-start">
+                  <UserMenuAction
+                    user={user}
+                    id={user.id}
+                    isActive={user.isActive}
+                  />
                 </TableCell>
               </TableRow>
             ))
@@ -182,3 +149,5 @@ export const UsersTable = ({
     </div>
   );
 };
+
+export default UsersTable;

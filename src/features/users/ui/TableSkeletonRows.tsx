@@ -17,13 +17,10 @@ export const TableSkeletonRows = () => {
         </div>
       </TableCell>
       <TableCell>
-        <Skeleton className="h-4 w-[120px]" />
+        <Skeleton className="h-4 w-[40px]" />
       </TableCell>
       <TableCell>
-        <Skeleton className="h-6 w-[60px]" />
-      </TableCell>
-      <TableCell>
-        <Skeleton className="h-6 w-[60px]" />
+        <Skeleton className="h-4 w-[40px]" />
       </TableCell>
       <TableCell>
         <Skeleton className="h-4 w-[100px]" />
@@ -40,3 +37,5 @@ export const TableSkeletonRows = () => {
     </TableRow>
   );
 };
+
+export default TableSkeletonRows;

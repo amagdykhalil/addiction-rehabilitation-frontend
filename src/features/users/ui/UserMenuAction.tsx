@@ -1,21 +1,33 @@
-import { Button, DeleteButton } from "@/shared/ui/button";
+import { Button } from "@/shared/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
-import { Edit, Eye, MoreHorizontal } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Edit, Eye, MoreHorizontal, Power } from "lucide-react";
+import { generatePath, Link } from "react-router-dom";
 import { COMMON_KEYS } from "@/shared/i18n/keys/commonKeys";
-import { USERS_ROUTES } from "@/entities/users/routes";
-import UserDeleteDialog from "@/features/users/ui/UserDeleteDialog";
-import { USER_KEYS } from "@/entities/users/lib/translationKeys";
+import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
 import { useTranslation } from "react-i18next";
+import { USERS_ROUTES } from "@/entities/users/routes/usersRoutesPaths";
+import UserActivateDialog from "./UserActivateDialog";
+import UserDeactivateDialog from "./UserDeactivateDialog";
+import UpdateUserRolesDialog from "./components/UpdateUserRolesDialog";
+import type { User } from "@/entities/users/model";
 
-export const UserMenuAction = ({ id }: { id: string }) => {
-  const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.user]);
+export const UserMenuAction = ({
+  id,
+  isActive,
+  user,
+}: {
+  id: number;
+  isActive: boolean;
+  user: User;
+}) => {
+  const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.users]);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,37 +37,71 @@ export const UserMenuAction = ({ id }: { id: string }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem asChild className="cursor-pointer">
-          <Link to={`${USERS_ROUTES.MAIN_PATH}/${id}`}>
+          <Link
+            to={generatePath(
+              `${USERS_ROUTES.MAIN_PATH}/${USERS_ROUTES.DETAIL}`,
+              {
+                userId: String(id),
+              }
+            )}
+          >
             <Eye className="mr-2 h-4 w-4" />
-            {t(USER_KEYS.list.viewDetails, {
-              ns: NAMESPACE_KEYS.user,
+            {t(USERS_KEYS.list.viewDetails, {
+              ns: NAMESPACE_KEYS.users,
             })}
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild className="cursor-pointer">
-          <Link to={`${USERS_ROUTES.MAIN_PATH}/${id}/edit`}>
+          <Link
+            to={generatePath(`${USERS_ROUTES.MAIN_PATH}/${USERS_ROUTES.EDIT}`, {
+              userId: String(id),
+            })}
+          >
             <Edit className="mr-2 h-4 w-4" />
             {t(COMMON_KEYS.actions.edit, {
               ns: NAMESPACE_KEYS.common,
             })}
           </Link>
         </DropdownMenuItem>
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <UpdateUserRolesDialog user={user} userId={id} />
+        </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <UserDeleteDialog
-            userId={id}
-            trigger={
-              <DeleteButton
-                size="sm"
-                className="text-red-600 bg-white hover:bg-accent cursor-pointer w-full justify-normal"
-              >
-                {t(COMMON_KEYS.delete.button, {
-                  ns: NAMESPACE_KEYS.common,
-                })}
-              </DeleteButton>
-            }
-          />
+          {isActive ? (
+            <UserDeactivateDialog
+              userId={id}
+              user={user}
+              trigger={
+                <Button
+                  variant="ghost"
+                  className="w-full justify-normal text-red-600"
+                >
+                  <Power className="mr-2 h-4 w-4" />
+                  {t(USERS_KEYS.deactivate.button, {
+                    ns: NAMESPACE_KEYS.users,
+                  })}
+                </Button>
+              }
+            />
+          ) : (
+            <UserActivateDialog
+              user={user}
+              userId={id}
+              trigger={
+                <Button
+                  variant="ghost"
+                  className="w-full justify-normal text-green-600"
+                >
+                  <Power className="mr-2 h-4 w-4" />
+                  {t(USERS_KEYS.activate.button, { ns: NAMESPACE_KEYS.users })}
+                </Button>
+              }
+            />
+          )}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 };
+
+export default UserMenuAction;

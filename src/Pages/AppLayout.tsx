@@ -19,11 +19,11 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       >
         <Header />
         {isAuthenticated ? (
-          <main className="py-6" dir={dir}>
+          <main className="py-6 h-full" dir={dir}>
             {children}
           </main>
         ) : (
-          <main className=" bg-gray-50 " dir={dir}>
+          <main className=" bg-gray-50 h-full" dir={dir}>
             {children}
           </main>
         )}

@@ -28,6 +28,7 @@ import {
   FormMessage,
 } from "@/shared/ui/form";
 import { ROUTES } from "@/shared/routes";
+import { SuccessCard } from "@/shared/ui/cards/SuccessCard";
 
 type ForgotPasswordFormData = z.infer<
   ReturnType<typeof getForgotPasswordValidationSchema>
@@ -80,65 +81,60 @@ export const ForgotPasswordForm = ({
 
   if (isSubmitted) {
     return (
-      <div className="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <Card className="w-full max-w-md">
-          <CardHeader className="space-y-1 text-center">
+      <div className="main-card">
+        <SuccessCard
+          icon={
             <div className="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
               <CheckCircle className="w-6 h-6 text-green-600" />
             </div>
-            <CardTitle className="text-2xl font-bold">
-              {t(AUTH_KEYS.forgotPassword.successTitle, {
-                ns: NAMESPACE_KEYS.auth,
-              })}
-            </CardTitle>
-            <CardDescription>
+          }
+          title={t(AUTH_KEYS.forgotPassword.successTitle, {
+            ns: NAMESPACE_KEYS.auth,
+          })}
+          description={
+            <>
               {t(AUTH_KEYS.forgotPassword.successDescription, {
                 ns: NAMESPACE_KEYS.auth,
               })}{" "}
               <strong>{form.getValues("email")}</strong>
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Alert>
-              <AlertDescription>
-                {t(AUTH_KEYS.forgotPassword.checkSpam, {
-                  ns: NAMESPACE_KEYS.auth,
-                })}
-              </AlertDescription>
-            </Alert>
-
-            <div className="text-center space-y-2">
-              <p className="text-sm text-muted-foreground">
-                {t(AUTH_KEYS.forgotPassword.noEmail, {
-                  ns: NAMESPACE_KEYS.auth,
-                })}
-              </p>
-              <Button variant="outline" onClick={onReset} className="w-full">
-                {t(AUTH_KEYS.forgotPassword.tryAgain, {
-                  ns: NAMESPACE_KEYS.auth,
-                })}
-              </Button>
-            </div>
-
-            <div className="text-center">
-              <Link
-                to="/login"
-                className="inline-flex items-center text-sm text-primary hover:underline"
-              >
-                <ArrowLeft className="w-4 h-4 mr-1" />
-                {t(AUTH_KEYS.forgotPassword.backToLogin, {
-                  ns: NAMESPACE_KEYS.auth,
-                })}
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+            </>
+          }
+        >
+          <Alert>
+            <AlertDescription>
+              {t(AUTH_KEYS.forgotPassword.checkSpam, {
+                ns: NAMESPACE_KEYS.auth,
+              })}
+            </AlertDescription>
+          </Alert>
+          <div className="text-center space-y-2">
+            <p className="text-sm text-muted-foreground">
+              {t(AUTH_KEYS.forgotPassword.noEmail, { ns: NAMESPACE_KEYS.auth })}
+            </p>
+            <Button variant="outline" onClick={onReset} className="w-full">
+              {t(AUTH_KEYS.forgotPassword.tryAgain, {
+                ns: NAMESPACE_KEYS.auth,
+              })}
+            </Button>
+          </div>
+          <div className="text-center">
+            <Link
+              to="/login"
+              className="inline-flex items-center text-sm text-primary hover:underline"
+            >
+              <ArrowLeft className="w-4 h-4 mr-1" />
+              {t(AUTH_KEYS.forgotPassword.backToLogin, {
+                ns: NAMESPACE_KEYS.auth,
+              })}
+            </Link>
+          </div>
+        </SuccessCard>
       </div>
     );
   }
 
   return (
-    <div className="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 pt-28">
+    <div className="main-card">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
@@ -182,7 +178,7 @@ export const ForgotPasswordForm = ({
                             AUTH_KEYS.forgotPassword.emailPlaceholder,
                             {
                               ns: NAMESPACE_KEYS.auth,
-                            },
+                            }
                           )}
                           className="pl-10"
                           disabled={isLoading}

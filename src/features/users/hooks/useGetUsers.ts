@@ -2,7 +2,8 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { usersApi } from "@/entities/users/api";
 import type { GetUsersParams } from "@/entities/users/api";
-import type { User, PaginatedResult } from "@/entities/users/model";
+import type { User } from "@/entities/users/model";
+import type { PaginatedResult } from "@/shared/types/paginatedResult";
 import type { ApiResponse } from "@/shared/types";
 import { usersKeys } from "./usersKeys";
 import type { Locale } from "@/shared/i18n/constants/locales";
@@ -28,7 +29,7 @@ export function useGetUsers(params: GetUsersParams = {}) {
       queryClient.prefetchQuery({
         queryKey: usersKeys.list(
           nextParams as Record<string, unknown>,
-          current,
+          current
         ),
         queryFn: ({ signal }) => usersApi.getUsers(nextParams, signal),
       });
@@ -39,7 +40,7 @@ export function useGetUsers(params: GetUsersParams = {}) {
       queryClient.prefetchQuery({
         queryKey: usersKeys.list(
           prevParams as Record<string, unknown>,
-          current,
+          current
         ),
         queryFn: ({ signal }) => usersApi.getUsers(prevParams, signal),
       });

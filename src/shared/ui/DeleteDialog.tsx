@@ -16,7 +16,7 @@ interface DeleteDialogProps {
   onDelete: (onSuccess: () => void) => Promise<void>;
   loading?: boolean;
   title?: string;
-  description?: string;
+  description?: string | React.ReactNode;
   className?: string;
   trigger?: React.ReactNode;
 }

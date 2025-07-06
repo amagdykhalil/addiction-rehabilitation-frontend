@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/shared/ui/sidebar";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { SidebarLanguageToggle } from "./SidebarLanguageToggle";
 
 export function NavSecondary({
@@ -29,11 +29,11 @@ export function NavSecondary({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
-                <Link to={item.url}>
+              <SidebarMenuButton tooltip={item.title} asChild>
+                <NavLink to={item.url}>
                   <item.icon />
                   <span>{item.title}</span>
-                </Link>
+                </NavLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}

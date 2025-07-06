@@ -13,7 +13,7 @@ const SplashScreen = () => {
         className="text-5xl font-bold text-foreground mt-6 animate-fade-in-up hover:text-primary transition-colors duration-300"
         style={{ animationDelay: "0.4s" }}
       >
-        SerenePath
+        ARC
       </h1>
       <p
         className="text-xl text-muted-foreground mt-2 animate-fade-in-up hover:text-foreground transition-colors duration-300"

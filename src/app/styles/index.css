@@ -233,3 +233,17 @@
 [dir="rtl"] .rtl-flip {
   transform: scaleX(-1);
 }
+
+@layer components {
+  .main-card {
+    @apply flex items-start justify-center bg-gray-50 h-full pb-12 pt-24 px-4 sm:px-6 lg:px-8;
+  }
+}
+
+a.active {
+  @apply bg-primary/10 text-primary font-semibold rounded-md shadow-sm;
+}
+
+.button-to-end {
+  @apply flex justify-end gap-2 mt-4;
+}

@@ -17,13 +17,14 @@ import {
 import { Plus, User } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { PATIENT_KEYS } from "@/entities/patients/lib/translationKeys";
-import { ROUTES } from "@/shared/routes/routesPaths";
+import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import usePatientSearch, {
   type PatientSearchType,
 } from "@/features/patients/hooks/usePatientSearch";
 import FormErrorMessage from "@/shared/ui/FormErrorMessage";
 import { Input } from "@/shared/ui";
+import { PATIENTS_ROUTES } from "@/entities/patients/routes";
+import { generatePath } from "react-router-dom";
 
 export const PatientsPageHeader = () => {
   const { t } = useTranslation([NAMESPACE_KEYS.patient]);
@@ -42,13 +43,13 @@ export const PatientsPageHeader = () => {
   return (
     <>
       <PageHeader
-        title={t(PATIENT_KEYS.list.title, { ns: NAMESPACE_KEYS.patient })}
-        subtitle={t(PATIENT_KEYS.list.subtitle, {
+        title={t(PATIENTS_KEYS.list.title, { ns: NAMESPACE_KEYS.patient })}
+        subtitle={t(PATIENTS_KEYS.list.subtitle, {
           ns: NAMESPACE_KEYS.patient,
         })}
         actions={[
           {
-            label: t(PATIENT_KEYS.search.searchPatient, {
+            label: t(PATIENTS_KEYS.search.searchPatient, {
               ns: NAMESPACE_KEYS.patient,
             }),
             variant: "outline",
@@ -57,10 +58,12 @@ export const PatientsPageHeader = () => {
             onClick: () => setSearchDialogOpen(true),
           },
           {
-            label: t(PATIENT_KEYS.search.addPatient, {
+            label: t(PATIENTS_KEYS.search.addPatient, {
               ns: NAMESPACE_KEYS.patient,
             }),
-            href: `${ROUTES.PATIENT.MAIN_PATH}/add`,
+            href: generatePath(
+              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.ADD}`
+            ),
             variant: "default",
             size: "default",
             icon: <Plus className="h-4 w-4 mr-2" />,
@@ -78,10 +81,10 @@ export const PatientsPageHeader = () => {
         <DialogContent className="w-[95vw] max-w-md">
           <DialogHeader>
             <DialogTitle>
-              {t(PATIENT_KEYS.search.title, { ns: NAMESPACE_KEYS.patient })}
+              {t(PATIENTS_KEYS.search.title, { ns: NAMESPACE_KEYS.patient })}
             </DialogTitle>
             <DialogDescription>
-              {t(PATIENT_KEYS.search.description, {
+              {t(PATIENTS_KEYS.search.description, {
                 ns: NAMESPACE_KEYS.patient,
               })}
             </DialogDescription>
@@ -89,7 +92,7 @@ export const PatientsPageHeader = () => {
           <div className="space-y-4">
             <div className="space-y-2">
               <label className="text-sm font-medium">
-                {t(PATIENT_KEYS.search.searchType, {
+                {t(PATIENTS_KEYS.search.searchType, {
                   ns: NAMESPACE_KEYS.patient,
                 })}
               </label>
@@ -107,17 +110,17 @@ export const PatientsPageHeader = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="id">
-                    {t(PATIENT_KEYS.table.patientId, {
+                    {t(PATIENTS_KEYS.table.patientId, {
                       ns: NAMESPACE_KEYS.patient,
                     })}
                   </SelectItem>
                   <SelectItem value="nationalId">
-                    {t(PATIENT_KEYS.table.nationalId, {
+                    {t(PATIENTS_KEYS.table.nationalId, {
                       ns: NAMESPACE_KEYS.patient,
                     })}
                   </SelectItem>
                   <SelectItem value="passport">
-                    {t(PATIENT_KEYS.table.passport, {
+                    {t(PATIENTS_KEYS.table.passport, {
                       ns: NAMESPACE_KEYS.patient,
                     })}
                   </SelectItem>
@@ -127,14 +130,14 @@ export const PatientsPageHeader = () => {
             <div className="space-y-2">
               <label className="text-sm font-medium">
                 {searchParams.type === "id"
-                  ? t(PATIENT_KEYS.table.patientId, {
+                  ? t(PATIENTS_KEYS.table.patientId, {
                       ns: NAMESPACE_KEYS.patient,
                     })
                   : searchParams.type === "nationalId"
-                    ? t(PATIENT_KEYS.details.nationalIdNumber, {
+                    ? t(PATIENTS_KEYS.details.nationalIdNumber, {
                         ns: NAMESPACE_KEYS.patient,
                       })
-                    : t(PATIENT_KEYS.details.passportNumber, {
+                    : t(PATIENTS_KEYS.details.passportNumber, {
                         ns: NAMESPACE_KEYS.patient,
                       })}
               </label>
@@ -157,12 +160,12 @@ export const PatientsPageHeader = () => {
             </div>
             {isLoading && (
               <div className="text-sm text-muted-foreground">
-                {t(PATIENT_KEYS.loading, { ns: NAMESPACE_KEYS.patient })}
+                {t(PATIENTS_KEYS.loading, { ns: NAMESPACE_KEYS.patient })}
               </div>
             )}
             {error && (
               <FormErrorMessage>
-                {t(PATIENT_KEYS.notFound.message, {
+                {t(PATIENTS_KEYS.notFound.message, {
                   ns: NAMESPACE_KEYS.patient,
                   id: searchParams.value,
                 })}
@@ -170,7 +173,7 @@ export const PatientsPageHeader = () => {
             )}
             {notFound && !isLoading && !error && (
               <FormErrorMessage>
-                {t(PATIENT_KEYS.notFound.message, {
+                {t(PATIENTS_KEYS.notFound.message, {
                   ns: NAMESPACE_KEYS.patient,
                   id: searchParams.value,
                 })}
@@ -181,7 +184,7 @@ export const PatientsPageHeader = () => {
                 variant="outline"
                 onClick={() => setSearchDialogOpen(false)}
               >
-                {t(PATIENT_KEYS.search.cancel, { ns: NAMESPACE_KEYS.patient })}
+                {t(PATIENTS_KEYS.search.cancel, { ns: NAMESPACE_KEYS.patient })}
               </Button>
               <Button
                 onClick={() => {
@@ -190,7 +193,7 @@ export const PatientsPageHeader = () => {
                 }}
                 disabled={!searchParams.value}
               >
-                {t(PATIENT_KEYS.search.search, { ns: NAMESPACE_KEYS.patient })}
+                {t(PATIENTS_KEYS.search.search, { ns: NAMESPACE_KEYS.patient })}
               </Button>
             </div>
           </div>

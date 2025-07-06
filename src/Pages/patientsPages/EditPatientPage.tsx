@@ -5,22 +5,23 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/card";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, generatePath } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PatientForm } from "@/features/patients/ui/PatientForm";
 import { useUpdatePatient } from "@/features/patients/hooks/useUpdatePatient";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { PATIENT_KEYS } from "@/entities/patients/lib/translationKeys";
+import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { PageHeader } from "@/shared/ui";
 import type { PatientFormData } from "@/features/patients/ui/types";
 import { mapFormDataToPatient } from "@/features/patients/ui/utils/formUtils";
 import { Eye } from "lucide-react";
+import { PATIENTS_ROUTES } from "@/entities/patients/routes";
 
-export default function EditPatientPage() {
+export default function AddPatientPage() {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.patient]);
   const params = useParams();
   const navigate = useNavigate();
-  const patientId = params.id as string;
+  const patientId = params.patientId as string;
 
   const { updatePatient, isLoading } = useUpdatePatient();
 
@@ -33,27 +34,46 @@ export default function EditPatientPage() {
       {
         onSuccess: () => {
           // Navigate back to patient details page after successful update
-          navigate(`/patients/${patientId}`);
+          navigate(
+            generatePath(
+              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
+              {
+                patientId,
+              }
+            )
+          );
         },
-      },
+      }
     );
   };
 
   return (
     <div className="space-y-6">
       <PageHeader
-        title={t(PATIENT_KEYS.edit, { ns: NAMESPACE_KEYS.patient })}
-        subtitle={t(PATIENT_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
+        title={t(PATIENTS_KEYS.edit, { ns: NAMESPACE_KEYS.patient })}
+        subtitle={t(PATIENTS_KEYS.details.title, {
+          ns: NAMESPACE_KEYS.patient,
+        })}
         backTo={{
-          href: `/patients/${patientId}`,
-          label: t(PATIENT_KEYS.backToList, { ns: NAMESPACE_KEYS.patient }),
+          href: generatePath(
+            `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
+            {
+              patientId,
+            }
+          ),
+          label: t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient }),
         }}
         actions={[
           {
-            label: t(PATIENT_KEYS.list.viewDetails, {
+            label: t(PATIENTS_KEYS.list.viewDetails, {
               ns: NAMESPACE_KEYS.patient,
             }),
-            href: `/patients/${patientId}`,
+            href: generatePath(
+              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
+              {
+                patientId,
+              }
+            ),
             variant: "outline",
             size: "default",
             icon: <Eye className="h-4 w-4 mr-2 rtl-flip" />,
@@ -64,10 +84,10 @@ export default function EditPatientPage() {
       <Card>
         <CardHeader>
           <CardTitle>
-            {t(PATIENT_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
+            {t(PATIENTS_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
           </CardTitle>
           <CardDescription>
-            {t(PATIENT_KEYS.details.subtitle, { ns: NAMESPACE_KEYS.patient })}
+            {t(PATIENTS_KEYS.details.subtitle, { ns: NAMESPACE_KEYS.patient })}
           </CardDescription>
         </CardHeader>
         <CardContent>

@@ -130,5 +130,14 @@
     "active": "Active",
     "inactive": "Inactive",
     "suspended": "Suspended"
+  },
+  "account": {
+    "title": "Account"
+  },
+  "notifications": {
+    "title": "Notifications"
+  },
+  "logout": {
+    "title": "Logout"
   }
 }

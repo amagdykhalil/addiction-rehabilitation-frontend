@@ -1,6 +1,6 @@
 export const PATIENTS_ROUTES = {
   MAIN_PATH: "/patients",
-  DETAIL: ":id",
+  DETAIL: ":patientId",
   ADD: "add",
-  EDIT: ":id/edit",
+  EDIT: ":patientId/edit",
 } as const;

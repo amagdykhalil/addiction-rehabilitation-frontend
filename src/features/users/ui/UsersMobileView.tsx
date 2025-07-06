@@ -1,19 +1,18 @@
-import type { User } from "@/entities/users/model/user";
-import { UserCard } from "./UserCard";
-import { useTranslation } from "react-i18next";
+import React from "react";
+import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { USER_KEYS } from "@/entities/users/lib/translationKeys";
+import { useTranslation } from "react-i18next";
+import type { User } from "@/entities/users/model";
+import { UserCard } from "./UserCard";
 
-interface UsersMobileViewProps {
-  users: User[];
-  isLoading: boolean;
-}
-
-export const UsersMobileView = ({
+export function UsersMobileView({
   users,
   isLoading,
-}: UsersMobileViewProps) => {
-  const { t } = useTranslation([NAMESPACE_KEYS.user]);
+}: {
+  users: User[];
+  isLoading: boolean;
+}) {
+  const { t } = useTranslation([NAMESPACE_KEYS.users]);
 
   if (isLoading) {
     return (
@@ -46,7 +45,7 @@ export const UsersMobileView = ({
       <div className="lg:hidden p-4 sm:p-6">
         <div className="text-center py-8">
           <p className="text-muted-foreground">
-            {t(USER_KEYS.list.noUsers, { ns: NAMESPACE_KEYS.user })}
+            {t(USERS_KEYS.list.noUsers, { ns: NAMESPACE_KEYS.users })}
           </p>
         </div>
       </div>
@@ -60,4 +59,6 @@ export const UsersMobileView = ({
       ))}
     </div>
   );
-};
+}
+
+export default UsersMobileView;

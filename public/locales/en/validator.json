@@ -6,5 +6,6 @@
   "isInEnum": "Invalid value selected",
   "invalidFormat": "Invalid format",
   "identificationRequired": "Either National ID or Passport number is required",
-  "phoneNumberInvalid": "Phone number must be in format: 01012345678, 01112345678, 01212345678, or 01512345678"
+  "phoneNumberInvalid": "Phone number must be in format: 01012345678, 01112345678, 01212345678, or 01512345678",
+  "emailInvalid": "Please enter a valid email address."
 }

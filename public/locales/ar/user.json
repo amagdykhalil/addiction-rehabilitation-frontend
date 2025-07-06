@@ -7,19 +7,16 @@
     "button": "حذف",
     "confirm": "هل أنت متأكد من حذف هذا المستخدم؟"
   },
-  "notFound": {
-    "title": "المستخدم غير موجود",
-    "message": "المستخدم الذي تبحث عنه غير موجود."
+  "profile": {
+    "title": "ملفك الشخصي",
+    "subtitle": "حدّث معلوماتك الشخصية أدناه",
+    "updated": "تم تحديث ملفك الشخصي بنجاح."
   },
-  "list": {
-    "title": "المستخدمون",
-    "subtitle": "إدارة حسابات المستخدمين",
-    "userRecords": "سجلات المستخدمين",
-    "showingUsers": "عرض",
-    "ofUsers": "من",
-    "viewDetails": "عرض التفاصيل",
-    "actions": "الإجراءات",
-    "noUsers": "لا يوجد مستخدمون"
+  "settings": {
+    "title": "الإعدادات",
+    "changeEmail": "تغيير البريد الإلكتروني",
+    "changePassword": "تغيير كلمة المرور",
+    "notifications": "الإشعارات"
   },
   "search": {
     "title": "البحث عن المستخدمين",
@@ -130,5 +127,14 @@
     "active": "نشط",
     "inactive": "غير نشط",
     "suspended": "معلق"
+  },
+  "account": {
+    "title": "الحساب"
+  },
+  "notifications": {
+    "title": "الإشعارات"
+  },
+  "logout": {
+    "title": "تسجيل الخروج"
   }
 }

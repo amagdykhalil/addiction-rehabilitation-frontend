@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { patientsApi } from "@/entities/patients/api";
 import type { Patient } from "@/entities/patients/model";
 import type { ApiResponse } from "@/shared/types";
-import { patientsKeys } from "./patientsKeys";
+import { usersKeys } from "@/features/users/hooks/usersKeys";
 
 export function useUpdatePatient() {
   const queryClient = useQueryClient();
@@ -12,10 +12,8 @@ export function useUpdatePatient() {
     { patient: Omit<Patient, "FullName"> }
   >({
     mutationFn: ({ patient }) => patientsApi.updatePatient(patient),
-    onSuccess: (_, variables) => {
-      queryClient.invalidateQueries({
-        queryKey: [...patientsKeys.details(), { id: variables.patient.id }],
-      });
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: usersKeys.all });
     },
   });
 

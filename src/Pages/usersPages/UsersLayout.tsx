@@ -1,9 +1,8 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 
-const UsersLayout: React.FC = () => {
+const UsersLayout = () => {
   return (
-    <div className="users-layout">
+    <div className="Users-layout">
       <Outlet />
     </div>
   );

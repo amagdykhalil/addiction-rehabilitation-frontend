@@ -1,5 +1,3 @@
-"use client";
-
 import {
   MoreVertical as IconDotsVertical,
   LogOut as IconLogout,
@@ -29,21 +27,17 @@ import { useLogout } from "@/features/auth/hooks";
 import { useTranslation } from "react-i18next";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
 import { USER_KEYS } from "@/entities/user/lib/translationKeys";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { Spinner } from "@/shared/ui/spinner";
+import type { User } from "@/entities/users/model";
 
-export function NavUser({
-  user,
-}: {
-  user: {
-    name: string;
-    email: string;
-    avatar: string;
-  };
-}) {
+export function NavUser({ user, loading }: { user?: User; loading: boolean }) {
   const { isMobile } = useSidebar();
-  const { logout: onLogout, isLoading } = useLogout();
+  const { logout: onLogout, isLoading: isLogoutLoading } = useLogout();
   const { t } = useTranslation([NAMESPACE_KEYS.user]);
-  const { dir } = useCurrentLanguage();
+  const isLoading = loading || isLogoutLoading;
+  const initials = user
+    ? `${user.firstName?.charAt(0) ?? ""}${user.lastName?.charAt(0) ?? ""}`
+    : "";
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -53,36 +47,47 @@ export function NavUser({
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer"
             >
-              <Avatar className="h-8 w-8 rounded-lg grayscale">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="text-muted-foreground truncate text-xs">
-                  {user.email}
-                </span>
-              </div>
-              <IconDotsVertical className="ml-auto size-4" />
+              {isLoading || !user ? (
+                <Spinner className="mx-auto" />
+              ) : (
+                <Avatar className="h-8 w-8 rounded-lg grayscale">
+                  <AvatarImage src={user.personalImageURL} alt={initials} />
+                  <AvatarFallback className="rounded-lg">
+                    {initials}
+                  </AvatarFallback>
+                </Avatar>
+              )}
+              {!isLoading && user && (
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-medium">{initials}</span>
+                  <span className="text-muted-foreground truncate text-xs">
+                    {user.email}
+                  </span>
+                </div>
+              )}
+              {!isLoading && user && (
+                <IconDotsVertical className="ml-auto size-4" />
+              )}
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             side={isMobile ? "bottom" : "right"}
-            dir={dir}
             align="end"
             sideOffset={4}
           >
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarImage src={user?.personalImageURL} alt={initials} />
+                  <AvatarFallback className="rounded-lg">
+                    {initials}
+                  </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">{user.name}</span>
+                  <span className="truncate font-medium">{initials}</span>
                   <span className="text-muted-foreground truncate text-xs">
-                    {user.email}
+                    {user?.email}
                   </span>
                 </div>
               </div>
@@ -91,8 +96,7 @@ export function NavUser({
             <DropdownMenuGroup>
               <Link
                 to={generatePath(
-                  `${USER_ROUTES.MAIN_PATH}/${USER_ROUTES.PROFILE}`,
-                  { userId: "2" },
+                  `${USER_ROUTES.MAIN_PATH}/${USER_ROUTES.PROFILE}`
                 )}
               >
                 <DropdownMenuItem className="cursor-pointer">
@@ -101,9 +105,11 @@ export function NavUser({
                 </DropdownMenuItem>
               </Link>
               <Link
-                to={generatePath(
-                  `${USER_ROUTES.MAIN_PATH}/${USER_ROUTES.NOTIFICATIONS}`,
-                )}
+                to={
+                  generatePath(
+                    `${USER_ROUTES.MAIN_PATH}/${USER_ROUTES.SETTINGS}`
+                  ) + "?section=notifications"
+                }
               >
                 <DropdownMenuItem className="cursor-pointer">
                   <IconNotification />

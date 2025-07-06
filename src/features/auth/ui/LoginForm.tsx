@@ -24,8 +24,6 @@ import {
 } from "@/shared/ui/card";
 import { Mail, Lock, EyeOff, Eye } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { ROUTES } from "@/shared/routes";
 
 type LoginFormData = z.infer<ReturnType<typeof getLoginValidationSchema>>;
 
@@ -33,9 +31,14 @@ interface LoginFormProps {
   onSubmit: (data: LoginFormData) => void;
   isLoading?: boolean;
   error?: string | null;
+  children?: React.ReactNode;
 }
 
-export const LoginForm = ({ onSubmit, isLoading }: LoginFormProps) => {
+export const LoginForm = ({
+  onSubmit,
+  isLoading,
+  children,
+}: LoginFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const { t } = useTranslation([
     NAMESPACE_KEYS.common,
@@ -58,7 +61,7 @@ export const LoginForm = ({ onSubmit, isLoading }: LoginFormProps) => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 pt-28">
+    <div className="main-card">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
@@ -154,17 +157,7 @@ export const LoginForm = ({ onSubmit, isLoading }: LoginFormProps) => {
             </form>
           </Form>
 
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
-              {t(AUTH_KEYS.login.forgotPassword, { ns: NAMESPACE_KEYS.auth })}{" "}
-              <Link
-                to={ROUTES.FORGOT_PASSWORD}
-                className="font-medium text-primary hover:underline"
-              >
-                {t(AUTH_KEYS.login.resetPassword, { ns: NAMESPACE_KEYS.auth })}
-              </Link>
-            </p>
-          </div>
+          {children}
         </CardContent>
       </Card>
     </div>

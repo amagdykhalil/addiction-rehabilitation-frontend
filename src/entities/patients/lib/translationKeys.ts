@@ -1,4 +1,4 @@
-export const PATIENT_KEYS = {
+export const PATIENTS_KEYS = {
   backToList: "backToList",
   loading: "loading",
   edit: "edit",
@@ -105,6 +105,7 @@ export const PATIENT_KEYS = {
     upload: "form.upload",
     updatePatient: "form.updatePatient",
     addPatient: "form.addPatient",
+    patient: "form.Patient",
   },
   gender: {
     male: "gender.male",

@@ -1,12 +1,8 @@
 import { ProtectedRoute } from "@/shared/ui/ProtectedRoute";
+import { UsersLayout, UsersListPage, UserDetailPage } from "@/Pages/usersPages";
 import { USERS_ROUTES } from "./usersRoutesPaths";
-import {
-  UsersLayout,
-  UsersListPage,
-  UserPage,
-  AddUserPage,
-  EditUserPage,
-} from "@/Pages/usersPages";
+import AddUserPage from "@/Pages/usersPages/AddUserPage";
+import EditUserPage from "@/Pages/usersPages/EditUserPage";
 
 export const usersRoutes = {
   path: USERS_ROUTES.MAIN_PATH,
@@ -17,7 +13,7 @@ export const usersRoutes = {
   ),
   children: [
     { index: true, element: <UsersListPage /> },
-    { path: USERS_ROUTES.DETAIL, element: <UserPage /> },
+    { path: USERS_ROUTES.DETAIL, element: <UserDetailPage /> },
     { path: USERS_ROUTES.ADD, element: <AddUserPage /> },
     { path: USERS_ROUTES.EDIT, element: <EditUserPage /> },
   ],

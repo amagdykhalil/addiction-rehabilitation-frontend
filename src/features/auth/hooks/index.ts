@@ -3,6 +3,7 @@ import { useLogin } from "./useLogin";
 import { useLogout } from "./useLogout";
 import { useForgotPassword } from "./useForgotPassword";
 import { useResetPassword } from "./useResetPassword";
+import { useResendConfirmationEmail } from "./useResendConfirmationEmail";
 
 export {
   useAuthInitializer,
@@ -10,4 +11,5 @@ export {
   useLogout,
   useForgotPassword,
   useResetPassword,
+  useResendConfirmationEmail,
 };

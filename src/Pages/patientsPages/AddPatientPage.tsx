@@ -5,16 +5,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/card";
-import { useNavigate } from "react-router-dom";
+import { generatePath, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PatientForm } from "@/features/patients/ui/PatientForm";
 import { useAddPatient } from "@/features/patients/hooks/useAddPatient";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { PATIENT_KEYS } from "@/entities/patients/lib/translationKeys";
+import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { PageHeader } from "@/shared/ui";
 import type { PatientFormData } from "@/features/patients/ui/types";
 import { mapFormDataToPatient } from "@/features/patients/ui/utils/formUtils";
-import { ROUTES } from "@/shared/routes/routesPaths";
+import { PATIENTS_ROUTES } from "@/entities/patients/routes";
 
 export default function AddPatientPage() {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.patient]);
@@ -30,10 +30,17 @@ export default function AddPatientPage() {
       onSuccess: (response) => {
         // Navigate to the newly created patient's details page
         if (response?.result) {
-          navigate(`/patients/${response.result}`);
+          navigate(
+            generatePath(
+              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
+              {
+                patientId: String(response.result),
+              }
+            )
+          );
         } else {
           // Fallback to patients list if no id returned
-          navigate(ROUTES.PATIENT.MAIN_PATH);
+          navigate(PATIENTS_ROUTES.MAIN_PATH);
         }
       },
     });
@@ -42,21 +49,23 @@ export default function AddPatientPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title={t(PATIENT_KEYS.form.addPatient, { ns: NAMESPACE_KEYS.patient })}
-        subtitle={t(PATIENT_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
+        title={t(PATIENTS_KEYS.form.addPatient, { ns: NAMESPACE_KEYS.patient })}
+        subtitle={t(PATIENTS_KEYS.details.title, {
+          ns: NAMESPACE_KEYS.patient,
+        })}
         backTo={{
-          href: ROUTES.PATIENT.MAIN_PATH,
-          label: t(PATIENT_KEYS.backToList, { ns: NAMESPACE_KEYS.patient }),
+          href: PATIENTS_ROUTES.MAIN_PATH,
+          label: t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient }),
         }}
       />
 
       <Card>
         <CardHeader>
           <CardTitle>
-            {t(PATIENT_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
+            {t(PATIENTS_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
           </CardTitle>
           <CardDescription>
-            {t(PATIENT_KEYS.details.subtitle, { ns: NAMESPACE_KEYS.patient })}
+            {t(PATIENTS_KEYS.details.subtitle, { ns: NAMESPACE_KEYS.patient })}
           </CardDescription>
         </CardHeader>
         <CardContent>

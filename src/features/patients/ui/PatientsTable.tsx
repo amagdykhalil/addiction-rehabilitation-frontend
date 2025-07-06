@@ -13,7 +13,7 @@ import type { Patient } from "@/entities/patients/model/patient";
 import { TableSkeletonRows } from "./TableSkeletonRows";
 import { useTranslation } from "react-i18next";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { PATIENT_KEYS } from "@/entities/patients/lib/translationKeys";
+import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { PatientMenuAction } from "./PatientMenuAction";
 
 interface PatientsTableProps {
@@ -37,30 +37,32 @@ export const PatientsTable = ({
         <TableHeader>
           <TableRow>
             <TableHead>
-              {t(PATIENT_KEYS.table.patientId, { ns: NAMESPACE_KEYS.patient })}
+              {t(PATIENTS_KEYS.table.patientId, { ns: NAMESPACE_KEYS.patient })}
             </TableHead>
             <TableHead>
-              {t(PATIENT_KEYS.table.patient, { ns: NAMESPACE_KEYS.patient })}
+              {t(PATIENTS_KEYS.table.patient, { ns: NAMESPACE_KEYS.patient })}
             </TableHead>
             <TableHead>
-              {t(PATIENT_KEYS.table.age, { ns: NAMESPACE_KEYS.patient })}
+              {t(PATIENTS_KEYS.table.age, { ns: NAMESPACE_KEYS.patient })}
             </TableHead>
             <TableHead>
-              {t(PATIENT_KEYS.table.gender, { ns: NAMESPACE_KEYS.patient })}
+              {t(PATIENTS_KEYS.table.gender, { ns: NAMESPACE_KEYS.patient })}
             </TableHead>
             <TableHead>
-              {t(PATIENT_KEYS.table.contact, { ns: NAMESPACE_KEYS.patient })}
+              {t(PATIENTS_KEYS.table.contact, { ns: NAMESPACE_KEYS.patient })}
             </TableHead>
             <TableHead>
-              {t(PATIENT_KEYS.table.idDocument, { ns: NAMESPACE_KEYS.patient })}
-            </TableHead>
-            <TableHead>
-              {t(PATIENT_KEYS.table.nationality, {
+              {t(PATIENTS_KEYS.table.idDocument, {
                 ns: NAMESPACE_KEYS.patient,
               })}
             </TableHead>
             <TableHead>
-              {t(PATIENT_KEYS.list.actions, { ns: NAMESPACE_KEYS.patient })}
+              {t(PATIENTS_KEYS.table.nationality, {
+                ns: NAMESPACE_KEYS.patient,
+              })}
+            </TableHead>
+            <TableHead>
+              {t(PATIENTS_KEYS.list.actions, { ns: NAMESPACE_KEYS.patient })}
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -72,7 +74,7 @@ export const PatientsTable = ({
             ))
           ) : patients.length === 0 ? (
             <TableEmpty
-              message={t(PATIENT_KEYS.list.noPatients, {
+              message={t(PATIENTS_KEYS.list.noPatients, {
                 ns: NAMESPACE_KEYS.patient,
               })}
             />
@@ -112,16 +114,16 @@ export const PatientsTable = ({
                 </TableCell>
                 <TableCell>
                   {getAge(patient.birthDate)}{" "}
-                  {t(PATIENT_KEYS.details.years, {
+                  {t(PATIENTS_KEYS.details.years, {
                     ns: NAMESPACE_KEYS.patient,
                   })}
                 </TableCell>
                 <TableCell>
                   {patient.gender === 0
-                    ? t(PATIENT_KEYS.gender.male, {
+                    ? t(PATIENTS_KEYS.gender.male, {
                         ns: NAMESPACE_KEYS.patient,
                       })
-                    : t(PATIENT_KEYS.gender.female, {
+                    : t(PATIENTS_KEYS.gender.female, {
                         ns: NAMESPACE_KEYS.patient,
                       })}
                 </TableCell>
@@ -130,7 +132,7 @@ export const PatientsTable = ({
                   {patient.nationalIdNumber ? (
                     <div>
                       <div className="text-sm">
-                        {t(PATIENT_KEYS.table.nationalId, {
+                        {t(PATIENTS_KEYS.table.nationalId, {
                           ns: NAMESPACE_KEYS.patient,
                         })}
                       </div>
@@ -141,7 +143,7 @@ export const PatientsTable = ({
                   ) : patient.passportNumber ? (
                     <div>
                       <div className="text-sm">
-                        {t(PATIENT_KEYS.table.passport, {
+                        {t(PATIENTS_KEYS.table.passport, {
                           ns: NAMESPACE_KEYS.patient,
                         })}
                       </div>
@@ -151,15 +153,15 @@ export const PatientsTable = ({
                     </div>
                   ) : (
                     <span className="text-muted-foreground">
-                      {t(PATIENT_KEYS.table.noDocument, {
+                      {t(PATIENTS_KEYS.table.noDocument, {
                         ns: NAMESPACE_KEYS.patient,
                       })}
                     </span>
                   )}
                 </TableCell>
                 <TableCell>{patient.nationalityName}</TableCell>
-                <TableCell className="text-right">
-                  <PatientMenuAction id={patient.id} />
+                <TableCell className="text-start">
+                  <PatientMenuAction id={patient.id} patient={patient} />
                 </TableCell>
               </TableRow>
             ))

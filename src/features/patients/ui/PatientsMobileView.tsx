@@ -3,7 +3,7 @@ import type { Patient } from "@/entities/patients/model/patient";
 import { PatientCard } from "./PatientCard";
 import { useTranslation } from "react-i18next";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { PATIENT_KEYS } from "@/entities/patients/lib/translationKeys";
+import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 
 interface PatientsMobileViewProps {
   patients: Patient[];
@@ -47,7 +47,7 @@ export const PatientsMobileView = ({
       <div className="lg:hidden p-4 sm:p-6">
         <div className="text-center py-8">
           <p className="text-muted-foreground">
-            {t(PATIENT_KEYS.list.noPatients, { ns: NAMESPACE_KEYS.patient })}
+            {t(PATIENTS_KEYS.list.noPatients, { ns: NAMESPACE_KEYS.patient })}
           </p>
         </div>
       </div>

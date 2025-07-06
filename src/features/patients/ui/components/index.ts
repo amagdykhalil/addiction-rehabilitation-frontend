@@ -1,3 +1,3 @@
-export { PersonalInformationSection } from "./PersonalInformationSection";
-export { ContactAndIdentificationSection } from "./ContactAndIdentificationSection";
-export { AdditionalInformationSection } from "./AdditionalInformationSection";
+export { PatientPersonalInformationSection } from "./PatientPersonalInformationSection";
+export { PatientContactSection } from "./PatientContactSection";
+export { PatientAdditionalInformationSection } from "./PatientAdditionalInformationSection";

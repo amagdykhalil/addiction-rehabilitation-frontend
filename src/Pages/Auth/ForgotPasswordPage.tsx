@@ -9,13 +9,11 @@ export const ForgotPasswordPage = () => {
   };
 
   return (
-    <div>
-      <ForgotPasswordForm
-        onSubmit={handleSubmit}
-        isLoading={isLoading}
-        isSubmitted={isSuccess}
-        onReset={reset}
-      />
-    </div>
+    <ForgotPasswordForm
+      onSubmit={handleSubmit}
+      isLoading={isLoading}
+      isSubmitted={isSuccess}
+      onReset={reset}
+    />
   );
 };

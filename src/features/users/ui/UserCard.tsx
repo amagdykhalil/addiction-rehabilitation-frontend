@@ -1,56 +1,15 @@
-import type { User, UserRole, UserStatus } from "@/entities/users/model";
+import type { User } from "@/entities/users/model";
 import { Card, CardContent } from "@/shared/ui";
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
-import { Badge } from "@/shared/ui/badge";
 import { useTranslation } from "react-i18next";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { USER_KEYS } from "@/entities/users/lib/translationKeys";
+import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 import { UserMenuAction } from "./UserMenuAction";
-import { formatDate } from "@/shared/lib/date";
+import { NotProvidedText } from "@/shared/ui/NotProvidedText";
+import { ActiveStatusText } from "@/shared/ui/ActiveStatusText";
 
 export const UserCard = ({ user }: { user: User }) => {
-  const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.user]);
-
-  const getRoleLabel = (role: UserRole) => {
-    switch (role) {
-      case UserRole.Admin:
-        return t(USER_KEYS.role.admin, { ns: NAMESPACE_KEYS.user });
-      case UserRole.Doctor:
-        return t(USER_KEYS.role.doctor, { ns: NAMESPACE_KEYS.user });
-      case UserRole.Nurse:
-        return t(USER_KEYS.role.nurse, { ns: NAMESPACE_KEYS.user });
-      case UserRole.Receptionist:
-        return t(USER_KEYS.role.receptionist, { ns: NAMESPACE_KEYS.user });
-      default:
-        return "Unknown";
-    }
-  };
-
-  const getStatusLabel = (status: UserStatus) => {
-    switch (status) {
-      case UserStatus.Active:
-        return t(USER_KEYS.status.active, { ns: NAMESPACE_KEYS.user });
-      case UserStatus.Inactive:
-        return t(USER_KEYS.status.inactive, { ns: NAMESPACE_KEYS.user });
-      case UserStatus.Suspended:
-        return t(USER_KEYS.status.suspended, { ns: NAMESPACE_KEYS.user });
-      default:
-        return "Unknown";
-    }
-  };
-
-  const getStatusVariant = (status: UserStatus) => {
-    switch (status) {
-      case UserStatus.Active:
-        return "default";
-      case UserStatus.Inactive:
-        return "secondary";
-      case UserStatus.Suspended:
-        return "destructive";
-      default:
-        return "outline";
-    }
-  };
+  const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.users]);
 
   return (
     <Card className="mb-4 p-4 border rounded-lg shadow-sm">
@@ -66,72 +25,91 @@ export const UserCard = ({ user }: { user: User }) => {
           </Avatar>
           <div className="flex-1 min-w-0">
             <h3 className="font-medium text-sm truncate">
-              {[
-                user.firstName,
-                user.secondName,
-                user.thirdName,
-                user.lastName,
-              ]
+              {[user.firstName, user.secondName, user.thirdName, user.lastName]
                 .filter(Boolean)
                 .join(" ")}
             </h3>
             <p className="text-xs text-muted-foreground font-mono truncate">
-              {t(USER_KEYS.details.userId, {
-                ns: NAMESPACE_KEYS.user,
+              {t(USERS_KEYS.details.userId, {
+                ns: NAMESPACE_KEYS.users,
               })}
               : {user.id}
             </p>
           </div>
           {/* Actions */}
-          <UserMenuAction id={user.id} />
+          <UserMenuAction user={user} id={user.id} isActive={user.isActive} />
         </div>
         {/* Details grid */}
         <div className="space-y-2">
           <div className="flex justify-start gap-2 items-center">
             <span className="text-muted-foreground">
-              {t(USER_KEYS.table.email, { ns: NAMESPACE_KEYS.user })}:
+              {t(USERS_KEYS.details.gender, { ns: NAMESPACE_KEYS.users })}:
             </span>
-            <span className="text-sm truncate">{user.email}</span>
+            <span>
+              {user.gender === 0
+                ? t(USERS_KEYS.gender.male, {
+                    ns: NAMESPACE_KEYS.users,
+                  })
+                : t(USERS_KEYS.gender.female, {
+                    ns: NAMESPACE_KEYS.users,
+                  })}
+            </span>
           </div>
           <div className="flex justify-start gap-2 items-center">
             <span className="text-muted-foreground">
-              {t(USER_KEYS.table.role, { ns: NAMESPACE_KEYS.user })}:
+              {t(USERS_KEYS.details.roles, { ns: NAMESPACE_KEYS.users })}:
             </span>
-            <Badge variant="outline" className="text-xs">
-              {getRoleLabel(user.role)}
-            </Badge>
+            {user.roles.length > 0 ? (
+              <span className="text-sm truncate">{user.roles.join(", ")}</span>
+            ) : (
+              <NotProvidedText>
+                {t(USERS_KEYS.details.notProvided, {
+                  ns: NAMESPACE_KEYS.users,
+                })}
+              </NotProvidedText>
+            )}
           </div>
           <div className="flex justify-start gap-2 items-center">
             <span className="text-muted-foreground">
-              {t(USER_KEYS.table.status, { ns: NAMESPACE_KEYS.user })}:
+              {t(USERS_KEYS.details.isActive, { ns: NAMESPACE_KEYS.users })}:
             </span>
-            <Badge variant={getStatusVariant(user.status) as any} className="text-xs">
-              {getStatusLabel(user.status)}
-            </Badge>
+            <ActiveStatusText isActive={user.isActive}>
+              {user.isActive
+                ? t(USERS_KEYS.filters.active, { ns: NAMESPACE_KEYS.users })
+                : t(USERS_KEYS.filters.inactive, { ns: NAMESPACE_KEYS.users })}
+            </ActiveStatusText>
           </div>
           <div className="flex justify-start gap-2 items-center">
             <span className="text-muted-foreground">
-              {t(USER_KEYS.details.phone, { ns: NAMESPACE_KEYS.user })}:
+              {user.nationalIdNumber
+                ? `${t(USERS_KEYS.table.nationalId, { ns: NAMESPACE_KEYS.users })}: `
+                : user.passportNumber
+                  ? `${t(USERS_KEYS.table.passport, { ns: NAMESPACE_KEYS.users })}: `
+                  : t(USERS_KEYS.details.notProvided, {
+                      ns: NAMESPACE_KEYS.users,
+                    })}
             </span>
-            <span className="text-sm truncate">{user.callPhoneNumber}</span>
+            <span className="text-sm font-mono truncate">
+              {user.nationalIdNumber
+                ? `${user.nationalIdNumber}`
+                : user.passportNumber
+                  ? `${user.passportNumber}`
+                  : ""}
+            </span>
           </div>
           <div className="flex justify-start gap-2 items-center">
             <span className="text-muted-foreground">
-              {t(USER_KEYS.details.nationality, {
-                ns: NAMESPACE_KEYS.user,
+              {t(USERS_KEYS.details.nationality, {
+                ns: NAMESPACE_KEYS.users,
               })}
               :
             </span>
             <span className="text-sm truncate">{user.nationalityName}</span>
-          </div>
-          <div className="flex justify-start gap-2 items-center">
-            <span className="text-muted-foreground">
-              {t(USER_KEYS.table.createdAt, { ns: NAMESPACE_KEYS.user })}:
-            </span>
-            <span className="text-sm truncate">{formatDate(user.createdAt)}</span>
           </div>
         </div>
       </CardContent>
     </Card>
   );
 };
+
+export default UserCard;

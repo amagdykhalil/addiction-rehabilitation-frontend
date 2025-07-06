@@ -10,4 +10,6 @@ export const usersKeys = {
     locale
       ? ([...usersKeys.details(), { id, locale }] as const)
       : ([...usersKeys.details(), { id }] as const),
+  roles: (userId: string, locale: string) =>
+    [...usersKeys.detail(userId), "roles", locale] as const,
 };

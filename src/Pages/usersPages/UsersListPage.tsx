@@ -9,14 +9,14 @@ import { UsersTable } from "@/features/users/ui/UsersTable";
 import { PaginationBar } from "@/shared/ui/PaginationBar";
 import { UsersPageHeader } from "@/features/users/ui/UsersPageHeader";
 import { TableFilters } from "@/shared/ui/TableFilters";
-import { useUsersList } from "@/features/users/hooks";
+import { useUsersList } from "@/features/users/hooks/useUsersList";
 import { UsersMobileView } from "@/features/users/ui/UsersMobileView";
 import { useTranslation } from "react-i18next";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { USER_KEYS } from "@/entities/users/lib/translationKeys";
+import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 
-export default function UsersListPage() {
-  const { t } = useTranslation([NAMESPACE_KEYS.user]);
+export const UsersListPage = () => {
+  const { t } = useTranslation([NAMESPACE_KEYS.users]);
   const {
     users,
     totalCount,
@@ -26,7 +26,6 @@ export default function UsersListPage() {
     sortConfig,
     searchQueryConfig,
     onClear,
-    handleDelete,
     pageNumber,
     setPageNumber,
   } = useUsersList();
@@ -41,8 +40,8 @@ export default function UsersListPage() {
         sortConfig={sortConfig}
         searchQueryConfig={searchQueryConfig}
         resetPageNumber={() => setPageNumber(1)}
-        searchPlaceholder={t(USER_KEYS.search.searchPlaceholder, {
-          ns: NAMESPACE_KEYS.user,
+        searchPlaceholder={t(USERS_KEYS.search.searchPlaceholder, {
+          ns: NAMESPACE_KEYS.users,
         })}
         onClear={onClear}
       />
@@ -51,19 +50,19 @@ export default function UsersListPage() {
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-lg">
-            {t(USER_KEYS.list.userRecords, {
-              ns: NAMESPACE_KEYS.user,
+            {t(USERS_KEYS.list.userRecords, {
+              ns: NAMESPACE_KEYS.users,
             })}
           </CardTitle>
           <CardDescription>
-            {t(USER_KEYS.list.showingUsers, {
-              ns: NAMESPACE_KEYS.user,
+            {t(USERS_KEYS.list.showingUsers, {
+              ns: NAMESPACE_KEYS.users,
             })}{" "}
             {totalCount}{" "}
-            {t(USER_KEYS.list.ofUsers, { ns: NAMESPACE_KEYS.user })}{" "}
+            {t(USERS_KEYS.list.ofUsers, { ns: NAMESPACE_KEYS.users })}{" "}
             {totalCount}{" "}
-            {t(USER_KEYS.list.userRecords, {
-              ns: NAMESPACE_KEYS.user,
+            {t(USERS_KEYS.list.userRecords, {
+              ns: NAMESPACE_KEYS.users,
             }).toLowerCase()}
           </CardDescription>
         </CardHeader>
@@ -71,11 +70,7 @@ export default function UsersListPage() {
           <>
             {/* Desktop Table View */}
             <div className="hidden lg:block">
-              <UsersTable
-                users={users}
-                isLoading={isLoading}
-                handleDelete={handleDelete}
-              />
+              <UsersTable users={users} isLoading={isLoading} />
             </div>
 
             {/* Mobile Card View */}
@@ -96,4 +91,6 @@ export default function UsersListPage() {
       </Card>
     </div>
   );
-}
+};
+
+export default UsersListPage;

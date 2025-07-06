@@ -1,6 +1,6 @@
 export const USERS_ROUTES = {
   MAIN_PATH: "/users",
-  DETAIL: ":id",
+  DETAIL: "detail/:userId",
   ADD: "add",
-  EDIT: ":id/edit",
+  EDIT: ":userId/edit",
 } as const;

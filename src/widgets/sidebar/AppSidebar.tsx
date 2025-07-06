@@ -2,8 +2,8 @@ import {
   LayoutDashboard as IconDashboard,
   Users as IconUsers,
   User as IconUser,
-  Search as IconSearch,
   Settings as IconSettings,
+  UserCog,
 } from "lucide-react";
 import { NavMain } from "./NavMain";
 import { NavSecondary } from "./NavSecondary";
@@ -27,18 +27,16 @@ import { USER_ROUTES } from "@/entities/user/routes";
 import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
 import { useAuth } from "@/entities/auth/model/useAuth";
 import { LogoIcon } from "@/shared/ui/LogoIcon";
+import { PATIENTS_ROUTES } from "@/entities/patients/routes";
+import useGetUser from "@/features/users/hooks/useGetUser";
 
 export function AppSidebar() {
   const { t } = useTranslation([NAMESPACE_KEYS.sidebar, NAMESPACE_KEYS.common]);
   const { dir } = useCurrentLanguage();
   const { isArabic } = useCurrentLanguage();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, authData } = useAuth();
+  const { user, isLoading } = useGetUser(authData?.userId);
   const data = {
-    user: {
-      name: "shadcn",
-      email: "m@example.com",
-      avatar: "/avatars/shadcn.jpg",
-    },
     navMain: [
       {
         title: t(SIDEBAR_KEYS.dashboard),
@@ -47,26 +45,21 @@ export function AppSidebar() {
       },
       {
         title: t(SIDEBAR_KEYS.patients),
-        url: ROUTES.PATIENT.MAIN_PATH,
+        url: PATIENTS_ROUTES.MAIN_PATH,
         icon: IconUsers,
       },
       {
         title: t(SIDEBAR_KEYS.users),
-        url: ROUTES.USER.MAIN_PATH,
+        url: ROUTES.USERS.MAIN_PATH,
         icon: IconUser,
       },
       {
-        title: "users dashboard",
-        url: "users",
-        icon: IconUser,
-      }
+        title: t(SIDEBAR_KEYS.roles),
+        url: ROUTES.ROLES.MAIN_PATH,
+        icon: UserCog,
+      },
     ],
     navSecondary: [
-      {
-        title: t(SIDEBAR_KEYS.search),
-        url: "#",
-        icon: IconSearch,
-      },
       {
         title: t(SIDEBAR_KEYS.settings),
         url: generatePath(`${USER_ROUTES.MAIN_PATH}/${USER_ROUTES.SETTINGS}`),
@@ -103,7 +96,7 @@ export function AppSidebar() {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user || undefined} loading={isLoading} />
       </SidebarFooter>
     </Sidebar>
   );

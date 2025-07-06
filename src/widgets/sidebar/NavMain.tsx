@@ -1,5 +1,3 @@
-"use client";
-
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -7,7 +5,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/shared/ui/sidebar";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export function NavMain({
   items,
@@ -29,10 +27,10 @@ export function NavMain({
                 className="cursor-pointer"
                 asChild
               >
-                <Link to={item.url}>
+                <NavLink to={item.url}>
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
-                </Link>
+                </NavLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
