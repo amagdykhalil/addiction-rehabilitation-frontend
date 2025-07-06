@@ -1,15 +1,7 @@
+import { Gender } from "@/shared/types/enums";
 import { z } from "zod";
 
 // Enums for query parameters
-export enum Gender {
-  Male = 0,
-  Female = 1,
-}
-
-export enum SortDirection {
-  Asc = 0,
-  Desc = 1,
-}
 
 export enum PatientSortBy {
   Id,
@@ -35,11 +27,3 @@ export const PatientSchema = z.object({
 });
 
 export type Patient = z.infer<typeof PatientSchema>;
-
-export interface PaginatedResult<T> {
-  pageSize: number;
-  currentPage: number;
-  totalPages: number;
-  totalCount: number;
-  data: T[];
-}

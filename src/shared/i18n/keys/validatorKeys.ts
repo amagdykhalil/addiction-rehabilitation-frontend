@@ -6,4 +6,5 @@ export const VALIDATOR_KEYS = {
   invalidFormat: "invalidFormat",
   identificationRequired: "identificationRequired",
   phoneNumberInvalid: "phoneNumberInvalid",
+  emailInvalid: "emailInvalid",
 } as const;

@@ -6,6 +6,9 @@ import { ForgotPasswordPage } from "@/Pages/Auth/ForgotPasswordPage";
 import { ResetPasswordPage } from "@/Pages/Auth/ResetPasswordPage";
 import { InternalServerErrorPage } from "@/Pages/InternalServerErrorPage";
 import { patientsRoutes } from "@/entities/patients/routes";
+import { usersRoutes } from "@/entities/users/routes/usersRoutes";
+import { ResendConfirmationEmailPage } from "@/Pages/Auth/ResendConfirmationEmailPage";
+import { rolesRoutes } from "@/entities/roles/routes/rolesRoutes";
 
 export const routes = [
   // global routes
@@ -14,6 +17,12 @@ export const routes = [
   { path: ROUTES.FORGOT_PASSWORD, element: <ForgotPasswordPage /> },
   { path: ROUTES.RESET_PASSWORD, element: <ResetPasswordPage /> },
   { path: ROUTES.SERVERERROR, element: <InternalServerErrorPage /> },
+  {
+    path: ROUTES.RESEND_CONFIRMATION_EMAIL,
+    element: <ResendConfirmationEmailPage />,
+  },
   userRoutes,
+  usersRoutes,
   patientsRoutes,
+  rolesRoutes,
 ];

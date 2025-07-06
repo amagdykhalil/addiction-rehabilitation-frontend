@@ -1,9 +1,8 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, generatePath } from "react-router-dom";
 import { useGetPatient } from "@/features/patients/hooks/useGetPatient";
-import { ROUTES } from "@/shared/routes/routesPaths";
 import { useTranslation } from "react-i18next";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { PATIENT_KEYS } from "@/entities/patients/lib/translationKeys";
+import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { PatientPageSkeleton, ErrorCard, PageHeader } from "@/shared/ui";
 import {
   PatientProfileCard,
@@ -17,7 +16,7 @@ import { Edit } from "lucide-react";
 export default function PatientDetailsPage() {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.patient]);
   const params = useParams();
-  const patientId = params.id as string;
+  const patientId = params.patientId as string;
 
   const { patient, isLoading, error } = useGetPatient(patientId);
   const navigate = useNavigate();
@@ -31,13 +30,13 @@ export default function PatientDetailsPage() {
   if (error || !patient) {
     return (
       <ErrorCard
-        title={t(PATIENT_KEYS.notFound.title, { ns: NAMESPACE_KEYS.patient })}
-        message={t(PATIENT_KEYS.notFound.message, {
+        title={t(PATIENTS_KEYS.notFound.title, { ns: NAMESPACE_KEYS.patient })}
+        message={t(PATIENTS_KEYS.notFound.message, {
           ns: NAMESPACE_KEYS.patient,
           id: patientId,
         })}
-        backToPath={ROUTES.PATIENT.MAIN_PATH}
-        backToText={t(PATIENT_KEYS.backToList, { ns: NAMESPACE_KEYS.patient })}
+        backToPath={PATIENTS_ROUTES.MAIN_PATH}
+        backToText={t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient })}
       />
     );
   }
@@ -45,23 +44,32 @@ export default function PatientDetailsPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title={t(PATIENT_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
-        subtitle={t(PATIENT_KEYS.details.subtitle, {
+        title={t(PATIENTS_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
+        subtitle={t(PATIENTS_KEYS.details.subtitle, {
           ns: NAMESPACE_KEYS.patient,
         })}
         backTo={{
-          href: ROUTES.PATIENT.MAIN_PATH,
-          label: t(PATIENT_KEYS.backToList, { ns: NAMESPACE_KEYS.patient }),
+          href: PATIENTS_ROUTES.MAIN_PATH,
+          label: t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient }),
         }}
         actions={[
           {
-            label: t(PATIENT_KEYS.edit, { ns: NAMESPACE_KEYS.patient }),
-            href: `${ROUTES.PATIENT.MAIN_PATH}/${patient.id}/edit`,
+            label: t(PATIENTS_KEYS.edit, { ns: NAMESPACE_KEYS.patient }),
+            href: generatePath(
+              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.EDIT}`,
+              {
+                patientId,
+              }
+            ),
             variant: "outline",
             size: "default",
             icon: <Edit className="h-4 w-4 mr-2" />,
           },
-          <PatientDeleteDialog patientId={patient.id} onSuccess={onSuccess} />,
+          <PatientDeleteDialog
+            patientId={patient.id}
+            onSuccess={onSuccess}
+            patient={patient}
+          />,
         ]}
       />
 

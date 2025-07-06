@@ -1,13 +1,13 @@
 import type { Patient } from "@/entities/patients/model";
-import { Gender } from "@/entities/patients/model";
 import type { UseFormReturn } from "react-hook-form";
 import type { PatientFormData } from "../types";
+import { Gender } from "@/shared/types/enums";
 
 /**
  * Creates default form values for a patient form
  */
 export function createPatientFormDefaultValues(
-  patient?: Patient | null,
+  patient?: Patient | null
 ): PatientFormData {
   return {
     BirthDate: patient?.birthDate || "",
@@ -31,7 +31,7 @@ export function createPatientFormDefaultValues(
  */
 export function resetFormWithPatientData(
   form: UseFormReturn<PatientFormData>,
-  patient: Patient | null,
+  patient: Patient | null
 ): void {
   if (patient) {
     form.reset(createPatientFormDefaultValues(patient));
@@ -43,7 +43,7 @@ export function resetFormWithPatientData(
  */
 export function mapFormDataToPatient(
   data: PatientFormData,
-  patientId: string,
+  patientId: string
 ): Omit<Patient, "FullName"> {
   return {
     id: patientId,

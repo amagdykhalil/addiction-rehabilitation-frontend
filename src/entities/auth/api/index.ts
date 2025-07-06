@@ -9,6 +9,15 @@ interface IResetPasswordRequest {
   resetCode: string;
   newPassword: string;
 }
+interface IChangePasswordRequest {
+  userId: number;
+  oldPassword: string;
+  newPassword: string;
+}
+interface IChangeEmailRequest {
+  userId: number;
+  newEmail: string;
+}
 
 export const authApi = {
   login: (data: ILoginRequest) =>
@@ -33,6 +42,30 @@ export const authApi = {
     }),
   resetPassword: (data: IResetPasswordRequest) =>
     BaseFetch("/auth/reset-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }),
+  resendConfirmationEmail: (email: string) =>
+    BaseFetch("/auth/resend-confirmation-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    }),
+  changePassword: (data: IChangePasswordRequest) =>
+    BaseFetch("/auth/change-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }),
+  requestChangeEmail: (data: IChangeEmailRequest) =>
+    BaseFetch("/auth/change-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

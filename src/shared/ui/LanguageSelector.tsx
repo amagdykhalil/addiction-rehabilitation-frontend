@@ -6,7 +6,7 @@ import {
   LOCALE_NAMES_MAP,
   type Locale,
 } from "@/shared/i18n/constants/locales";
-import { useUpdateLanguage } from "@/features/settings/hooks";
+import { useUpdateLanguage } from "@/shared/hooks/useUpdateLanguage";
 
 export const LanguageSelector: React.FC = () => {
   const { i18n } = useTranslation();

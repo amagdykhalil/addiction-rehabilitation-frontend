@@ -1,12 +1,8 @@
 import { BaseFetch } from "@/shared/api";
-import type {
-  Patient,
-  PaginatedResult,
-  Gender,
-  PatientSortBy,
-  SortDirection,
-} from "../model";
+import type { Patient, PatientSortBy } from "../model";
 import { isNotNil } from "@/shared/lib/utils";
+import type { Gender, SortDirection } from "@/shared/types/enums";
+import type { PaginatedResult } from "@/shared/types/paginatedResult";
 // import type { ApiResponse } from "@/shared/types";
 
 // 1. Get a single patient by id
@@ -27,7 +23,7 @@ export interface GetPatientsParams {
 
 async function getPatients(
   params: GetPatientsParams = {},
-  signal?: AbortSignal,
+  signal?: AbortSignal
 ) {
   const query = new URLSearchParams();
   if (params.pageNumber)
@@ -45,7 +41,7 @@ async function getPatients(
     `/Patients?${query.toString()}`,
     {
       signal,
-    },
+    }
   );
 
   return result;
@@ -94,14 +90,14 @@ async function existsById(id: string) {
 // Check if patient exists by passport number
 async function existsByPassport(passportNumber: string) {
   return BaseFetch<number | undefined>(
-    `/Patients/exists-by-passport/${passportNumber}`,
+    `/Patients/exists-by-passport/${passportNumber}`
   );
 }
 
 // Check if patient exists by national ID
 async function existsByNationalId(nationalId: string) {
   return BaseFetch<number | undefined>(
-    `/Patients/exists-by-national-id/${nationalId}`,
+    `/Patients/exists-by-national-id/${nationalId}`
   );
 }
 

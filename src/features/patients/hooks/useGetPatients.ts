@@ -2,11 +2,12 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { patientsApi } from "@/entities/patients/api";
 import type { GetPatientsParams } from "@/entities/patients/api";
-import type { Patient, PaginatedResult } from "@/entities/patients/model";
+import type { Patient } from "@/entities/patients/model";
 import type { ApiResponse } from "@/shared/types";
 import { patientsKeys } from "./patientsKeys";
 import type { Locale } from "@/shared/i18n/constants/locales";
 import { useTranslation } from "react-i18next";
+import type { PaginatedResult } from "@/shared/types/paginatedResult";
 
 export function useGetPatients(params: GetPatientsParams = {}) {
   const { i18n } = useTranslation();
@@ -28,7 +29,7 @@ export function useGetPatients(params: GetPatientsParams = {}) {
       queryClient.prefetchQuery({
         queryKey: patientsKeys.list(
           nextParams as Record<string, unknown>,
-          current,
+          current
         ),
         queryFn: ({ signal }) => patientsApi.getPatients(nextParams, signal),
       });
@@ -39,7 +40,7 @@ export function useGetPatients(params: GetPatientsParams = {}) {
       queryClient.prefetchQuery({
         queryKey: patientsKeys.list(
           prevParams as Record<string, unknown>,
-          current,
+          current
         ),
         queryFn: ({ signal }) => patientsApi.getPatients(prevParams, signal),
       });

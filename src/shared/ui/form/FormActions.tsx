@@ -20,7 +20,7 @@ export function FormActions({
   isLoading = false,
   submitText = "Save",
   className,
-  showCancel = true,
+  showCancel = false,
 }: FormActionsProps) {
   const { t } = useTranslation();
   return (

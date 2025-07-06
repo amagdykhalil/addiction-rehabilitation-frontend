@@ -2,6 +2,7 @@
   "dashboard": "Dashboard",
   "patients": "Patients",
   "users": "Users",
+  "roles": "Roles",
   "settings": "Settings",
   "search": "Search"
 }

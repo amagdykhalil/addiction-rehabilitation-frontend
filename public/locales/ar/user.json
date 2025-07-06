@@ -7,10 +7,19 @@
     "projectsDesc": "إدارة مشاريعك ومهامك"
   },
   "profile": {
-    "title": "الملف الشخصي"
+    "title": "ملفك الشخصي",
+    "subtitle": "حدّث معلوماتك الشخصية أدناه",
+    "updated": "تم تحديث ملفك الشخصي بنجاح."
+  },
+  "details": {
+    "title": "تفاصيل المستخدم",
+    "subtitle": "يرجى التأكد من صحة تفاصيلك"
   },
   "settings": {
-    "title": "الإعدادات"
+    "title": "الإعدادات",
+    "changeEmail": "تغيير البريد الإلكتروني",
+    "changePassword": "تغيير كلمة المرور",
+    "notifications": "الإشعارات"
   },
   "account": { "title": "الحساب" },
   "notifications": { "title": "الإشعارات" },

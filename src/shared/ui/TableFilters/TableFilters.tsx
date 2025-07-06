@@ -12,10 +12,10 @@ import { FilterCategory } from "./FilterCategory";
 import { FilterSelect } from "./FilterSelect";
 import { FilterBadges } from "./FilterBadges";
 import type { TableFiltersProps } from "./types";
-import { SortDirection } from "@/entities/patients/model";
 import { useTranslation } from "react-i18next";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
 import { COMMON_KEYS } from "@/shared/i18n/keys/commonKeys";
+import { SortDirection } from "@/shared/types/enums";
 
 export const TableFilters: React.FC<TableFiltersProps> = ({
   filters,

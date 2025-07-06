@@ -104,7 +104,8 @@
     "profileImageUrl": "Profile Image URL",
     "upload": "Upload",
     "updatePatient": "Update Patient",
-    "addPatient": "Add Patient"
+    "addPatient": "Add Patient",
+    "patient": "Patient"
   },
   "gender": {
     "male": "Male",

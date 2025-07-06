@@ -7,10 +7,19 @@
     "projectsDesc": "Manage your projects and tasks"
   },
   "profile": {
-    "title": "Profile"
+    "title": "Your Profile",
+    "subtitle": "Update your personal information below",
+    "updated": "Your profile has been successfully updated."
+  },
+  "details": {
+    "title": "User Details",
+    "subtitle": "Please make sure your details are accurate"
   },
   "settings": {
-    "title": "Settings"
+    "title": "Settings",
+    "changeEmail": "Change Email",
+    "changePassword": "Change Password",
+    "notifications": "Notifications"
   },
   "account": { "title": "Account" },
   "notifications": { "title": "Notifications" },

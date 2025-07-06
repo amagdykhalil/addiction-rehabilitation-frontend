@@ -1,6 +1,5 @@
 import { UserLayout } from "./UserLayout";
-import { UserNotificationsPage } from "./UserNotificationsPage";
-import { UserProfilePage } from "./UserProfilePage";
+import { ProfilePage } from "./ProfilePage";
 import { UserSettingsPage } from "./UserSettingsPage";
 
-export { UserLayout, UserSettingsPage, UserProfilePage, UserNotificationsPage };
+export { UserLayout, UserSettingsPage, ProfilePage };

@@ -14,7 +14,7 @@ import { usePatientsList } from "@/features/patients/hooks";
 import { PatientsMobileView } from "@/features/patients/ui/PatientsMobileView";
 import { useTranslation } from "react-i18next";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { PATIENT_KEYS } from "@/entities/patients/lib/translationKeys";
+import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 
 export default function PatientsListPage() {
   const { t } = useTranslation([NAMESPACE_KEYS.patient]);
@@ -42,7 +42,7 @@ export default function PatientsListPage() {
         sortConfig={sortConfig}
         searchQueryConfig={searchQueryConfig}
         resetPageNumber={() => setPageNumber(1)}
-        searchPlaceholder={t(PATIENT_KEYS.search.searchPlaceholder, {
+        searchPlaceholder={t(PATIENTS_KEYS.search.searchPlaceholder, {
           ns: NAMESPACE_KEYS.patient,
         })}
         onClear={onClear}
@@ -52,18 +52,18 @@ export default function PatientsListPage() {
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-lg">
-            {t(PATIENT_KEYS.list.patientRecords, {
+            {t(PATIENTS_KEYS.list.patientRecords, {
               ns: NAMESPACE_KEYS.patient,
             })}
           </CardTitle>
           <CardDescription>
-            {t(PATIENT_KEYS.list.showingPatients, {
+            {t(PATIENTS_KEYS.list.showingPatients, {
               ns: NAMESPACE_KEYS.patient,
             })}{" "}
             {totalCount}{" "}
-            {t(PATIENT_KEYS.list.ofPatients, { ns: NAMESPACE_KEYS.patient })}{" "}
+            {t(PATIENTS_KEYS.list.ofPatients, { ns: NAMESPACE_KEYS.patient })}{" "}
             {totalCount}{" "}
-            {t(PATIENT_KEYS.list.patientRecords, {
+            {t(PATIENTS_KEYS.list.patientRecords, {
               ns: NAMESPACE_KEYS.patient,
             }).toLowerCase()}
           </CardDescription>
