@@ -12,7 +12,7 @@ export const createAddRolesSchema = (t: TFunction) =>
             .string()
             .min(
               2,
-              t(VALIDATOR_KEYS.required, { ns: NAMESPACE_KEYS.validator })
+              t(VALIDATOR_KEYS.required, { ns: NAMESPACE_KEYS.validator }),
             )
             .max(
               256,
@@ -20,13 +20,13 @@ export const createAddRolesSchema = (t: TFunction) =>
                 ns: NAMESPACE_KEYS.validator,
                 min: 2,
                 max: 256,
-              })
+              }),
             ),
           name_ar: z
             .string()
             .min(
               2,
-              t(VALIDATOR_KEYS.required, { ns: NAMESPACE_KEYS.validator })
+              t(VALIDATOR_KEYS.required, { ns: NAMESPACE_KEYS.validator }),
             )
             .max(
               256,
@@ -34,9 +34,9 @@ export const createAddRolesSchema = (t: TFunction) =>
                 ns: NAMESPACE_KEYS.validator,
                 min: 2,
                 max: 256,
-              })
+              }),
             ),
-        })
+        }),
       )
       .min(1),
   });
@@ -56,7 +56,7 @@ export const CreateEditRoleSchema = (t: TFunction) =>
           ns: NAMESPACE_KEYS.validator,
           min: 2,
           max: 256,
-        })
+        }),
       ),
     name_ar: z
       .string()
@@ -67,7 +67,7 @@ export const CreateEditRoleSchema = (t: TFunction) =>
           ns: NAMESPACE_KEYS.validator,
           min: 2,
           max: 256,
-        })
+        }),
       ),
   });
 

@@ -37,7 +37,7 @@ export const PatientMenuAction = ({
               `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
               {
                 patientId: id,
-              }
+              },
             )}
           >
             <Eye className="mr-2 h-4 w-4" />
@@ -52,7 +52,7 @@ export const PatientMenuAction = ({
               `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.EDIT}`,
               {
                 patientId: id,
-              }
+              },
             )}
           >
             <Edit className="mr-2 h-4 w-4" />

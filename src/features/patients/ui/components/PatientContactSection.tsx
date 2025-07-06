@@ -16,9 +16,7 @@ interface PatientContactSectionProps {
   patient?: Patient;
 }
 
-export function PatientContactSection({
-  patient,
-}: PatientContactSectionProps) {
+export function PatientContactSection({ patient }: PatientContactSectionProps) {
   const { t } = useTranslation([NAMESPACE_KEYS.patient]);
   const form = useFormContext<PatientFormData>();
   const { countries } = useGetCountries();
@@ -65,7 +63,7 @@ export function PatientContactSection({
                     if (patient?.nationalIdNumber) {
                       form.setValue(
                         "NationalIdNumber",
-                        patient.nationalIdNumber
+                        patient.nationalIdNumber,
                       );
                     } else {
                       form.setValue("NationalIdNumber", undefined);

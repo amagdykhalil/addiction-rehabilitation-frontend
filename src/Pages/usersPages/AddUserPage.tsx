@@ -29,7 +29,7 @@ export default function AddUserPage() {
           navigate(
             generatePath(`${USERS_ROUTES.MAIN_PATH}/${USERS_ROUTES.DETAIL}`, {
               userId: String(response.result),
-            })
+            }),
           );
         } else {
           navigate(USERS_ROUTES.MAIN_PATH);

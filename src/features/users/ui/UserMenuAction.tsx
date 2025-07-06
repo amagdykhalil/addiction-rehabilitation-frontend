@@ -42,7 +42,7 @@ export const UserMenuAction = ({
               `${USERS_ROUTES.MAIN_PATH}/${USERS_ROUTES.DETAIL}`,
               {
                 userId: String(id),
-              }
+              },
             )}
           >
             <Eye className="mr-2 h-4 w-4" />

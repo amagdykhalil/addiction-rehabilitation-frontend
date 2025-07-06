@@ -70,10 +70,18 @@ export async function BaseFetch<T = unknown>(
     // This allows the calling code to handle the error appropriately
     return data;
   } catch (error) {
-    if (error.name === "AbortError") {
+    if (error instanceof Error && error.name === "AbortError") {
       console.log("❌ Request was cancelled");
     } else {
       console.error("🔥 Request failed:", error);
     }
+
+    // Return a default error response to satisfy the return type
+    return {
+      statusCode: 500,
+      isSuccess: false,
+      result: null as unknown as T,
+      errors: [{ message: "An unexpected error occurred" }],
+    } as ApiResponse<T>;
   }
 }

@@ -25,17 +25,17 @@ export function usePatientSearch(initialType: PatientSearchType = "id") {
   // Prepare all hooks
   const hooks = {
     id: usePatientExistsById(
-      searchTriggered && searchParams.type === "id" ? searchParams.value : ""
+      searchTriggered && searchParams.type === "id" ? searchParams.value : "",
     ),
     nationalId: usePatientExistsByNationalId(
       searchTriggered && searchParams.type === "nationalId"
         ? searchParams.value
-        : ""
+        : "",
     ),
     passport: usePatientExistsByPassport(
       searchTriggered && searchParams.type === "passport"
         ? searchParams.value
-        : ""
+        : "",
     ),
   };
 
@@ -55,7 +55,7 @@ export function usePatientSearch(initialType: PatientSearchType = "id") {
       navigate(
         generatePath(`${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`, {
           patientId: String(FoundId),
-        })
+        }),
       );
       setSearchDialogOpen(false);
       setSearchParams({ type: initialType, value: "" });

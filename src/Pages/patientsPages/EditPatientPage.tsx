@@ -39,11 +39,11 @@ export default function AddPatientPage() {
               `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
               {
                 patientId,
-              }
-            )
+              },
+            ),
           );
         },
-      }
+      },
     );
   };
 
@@ -59,7 +59,7 @@ export default function AddPatientPage() {
             `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
             {
               patientId,
-            }
+            },
           ),
           label: t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient }),
         }}
@@ -72,7 +72,7 @@ export default function AddPatientPage() {
               `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
               {
                 patientId,
-              }
+              },
             ),
             variant: "outline",
             size: "default",

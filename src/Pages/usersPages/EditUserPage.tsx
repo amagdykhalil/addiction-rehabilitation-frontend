@@ -35,10 +35,10 @@ export default function EditUserPage() {
           navigate(
             generatePath(`${USERS_ROUTES.MAIN_PATH}/${USERS_ROUTES.DETAIL}`, {
               userId,
-            })
+            }),
           );
         },
-      }
+      },
     );
   };
 
@@ -58,7 +58,7 @@ export default function EditUserPage() {
               `${USERS_ROUTES.MAIN_PATH}/${USERS_ROUTES.DETAIL}`,
               {
                 userId,
-              }
+              },
             ),
             variant: "outline",
             size: "default",

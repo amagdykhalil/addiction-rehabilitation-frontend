@@ -47,11 +47,11 @@ const UpdateUserRolesDialog: React.FC<UpdateUserRolesDialogProps> = ({
       {
         onSuccess: () => {
           toast.success(
-            t(USERS_KEYS.roles.updateSuccess, { ns: NAMESPACE_KEYS.users })
+            t(USERS_KEYS.roles.updateSuccess, { ns: NAMESPACE_KEYS.users }),
           );
           onSuccess();
         },
-      }
+      },
     );
   };
 

@@ -20,11 +20,11 @@ export function usePatientsList() {
 
   const [pageNumber, setPageNumber] = useQueryState(
     "page",
-    parseAsInteger.withDefault(1).withOptions({ history: "push" })
+    parseAsInteger.withDefault(1).withOptions({ history: "push" }),
   );
   const [pageSize, setPageSize] = useQueryState(
     "limit",
-    parseAsInteger.withDefault(10).withOptions({ history: "push" })
+    parseAsInteger.withDefault(10).withOptions({ history: "push" }),
   );
   const [searchQuery, setSearchQuery] = useQueryState("q", {
     defaultValue: "",
@@ -121,7 +121,7 @@ export function usePatientsList() {
         getActiveValue: () => {
           if (isLoadingCountries) return null;
           const country = countries?.find(
-            (c) => c.id == Number(selectedCountryId)
+            (c) => c.id == Number(selectedCountryId),
           );
           return country?.name ? country.name : null;
         },

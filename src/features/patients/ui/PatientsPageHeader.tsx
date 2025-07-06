@@ -62,7 +62,7 @@ export const PatientsPageHeader = () => {
               ns: NAMESPACE_KEYS.patient,
             }),
             href: generatePath(
-              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.ADD}`
+              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.ADD}`,
             ),
             variant: "default",
             size: "default",
