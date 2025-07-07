@@ -48,6 +48,7 @@ export const PatientsMobileView = ({
         <div className="text-center py-8">
           <p className="text-muted-foreground">
             {t(PATIENTS_KEYS.list.noPatients, { ns: NAMESPACE_KEYS.patient })}
+            {t(PATIENTS_KEYS.list.noPatients, { ns: NAMESPACE_KEYS.patient })}
           </p>
         </div>
       </div>

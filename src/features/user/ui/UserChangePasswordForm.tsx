@@ -41,11 +41,11 @@ export const UserChangePasswordForm = () => {
           toast.success(
             t(AUTH_KEYS.settings?.changePasswordSuccess, {
               ns: NAMESPACE_KEYS.auth,
-            }),
+            })
           );
           form.reset();
         },
-      },
+      }
     );
   };
 
@@ -69,7 +69,7 @@ export const UserChangePasswordForm = () => {
               AUTH_KEYS.settings?.oldPasswordLabel ?? "Current Password",
               {
                 ns: NAMESPACE_KEYS.auth,
-              },
+              }
             )}
             name="oldPassword"
             required

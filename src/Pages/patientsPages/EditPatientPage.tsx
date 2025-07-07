@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from "@/shared/ui/card";
 import { useParams, useNavigate, generatePath } from "react-router-dom";
+import { useParams, useNavigate, generatePath } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PatientForm } from "@/features/patients/ui/PatientForm";
 import { useUpdatePatient } from "@/features/patients/hooks/useUpdatePatient";
@@ -18,9 +19,11 @@ import { Eye } from "lucide-react";
 import { ROUTES } from "@/shared/routes";
 
 export default function AddPatientPage() {
+export default function AddPatientPage() {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.patient]);
   const params = useParams();
   const navigate = useNavigate();
+  const patientId = params.patientId as string;
   const patientId = params.patientId as string;
 
   const { updatePatient, isLoading } = useUpdatePatient();
@@ -54,6 +57,10 @@ export default function AddPatientPage() {
         subtitle={t(PATIENTS_KEYS.details.title, {
           ns: NAMESPACE_KEYS.patient,
         })}
+        title={t(PATIENTS_KEYS.edit, { ns: NAMESPACE_KEYS.patient })}
+        subtitle={t(PATIENTS_KEYS.details.title, {
+          ns: NAMESPACE_KEYS.patient,
+        })}
         backTo={{
           href: generatePath(
             `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.DETAIL}`,
@@ -65,6 +72,7 @@ export default function AddPatientPage() {
         }}
         actions={[
           {
+            label: t(PATIENTS_KEYS.list.viewDetails, {
             label: t(PATIENTS_KEYS.list.viewDetails, {
               ns: NAMESPACE_KEYS.patient,
             }),
@@ -85,8 +93,10 @@ export default function AddPatientPage() {
         <CardHeader>
           <CardTitle>
             {t(PATIENTS_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
+            {t(PATIENTS_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
           </CardTitle>
           <CardDescription>
+            {t(PATIENTS_KEYS.details.subtitle, { ns: NAMESPACE_KEYS.patient })}
             {t(PATIENTS_KEYS.details.subtitle, { ns: NAMESPACE_KEYS.patient })}
           </CardDescription>
         </CardHeader>

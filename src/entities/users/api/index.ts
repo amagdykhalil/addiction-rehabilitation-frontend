@@ -43,7 +43,7 @@ async function getUsers(params: GetUsersParams = {}, signal?: AbortSignal) {
     `/Users?${query.toString()}`,
     {
       signal,
-    },
+    }
   );
 
   return result;
@@ -51,7 +51,7 @@ async function getUsers(params: GetUsersParams = {}, signal?: AbortSignal) {
 
 // 3. Add a new user
 async function addUser(
-  user: Omit<User, "Id" | "isActive" | "nationalityName">,
+  user: Omit<User, "Id" | "isActive" | "nationalityName">
 ) {
   return BaseFetch<number>("/Users", {
     method: "POST",
@@ -62,7 +62,7 @@ async function addUser(
 
 // 4. Update a user
 async function updateUser(
-  user: Omit<User, "email" | "roles" | "isActive" | "nationalityName">,
+  user: Omit<User, "email" | "roles" | "isActive" | "nationalityName">
 ) {
   return BaseFetch<boolean>(`/Users`, {
     method: "PUT",
@@ -116,14 +116,14 @@ async function existsById(id: string) {
 // Check if user exists by passport number
 async function existsByPassport(passportNumber: string) {
   return BaseFetch<number | undefined>(
-    `/Users/exists-by-passport/${passportNumber}`,
+    `/Users/exists-by-passport/${passportNumber}`
   );
 }
 
 // Check if user exists by national ID
 async function existsByNationalId(nationalIdNumber: string) {
   return BaseFetch<number | undefined>(
-    `/Users/exists-by-national-id/${nationalIdNumber}`,
+    `/Users/exists-by-national-id/${nationalIdNumber}`
   );
 }
 

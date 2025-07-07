@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from "@/shared/ui/card";
 import { generatePath, useNavigate } from "react-router-dom";
+import { generatePath, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PatientForm } from "@/features/patients/ui/PatientForm";
 import { useAddPatient } from "@/features/patients/hooks/useAddPatient";
@@ -35,8 +36,8 @@ export default function AddPatientPage() {
               `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.DETAIL}`,
               {
                 patientId: String(response.result),
-              },
-            ),
+              }
+            )
           );
         } else {
           // Fallback to patients list if no id returned
@@ -53,6 +54,10 @@ export default function AddPatientPage() {
         subtitle={t(PATIENTS_KEYS.details.title, {
           ns: NAMESPACE_KEYS.patient,
         })}
+        title={t(PATIENTS_KEYS.form.addPatient, { ns: NAMESPACE_KEYS.patient })}
+        subtitle={t(PATIENTS_KEYS.details.title, {
+          ns: NAMESPACE_KEYS.patient,
+        })}
         backTo={{
           href: ROUTES.PATIENTS.MAIN_PATH,
           label: t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient }),
@@ -63,8 +68,10 @@ export default function AddPatientPage() {
         <CardHeader>
           <CardTitle>
             {t(PATIENTS_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
+            {t(PATIENTS_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
           </CardTitle>
           <CardDescription>
+            {t(PATIENTS_KEYS.details.subtitle, { ns: NAMESPACE_KEYS.patient })}
             {t(PATIENTS_KEYS.details.subtitle, { ns: NAMESPACE_KEYS.patient })}
           </CardDescription>
         </CardHeader>

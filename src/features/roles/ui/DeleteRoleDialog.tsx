@@ -20,7 +20,7 @@ export function DeleteRoleDialog({ role }: { role: RoleDto }) {
         onSuccess: () => {
           close();
         },
-      },
+      }
     );
   };
 

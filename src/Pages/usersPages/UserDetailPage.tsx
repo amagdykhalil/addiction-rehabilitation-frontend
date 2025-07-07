@@ -58,7 +58,7 @@ export default function UserDetailPage() {
               `${ROUTES.USERS.MAIN_PATH}/${ROUTES.USERS.EDIT}`,
               {
                 userId: String(user.id),
-              },
+              }
             ),
             variant: "outline",
             size: "default",

@@ -16,6 +16,7 @@ import { ROUTES } from "@/shared/routes";
 export default function PatientDetailsPage() {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.patient]);
   const params = useParams();
+
   const patientId = params.patientId as string;
 
   const { patient, isLoading, error } = useGetPatient(patientId);
@@ -59,12 +60,17 @@ export default function PatientDetailsPage() {
               `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.EDIT}`,
               {
                 patientId,
-              },
+              }
             ),
             variant: "outline",
             size: "default",
             icon: <Edit className="h-4 w-4 mr-2" />,
           },
+          <PatientDeleteDialog
+            patientId={patient.id}
+            onSuccess={onSuccess}
+            patient={patient}
+          />,
           <PatientDeleteDialog
             patientId={patient.id}
             onSuccess={onSuccess}

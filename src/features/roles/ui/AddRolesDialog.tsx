@@ -39,7 +39,7 @@ export function AddRolesDialog() {
           methods.reset({ roles: [{ name_en: "", name_ar: "" }] });
           close();
         },
-      },
+      }
     );
   };
   return (

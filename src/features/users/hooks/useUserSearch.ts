@@ -26,22 +26,20 @@ export function useUserSearch(initialType: UserSearchType = "id") {
   // Prepare all hooks
   const hooks = {
     id: useUserExistsById(
-      searchTriggered && searchParams.type === "id" ? searchParams.value : "",
+      searchTriggered && searchParams.type === "id" ? searchParams.value : ""
     ),
     nationalId: useUserExistsByNationalId(
       searchTriggered && searchParams.type === "nationalId"
         ? searchParams.value
-        : "",
+        : ""
     ),
     passport: useUserExistsByPassport(
       searchTriggered && searchParams.type === "passport"
         ? searchParams.value
-        : "",
+        : ""
     ),
     email: useUserExistsByEmail(
-      searchTriggered && searchParams.type === "email"
-        ? searchParams.value
-        : "",
+      searchTriggered && searchParams.type === "email" ? searchParams.value : ""
     ),
   };
 
@@ -61,7 +59,7 @@ export function useUserSearch(initialType: UserSearchType = "id") {
       navigate(
         generatePath(`${ROUTES.USERS.MAIN_PATH}/${ROUTES.USERS.DETAIL}`, {
           userId: String(FoundId),
-        }),
+        })
       );
       setSearchDialogOpen(false);
       setSearchParams({ type: initialType, value: "" });

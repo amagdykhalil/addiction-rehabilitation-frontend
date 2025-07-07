@@ -21,6 +21,7 @@ export function PatientPageSkeleton() {
             <Link to={ROUTES.PATIENTS.MAIN_PATH}>
               <ArrowLeft className="h-4 w-4 mr-2" />
               {t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient })}
+              {t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient })}
             </Link>
           </Button>
           <div>
