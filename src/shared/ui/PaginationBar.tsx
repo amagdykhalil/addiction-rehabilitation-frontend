@@ -9,8 +9,8 @@ import {
   PaginationPrevious,
 } from "@/shared/ui/pagination";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { COMMON_KEYS } from "@/shared/i18n/keys/commonKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS } from "@/shared/i18n/keys";
 
 interface PaginationBarProps {
   currentPage: number;
@@ -46,7 +46,7 @@ export const PaginationBar: React.FC<PaginationBarProps> = ({
           currentPage,
           currentPage + 1,
           "ellipsis",
-          totalPages,
+          totalPages
         );
       }
     }
@@ -86,7 +86,7 @@ export const PaginationBar: React.FC<PaginationBarProps> = ({
                 {page}
               </PaginationButton>
             </PaginationItem>
-          ),
+          )
         )}
         <PaginationItem>
           <PaginationNext

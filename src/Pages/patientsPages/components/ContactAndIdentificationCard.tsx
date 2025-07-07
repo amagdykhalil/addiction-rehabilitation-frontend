@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import type { Patient } from "@/entities/patients/model";
 import { Phone, MapPin, IdCard } from "lucide-react";

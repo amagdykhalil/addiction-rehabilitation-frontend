@@ -3,7 +3,7 @@ import { Button } from "@/shared/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import { UnAuthenticatedSidebar } from "../sidebar";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { useCurrentLanguage } from "@/shared/hooks";
 
 export const MobileMenu = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

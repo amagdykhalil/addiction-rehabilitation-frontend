@@ -1,9 +1,8 @@
 import { BaseFetch } from "@/shared/api";
-import type { Patient, PatientSortBy } from "../model";
+import type { Patient, PatientSortBy } from "@/entities/patients/model";
 import { isNotNil } from "@/shared/lib/utils";
 import type { Gender, SortDirection } from "@/shared/types/enums";
 import type { PaginatedResult } from "@/shared/types/paginatedResult";
-// import type { ApiResponse } from "@/shared/types";
 
 // 1. Get a single patient by id
 async function getPatient(id: string) {

@@ -1,7 +1,7 @@
 import type { User } from "@/entities/users/model";
 import { Card, CardContent } from "@/shared/ui";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 import NotProvidedText from "@/shared/ui/NotProvidedText";
 import {

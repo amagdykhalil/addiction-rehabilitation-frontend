@@ -1,8 +1,8 @@
 import { Button } from "@/shared/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { COMMON_KEYS } from "@/shared/i18n/keys/commonKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS } from "@/shared/i18n/keys";
 
 interface FormActionsProps {
   onCancel?: () => void;

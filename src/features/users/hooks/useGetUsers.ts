@@ -29,7 +29,7 @@ export function useGetUsers(params: GetUsersParams = {}) {
       queryClient.prefetchQuery({
         queryKey: usersKeys.list(
           nextParams as Record<string, unknown>,
-          current
+          current,
         ),
         queryFn: ({ signal }) => usersApi.getUsers(nextParams, signal),
       });
@@ -40,7 +40,7 @@ export function useGetUsers(params: GetUsersParams = {}) {
       queryClient.prefetchQuery({
         queryKey: usersKeys.list(
           prevParams as Record<string, unknown>,
-          current
+          current,
         ),
         queryFn: ({ signal }) => usersApi.getUsers(prevParams, signal),
       });

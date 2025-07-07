@@ -4,16 +4,19 @@ import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
 import { FormActions } from "@/shared/ui/form/FormActions";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { COMMON_KEYS } from "@/shared/i18n/keys/commonKeys";
-import { cn } from "@/lib/utils";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS } from "@/shared/i18n/keys";
+import { cn } from "@/shared/lib/utils";
 import { AlertCircle } from "lucide-react";
-import useGetUser from "../hooks/useGetUser";
-import { createUserFormSchema, type UserFormProps } from "./types";
+import { useGetUser } from "../hooks";
+import {
+  createUserFormSchema,
+  type UserFormProps,
+} from "@/features/users/models/types";
 import {
   createUserFormDefaultValues,
   resetFormWithUserData,
-} from "./utils/formUtils";
+} from "@/features/users/models/formUtils";
 
 import {
   UserAdditionalInformationSection,
@@ -21,7 +24,7 @@ import {
   UserPersonalInformationSection,
 } from "./components";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { useCurrentLanguage } from "@/shared/hooks";
 
 export function UserForm({ userId, onSubmit, isLoading }: UserFormProps) {
   const { t } = useTranslation([

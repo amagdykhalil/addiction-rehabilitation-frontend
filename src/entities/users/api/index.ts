@@ -1,5 +1,5 @@
 import { BaseFetch } from "@/shared/api";
-import type { Role, User, UserSortBy } from "../model";
+import type { Role, User, UserSortBy } from "@/entities/users/model";
 
 import { isNotNil } from "@/shared/lib/utils";
 import type { Gender, SortDirection } from "@/shared/types/enums";

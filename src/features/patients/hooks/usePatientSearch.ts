@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { generatePath, useNavigate } from "react-router-dom";
-import usePatientExistsById from "@/features/patients/hooks/usePatientExistsById";
-import usePatientExistsByNationalId from "@/features/patients/hooks/usePatientExistsByNationalId";
-import usePatientExistsByPassport from "@/features/patients/hooks/usePatientExistsByPassport";
-import { PATIENTS_ROUTES } from "@/entities/patients/routes";
+import { usePatientExistsById } from "@/features/patients/hooks";
+import { usePatientExistsByNationalId } from "@/features/patients/hooks";
+import { usePatientExistsByPassport } from "@/features/patients/hooks";
+import { ROUTES } from "@/shared/routes";
 
 export type PatientSearchType = "id" | "nationalId" | "passport";
 interface PatientSearchParams {
@@ -53,7 +53,7 @@ export function usePatientSearch(initialType: PatientSearchType = "id") {
         searchParams.type === "id" ? searchParams.value : (patientId ?? null);
       setFoundPatientId(FoundId);
       navigate(
-        generatePath(`${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`, {
+        generatePath(`${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.DETAIL}`, {
           patientId: String(FoundId),
         })
       );

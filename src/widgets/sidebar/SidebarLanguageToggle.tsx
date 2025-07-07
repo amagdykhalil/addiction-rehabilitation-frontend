@@ -1,4 +1,4 @@
-import { useUpdateLanguage } from "@/shared/hooks/useUpdateLanguage";
+import { useUpdateLanguage } from "@/shared/hooks";
 import {
   LOCALE_CODES,
   LOCALE_NAMES,

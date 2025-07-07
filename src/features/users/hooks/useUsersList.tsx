@@ -1,5 +1,5 @@
 import { useQueryState, parseAsInteger } from "nuqs";
-import { useGetUsers } from "@/features/users/hooks/useGetUsers";
+import { useGetUsers } from "@/features/users/hooks";
 import { UserSortBy } from "@/entities/users/model";
 import { isNotNil } from "@/shared/lib/utils";
 import type {
@@ -9,14 +9,14 @@ import type {
 } from "@/shared/ui/TableFilters/types";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 import { Gender, SortDirection } from "@/shared/types/enums";
-import { COMMON_KEYS } from "@/shared/i18n/keys/commonKeys";
+import { COMMON_KEYS } from "@/shared/i18n/keys";
 import { CountrySelect } from "@/shared/ui/SelectCountry";
-import useGetCountries from "@/features/countries/hooks/useGetCountries";
-import useGetRoles from "@/features/roles/hooks/useGetRoles";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { useGetCountries } from "@/features/countries/hooks";
+import { useGetRoles } from "@/features/roles/hooks";
+import { useCurrentLanguage } from "@/shared/hooks";
 
 export function useUsersList() {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.users]);

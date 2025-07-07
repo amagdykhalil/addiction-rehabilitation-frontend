@@ -1,5 +1,3 @@
-// rolesApi.ts
-
 import { BaseFetch } from "@/shared/api";
 
 export interface RoleDto {

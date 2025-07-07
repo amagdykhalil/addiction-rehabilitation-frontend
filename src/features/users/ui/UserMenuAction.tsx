@@ -7,15 +7,15 @@ import {
 } from "@/shared/ui/dropdown-menu";
 import { Edit, Eye, MoreHorizontal, Power } from "lucide-react";
 import { generatePath, Link } from "react-router-dom";
-import { COMMON_KEYS } from "@/shared/i18n/keys/commonKeys";
+import { COMMON_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { useTranslation } from "react-i18next";
-import { USERS_ROUTES } from "@/entities/users/routes/usersRoutesPaths";
 import UserActivateDialog from "./UserActivateDialog";
 import UserDeactivateDialog from "./UserDeactivateDialog";
 import UpdateUserRolesDialog from "./components/UpdateUserRolesDialog";
 import type { User } from "@/entities/users/model";
+import { ROUTES } from "@/shared/routes";
 
 export const UserMenuAction = ({
   id,
@@ -39,7 +39,7 @@ export const UserMenuAction = ({
         <DropdownMenuItem asChild className="cursor-pointer">
           <Link
             to={generatePath(
-              `${USERS_ROUTES.MAIN_PATH}/${USERS_ROUTES.DETAIL}`,
+              `${ROUTES.USERS.MAIN_PATH}/${ROUTES.USERS.DETAIL}`,
               {
                 userId: String(id),
               }
@@ -53,7 +53,7 @@ export const UserMenuAction = ({
         </DropdownMenuItem>
         <DropdownMenuItem asChild className="cursor-pointer">
           <Link
-            to={generatePath(`${USERS_ROUTES.MAIN_PATH}/${USERS_ROUTES.EDIT}`, {
+            to={generatePath(`${ROUTES.USERS.MAIN_PATH}/${ROUTES.USERS.EDIT}`, {
               userId: String(id),
             })}
           >

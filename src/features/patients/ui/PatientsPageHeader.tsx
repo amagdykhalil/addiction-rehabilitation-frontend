@@ -16,15 +16,15 @@ import {
 } from "@/shared/ui/select";
 import { Plus, User } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import usePatientSearch, {
   type PatientSearchType,
 } from "@/features/patients/hooks/usePatientSearch";
 import FormErrorMessage from "@/shared/ui/FormErrorMessage";
 import { Input } from "@/shared/ui";
-import { PATIENTS_ROUTES } from "@/entities/patients/routes";
 import { generatePath } from "react-router-dom";
+import { ROUTES } from "@/shared/routes";
 
 export const PatientsPageHeader = () => {
   const { t } = useTranslation([NAMESPACE_KEYS.patient]);
@@ -62,7 +62,7 @@ export const PatientsPageHeader = () => {
               ns: NAMESPACE_KEYS.patient,
             }),
             href: generatePath(
-              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.ADD}`
+              `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.ADD}`
             ),
             variant: "default",
             size: "default",

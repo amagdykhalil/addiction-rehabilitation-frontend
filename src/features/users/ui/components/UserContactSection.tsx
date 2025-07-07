@@ -6,10 +6,10 @@ import { Card, CardContent } from "@/shared/ui/card";
 import { CardHeaderWithTitle } from "@/shared/ui/cards/CardHeaderWithTitle";
 import { CustomFormField } from "@/shared/ui";
 import { CountrySelect } from "@/shared/ui/SelectCountry";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
-import { useGetCountries } from "@/features/countries/hooks/useGetCountries";
-import type { UserFormData } from "../types";
+import { useGetCountries } from "@/features/countries/hooks";
+import type { UserFormData } from "@/features/users/models/types";
 import type { User } from "@/entities/users/model";
 
 interface UserContactSectionProps {

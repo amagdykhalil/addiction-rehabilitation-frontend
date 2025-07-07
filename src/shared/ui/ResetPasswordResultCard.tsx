@@ -1,5 +1,5 @@
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
-import { NAMESPACE_KEYS } from "../i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { ResultCard } from "./ResultCard";
 import { ROUTES } from "../routes";
 import { useTranslation } from "react-i18next";

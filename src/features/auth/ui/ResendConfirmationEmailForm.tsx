@@ -15,7 +15,7 @@ import {
 import { Alert, AlertDescription } from "@/shared/ui/alert";
 import { Mail, CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
 import { getForgotPasswordValidationSchema } from "@/entities/auth/model/forgotPasswordValidationSchema";
 import {

@@ -1,6 +1,6 @@
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { useTranslation } from "react-i18next";
-import useAddRoles from "../hooks/useAddRoles";
+import { useAddRoles } from "../hooks";
 import ROLES_KEYS from "@/entities/roles/lib/translationKeys";
 import { FormField } from "@/shared/ui/form/FormField";
 import { Button } from "@/shared/ui";
@@ -8,7 +8,7 @@ import { Plus } from "lucide-react";
 import ActionDialog from "@/shared/ui/ActionDialog";
 import { useForm, FormProvider, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createAddRolesSchema, type AddRolesSchemaData } from "../types";
+import { createAddRolesSchema, type AddRolesSchemaData } from "../models/types";
 
 export function AddRolesDialog() {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.roles]);

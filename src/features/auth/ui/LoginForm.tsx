@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { AUTH_KEYS } from "../../../entities/auth/lib/translationKeys";
 import { getLoginValidationSchema } from "../../../entities/auth/model/loginValidationSchema";
 import {

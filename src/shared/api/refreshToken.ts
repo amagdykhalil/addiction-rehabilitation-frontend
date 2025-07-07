@@ -1,9 +1,12 @@
 import type { IAuthenticationResponse } from "@/entities/auth/model/types";
-import { handleAuthorized } from "../lib/auth";
+import { handleAuthorized } from "@/shared/lib/auth";
 import { retryQueuedRequests } from "./requestQueue";
-import type { ApiResponse } from "../types";
-import { handleUnauthorized } from "../lib";
-import { setRefreshing, isTokenRefreshing } from "../lib/auth/refreshState";
+import type { ApiResponse } from "@/shared/types";
+import { handleUnauthorized } from "@/shared/lib";
+import {
+  setRefreshing,
+  isTokenRefreshing,
+} from "@/shared/lib/auth/refreshState";
 
 const API_BASE = import.meta.env.APP_API_URL;
 

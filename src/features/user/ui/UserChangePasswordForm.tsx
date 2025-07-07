@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
-import { useChangePassword } from "@/features/auth/hooks/useChangePassword";
+import { useChangePassword } from "@/features/auth/hooks";
 import { useAuth } from "@/entities/auth/model/useAuth";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
 import { Button } from "@/shared/ui/button";
 import { Form } from "@/shared/ui/form";
 import { FormField } from "@/shared/ui/form/FormField";
-import { getChangePasswordSchema } from "../types";
+import { getChangePasswordSchema } from "@/features/patients/models/types";
 import { toast } from "sonner";
 
 export const UserChangePasswordForm = () => {

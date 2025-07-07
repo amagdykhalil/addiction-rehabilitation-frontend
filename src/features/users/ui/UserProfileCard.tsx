@@ -10,7 +10,7 @@ import { Badge } from "@/shared/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import { User as UserIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 import { ActiveStatusText } from "@/shared/ui/ActiveStatusText";
 

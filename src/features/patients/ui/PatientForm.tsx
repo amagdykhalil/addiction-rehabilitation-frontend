@@ -9,17 +9,17 @@ import { FormActions } from "@/shared/ui/form/FormActions";
 import { PatientPersonalInformationSection } from "./components/PatientPersonalInformationSection";
 import { PatientContactSection } from "./components/PatientContactSection";
 import { PatientAdditionalInformationSection } from "./components/PatientAdditionalInformationSection";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
-import { COMMON_KEYS } from "@/shared/i18n/keys/commonKeys";
+import { COMMON_KEYS } from "@/shared/i18n/keys";
 import { createPatientFormSchema, type PatientFormProps } from "./types";
 import {
   createPatientFormDefaultValues,
   resetFormWithPatientData,
-} from "./utils/formUtils";
-import { cn } from "@/lib/utils";
+} from "../lib/formUtils";
+import { cn } from "@/shared/lib/utils";
 import { AlertCircle } from "lucide-react";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { useCurrentLanguage } from "@/shared/hooks";
 
 export function PatientForm({
   patientId,

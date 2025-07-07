@@ -1,5 +1,5 @@
-import { ForgotPasswordForm } from "@/features/auth/ui/ForgotPasswordForm";
-import { useForgotPassword } from "@/features/auth/hooks/useForgotPassword";
+import { ForgotPasswordForm } from "@/features/auth/ui";
+import { useForgotPassword } from "@/features/auth/hooks";
 
 export const ForgotPasswordPage = () => {
   const { forgotPassword, isLoading, isSuccess, reset } = useForgotPassword();

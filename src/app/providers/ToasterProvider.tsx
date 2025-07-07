@@ -1,5 +1,5 @@
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
-import { Toaster } from "../../shared/ui/sonner";
+import { useCurrentLanguage } from "@/shared/hooks";
+import { Toaster } from "@/shared/ui/sonner";
 
 export const ToasterProvider = ({
   children,

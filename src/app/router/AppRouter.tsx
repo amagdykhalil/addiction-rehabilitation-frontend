@@ -1,6 +1,6 @@
 import { useRoutes } from "react-router-dom";
-import { AppLayout } from "../../Pages/AppLayout";
-import { routes } from "@/shared/routes";
+import { AppLayout } from "@/Pages";
+import { routes } from "@/shared/routes/routes";
 import { useAuthInitializer } from "@/features/auth/hooks";
 
 export const AppRouter = () => {

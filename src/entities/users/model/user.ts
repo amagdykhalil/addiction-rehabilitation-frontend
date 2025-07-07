@@ -1,5 +1,5 @@
+import { Gender } from "@/shared/types/enums";
 import { z } from "zod";
-import { Gender } from "@/entities/patients/model";
 
 // Enums for query parameters
 export enum UserRole {

@@ -1,12 +1,12 @@
 import type { RoleDto } from "@/entities/roles/api";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { useRemoveRoles } from "../hooks/useRemoveRoles";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { useRemoveRoles } from "@/features/roles/hooks";
 import ActionDialog from "@/shared/ui/ActionDialog";
 import ROLES_KEYS from "@/entities/roles/lib/translationKeys";
 import { Button } from "@/shared/ui";
 import { Trash } from "lucide-react";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { useCurrentLanguage } from "@/shared/hooks";
 
 export function DeleteRoleDialog({ role }: { role: RoleDto }) {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.roles]);

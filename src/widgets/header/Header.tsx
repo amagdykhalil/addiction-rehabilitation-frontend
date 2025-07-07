@@ -1,14 +1,14 @@
 "use client";
 
-import { Logo } from "../../shared/ui/Logo";
+import { Logo } from "@/shared/ui/Logo";
 import { AuthenticatedNav } from "./AuthenticatedNav";
 import { UnauthenticatedNav } from "./UnauthenticatedNav";
 import { MobileMenu } from "./MobileMenu";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { SidebarTrigger } from "@/shared/ui/sidebar";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { useCurrentLanguage } from "@/shared/hooks";
 import { useAuth } from "@/entities/auth/model/useAuth";
-import { PageTitle } from "../../shared/ui/PageTitle";
+import { PageTitle } from "@/shared/ui/PageTitle";
 
 export const Header = () => {
   const { dir, isArabic } = useCurrentLanguage();

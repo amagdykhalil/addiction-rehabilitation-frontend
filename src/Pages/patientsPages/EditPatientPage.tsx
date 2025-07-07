@@ -9,13 +9,13 @@ import { useParams, useNavigate, generatePath } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PatientForm } from "@/features/patients/ui/PatientForm";
 import { useUpdatePatient } from "@/features/patients/hooks/useUpdatePatient";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { PageHeader } from "@/shared/ui";
 import type { PatientFormData } from "@/features/patients/ui/types";
-import { mapFormDataToPatient } from "@/features/patients/ui/utils/formUtils";
+import { mapFormDataToPatient } from "@/features/patients/lib/formUtils";
 import { Eye } from "lucide-react";
-import { PATIENTS_ROUTES } from "@/entities/patients/routes";
+import { ROUTES } from "@/shared/routes";
 
 export default function AddPatientPage() {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.patient]);
@@ -36,7 +36,7 @@ export default function AddPatientPage() {
           // Navigate back to patient details page after successful update
           navigate(
             generatePath(
-              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
+              `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.DETAIL}`,
               {
                 patientId,
               }
@@ -56,7 +56,7 @@ export default function AddPatientPage() {
         })}
         backTo={{
           href: generatePath(
-            `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
+            `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.DETAIL}`,
             {
               patientId,
             }
@@ -69,7 +69,7 @@ export default function AddPatientPage() {
               ns: NAMESPACE_KEYS.patient,
             }),
             href: generatePath(
-              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
+              `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.DETAIL}`,
               {
                 patientId,
               }

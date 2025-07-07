@@ -7,8 +7,8 @@ import {
 import {
   postLogoutBroadcast,
   postTokenGeneratedBroadcast,
-} from "./../broadcasts/authBroadcasts";
-import { ROUTES } from "../../routes";
+} from "@/shared/lib/broadcasts/authBroadcasts";
+import { ROUTES } from "@/shared/routes";
 
 const PUBLIC_ROUTES = [
   ROUTES.LOGIN,
@@ -20,7 +20,7 @@ export const isPublicRoute = () => {
   const currentPath = window.location.pathname.toLowerCase();
 
   return PUBLIC_ROUTES.some((route) =>
-    currentPath.startsWith(route.toLowerCase()),
+    currentPath.startsWith(route.toLowerCase())
   );
 };
 

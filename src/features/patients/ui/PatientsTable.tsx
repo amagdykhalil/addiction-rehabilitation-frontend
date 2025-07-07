@@ -12,7 +12,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import type { Patient } from "@/entities/patients/model/patient";
 import { TableSkeletonRows } from "./TableSkeletonRows";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { PatientMenuAction } from "./PatientMenuAction";
 

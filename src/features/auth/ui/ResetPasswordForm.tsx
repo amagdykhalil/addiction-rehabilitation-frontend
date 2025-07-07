@@ -14,7 +14,7 @@ import {
 } from "@/shared/ui/card";
 import { Lock, EyeOff, Eye, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { AUTH_KEYS } from "../../../entities/auth/lib/translationKeys";
 import { getResetPasswordValidationSchema } from "../../../entities/auth/model/resetPasswordValidationSchema";
 import {
@@ -108,7 +108,7 @@ export const ResetPasswordForm = ({
                           AUTH_KEYS.resetPassword.newPasswordPlaceholder,
                           {
                             ns: NAMESPACE_KEYS.auth,
-                          },
+                          }
                         )}
                         className="pl-10 pr-10"
                         disabled={isLoading}
@@ -152,7 +152,7 @@ export const ResetPasswordForm = ({
                           AUTH_KEYS.resetPassword.confirmPasswordPlaceholder,
                           {
                             ns: NAMESPACE_KEYS.auth,
-                          },
+                          }
                         )}
                         className="pl-10 pr-10"
                         disabled={isLoading}

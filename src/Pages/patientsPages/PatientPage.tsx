@@ -1,7 +1,7 @@
 import { useParams, useNavigate, generatePath } from "react-router-dom";
 import { useGetPatient } from "@/features/patients/hooks/useGetPatient";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { PatientPageSkeleton, ErrorCard, PageHeader } from "@/shared/ui";
 import {
@@ -10,8 +10,8 @@ import {
   ContactAndIdentificationCard,
 } from "./components";
 import PatientDeleteDialog from "@/features/patients/ui/PatientDeleteDialog";
-import { PATIENTS_ROUTES } from "@/entities/patients/routes";
 import { Edit } from "lucide-react";
+import { ROUTES } from "@/shared/routes";
 
 export default function PatientDetailsPage() {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.patient]);
@@ -21,7 +21,7 @@ export default function PatientDetailsPage() {
   const { patient, isLoading, error } = useGetPatient(patientId);
   const navigate = useNavigate();
   const onSuccess = () => {
-    navigate(PATIENTS_ROUTES.MAIN_PATH);
+    navigate(ROUTES.PATIENTS.MAIN_PATH);
   };
   if (isLoading) {
     return <PatientPageSkeleton />;
@@ -35,7 +35,7 @@ export default function PatientDetailsPage() {
           ns: NAMESPACE_KEYS.patient,
           id: patientId,
         })}
-        backToPath={PATIENTS_ROUTES.MAIN_PATH}
+        backToPath={ROUTES.PATIENTS.MAIN_PATH}
         backToText={t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient })}
       />
     );
@@ -49,14 +49,14 @@ export default function PatientDetailsPage() {
           ns: NAMESPACE_KEYS.patient,
         })}
         backTo={{
-          href: PATIENTS_ROUTES.MAIN_PATH,
+          href: ROUTES.PATIENTS.MAIN_PATH,
           label: t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient }),
         }}
         actions={[
           {
             label: t(PATIENTS_KEYS.edit, { ns: NAMESPACE_KEYS.patient }),
             href: generatePath(
-              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.EDIT}`,
+              `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.EDIT}`,
               {
                 patientId,
               }

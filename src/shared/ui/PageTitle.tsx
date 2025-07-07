@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { ROUTES } from "@/shared/routes";
 import { SIDEBAR_KEYS } from "@/shared/i18n/keys/sidebar";
 

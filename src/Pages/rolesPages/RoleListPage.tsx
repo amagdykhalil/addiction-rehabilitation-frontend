@@ -6,9 +6,9 @@ import {
   CardDescription,
 } from "@/shared/ui/card";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { ROLES_KEYS } from "@/entities/roles/lib/translationKeys";
-import { useGetRoles } from "@/features/roles/hooks/useGetRoles";
+import { useGetRoles } from "@/features/roles/hooks";
 import {
   Table,
   TableHeader,

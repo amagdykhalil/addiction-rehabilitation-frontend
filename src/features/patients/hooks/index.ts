@@ -7,3 +7,6 @@ export * from "./useDeletePatient";
 export * from "./useGetPatientByNationalId";
 export * from "./useGetPatientByPassportNumber";
 export * from "./usePatientsList";
+export * from "./usePatientExistsById";
+export * from "./usePatientExistsByNationalId";
+export * from "./usePatientExistsByPassport";

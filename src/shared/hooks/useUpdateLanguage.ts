@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import type { Locale } from "@/shared/i18n/constants/locales";
-import { setLanguageCookie } from "../api/lang";
+import { setLanguageCookie } from "@/shared/api/lang";
 
 export function useUpdateLanguage() {
   const { i18n } = useTranslation();

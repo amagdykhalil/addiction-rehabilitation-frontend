@@ -1,5 +1,8 @@
-import { BaseFetch } from "@/shared/api/BaseFetch";
-import type { ILoginRequest, IAuthenticationResponse } from "../model/types";
+import { BaseFetch } from "@/shared/api";
+import type {
+  ILoginRequest,
+  IAuthenticationResponse,
+} from "@/entities/auth/model/types";
 
 interface IForgotPasswordRequest {
   email: string;
@@ -19,57 +22,72 @@ interface IChangeEmailRequest {
   newEmail: string;
 }
 
+async function login(data: ILoginRequest) {
+  return BaseFetch<IAuthenticationResponse>("/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+async function logout() {
+  return BaseFetch<void>("/auth/revoke-token", {
+    method: "POST",
+  });
+}
+async function forgotPassword(data: IForgotPasswordRequest) {
+  return BaseFetch("/auth/forgot-password", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+async function resetPassword(data: IResetPasswordRequest) {
+  return BaseFetch("/auth/reset-password", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+async function resendConfirmationEmail(email: string) {
+  return BaseFetch("/auth/resend-confirmation-email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  });
+}
+async function changePassword(data: IChangePasswordRequest) {
+  return BaseFetch("/auth/change-password", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+async function requestChangeEmail(data: IChangeEmailRequest) {
+  return BaseFetch("/auth/change-email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+}
+
 export const authApi = {
-  login: (data: ILoginRequest) =>
-    BaseFetch<IAuthenticationResponse>("/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }),
-  logout: () =>
-    BaseFetch<void>("/auth/revoke-token", {
-      method: "POST",
-    }),
-  forgotPassword: (data: IForgotPasswordRequest) =>
-    BaseFetch("/auth/forgot-password", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }),
-  resetPassword: (data: IResetPasswordRequest) =>
-    BaseFetch("/auth/reset-password", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }),
-  resendConfirmationEmail: (email: string) =>
-    BaseFetch("/auth/resend-confirmation-email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    }),
-  changePassword: (data: IChangePasswordRequest) =>
-    BaseFetch("/auth/change-password", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }),
-  requestChangeEmail: (data: IChangeEmailRequest) =>
-    BaseFetch("/auth/change-email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }),
+  login,
+  logout,
+  forgotPassword,
+  resetPassword,
+  resendConfirmationEmail,
+  changePassword,
+  requestChangeEmail,
 };

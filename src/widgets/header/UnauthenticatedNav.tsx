@@ -2,7 +2,7 @@ import { Button } from "@/shared/ui/button";
 import { Link } from "react-router-dom";
 import { LanguageToggle } from "./LanguageToggle";
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 
 import { useTranslation } from "react-i18next";
 

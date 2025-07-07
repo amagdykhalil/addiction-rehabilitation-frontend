@@ -6,9 +6,9 @@ import { Card, CardContent } from "@/shared/ui/card";
 import { CardHeaderWithTitle } from "@/shared/ui/cards/CardHeaderWithTitle";
 import { CustomFormField } from "@/shared/ui";
 import { CountrySelect } from "@/shared/ui/SelectCountry";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
-import { useGetCountries } from "@/features/countries/hooks/useGetCountries";
+import { useGetCountries } from "@/features/countries/hooks";
 import type { Patient } from "@/entities/patients/model";
 import type { PatientFormData } from "../types";
 
@@ -16,9 +16,7 @@ interface PatientContactSectionProps {
   patient?: Patient;
 }
 
-export function PatientContactSection({
-  patient,
-}: PatientContactSectionProps) {
+export function PatientContactSection({ patient }: PatientContactSectionProps) {
   const { t } = useTranslation([NAMESPACE_KEYS.patient]);
   const form = useFormContext<PatientFormData>();
   const { countries } = useGetCountries();

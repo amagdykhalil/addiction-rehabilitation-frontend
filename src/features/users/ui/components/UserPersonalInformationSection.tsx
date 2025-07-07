@@ -5,9 +5,9 @@ import { Label } from "@/shared/ui/label";
 import { Card, CardContent } from "@/shared/ui/card";
 import { CardHeaderWithTitle } from "@/shared/ui/cards/CardHeaderWithTitle";
 import { CustomFormField } from "@/shared/ui";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
-import type { UserFormData } from "../types";
+import type { UserFormData } from "@/features/users/models/types";
 
 export function UserPersonalInformationSection({
   isEdit,

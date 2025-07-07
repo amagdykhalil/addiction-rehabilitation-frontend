@@ -5,12 +5,12 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 import { Checkbox } from "@/shared/ui/checkbox";
 import { Label } from "@/shared/ui/label";
 import { useFormContext, Controller } from "react-hook-form";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
-import type { UserFormData } from "../types";
+import type { UserFormData } from "@/features/users/models/types";
 import { useState, useRef, useLayoutEffect } from "react";
-import useGetRoles from "@/features/roles/hooks/useGetRoles";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { useGetRoles } from "@/features/roles/hooks";
+import { useCurrentLanguage } from "@/shared/hooks";
 
 const MIN_DIALOG_WIDTH = 220;
 

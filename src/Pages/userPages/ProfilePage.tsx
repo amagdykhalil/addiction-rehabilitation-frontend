@@ -7,12 +7,12 @@ import {
 } from "@/shared/ui/card";
 import { useTranslation } from "react-i18next";
 import { UserForm } from "@/features/users/ui/UserForm";
-import { useUpdateUser } from "@/features/users/hooks/useUpdateUser";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { useUpdateUser } from "@/features/users/hooks";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USER_KEYS } from "@/entities/user/lib/translationKeys";
 import { PageHeader } from "@/shared/ui";
-import { mapFormDataToUser } from "@/features/users/ui/utils/formUtils";
-import type { UserFormData } from "@/features/users/ui/types";
+import { mapFormDataToUser } from "@/features/users/models/formUtils";
+import type { UserFormData } from "@/features/users/models/types";
 import { useAuth } from "@/entities/auth/model/useAuth";
 import { toast } from "sonner";
 

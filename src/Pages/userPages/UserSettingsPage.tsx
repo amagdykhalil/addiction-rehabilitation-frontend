@@ -1,8 +1,11 @@
 import { useSearchParams } from "react-router-dom";
-import { UserChangeEmailForm } from "../../features/user/ui/UserChangeEmailForm";
-import { UserChangePasswordForm } from "../../features/user/ui/UserChangePasswordForm";
+import { UserChangeEmailForm } from "@/features/user/ui/UserChangeEmailForm";
+import { UserChangePasswordForm } from "@/features/user/ui/UserChangePasswordForm";
 import { SettingsSidebar } from "@/features/user/ui/SettingsSidebar";
-import { SECTION_KEYS, type SectionKey } from "@/features/user/types";
+import {
+  SECTION_KEYS,
+  type SectionKey,
+} from "@/features/patients/models/types";
 
 export const UserSettingsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();

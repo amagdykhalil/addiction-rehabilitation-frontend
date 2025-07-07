@@ -2,7 +2,7 @@ import React from "react";
 import { LoginForm } from "@/features/auth/ui/LoginForm";
 import { useLogin } from "@/features/auth/hooks/useLogin";
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/shared/routes";
 import { useTranslation } from "react-i18next";

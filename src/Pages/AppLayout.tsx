@@ -1,5 +1,5 @@
 import { AppSidebar } from "@/widgets/sidebar";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { useCurrentLanguage } from "@/shared/hooks";
 import { SidebarInset, SidebarProvider } from "@/shared/ui/sidebar";
 import { Header } from "@/widgets/header/Header";
 import { useAuth } from "@/entities/auth/model/useAuth";

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import type { TFunction } from "i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { AUTH_KEYS } from "../lib/translationKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
 
 export const getForgotPasswordValidationSchema = (t: TFunction) => {
   return z.object({

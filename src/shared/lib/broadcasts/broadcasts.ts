@@ -2,12 +2,12 @@
 
 import { store } from "@/app/stores";
 import { logout, setCredentials } from "@/entities/auth/model";
-import { BROADCAST_CHANNEL, BROADCAST_TYPE } from "../../types/broadcast";
+import { BROADCAST_CHANNEL, BROADCAST_TYPE } from "@/shared/types/broadcast";
 import type { IAuthenticationResponse } from "@/entities/auth/model/types";
 import { mainQueryClient } from "@/app/queryClient";
-import { isAtLoginPage } from "./../auth";
-import { ROUTES } from "../../routes";
-import { isPublicRoute } from "../auth/auth";
+
+import { ROUTES } from "@/shared/routes";
+import { isAtLoginPage, isPublicRoute } from "@/shared/lib/auth";
 
 export const broadcast = new BroadcastChannel(BROADCAST_CHANNEL.AUTH);
 

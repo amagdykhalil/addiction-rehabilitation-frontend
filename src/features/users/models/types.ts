@@ -1,7 +1,7 @@
 import { z } from "zod";
 import type { TFunction } from "i18next";
-import { VALIDATOR_KEYS } from "@/shared/i18n/keys/validatorKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { VALIDATOR_KEYS } from "@/shared/i18n/keys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { Gender } from "@/shared/types/enums";
 
 export const createUserFormSchema = (t: TFunction, isEdit = false) => {

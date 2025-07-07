@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 import { authApi } from "@/entities/auth/api";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
 
 interface IChangeEmailRequest {

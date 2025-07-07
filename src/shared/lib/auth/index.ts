@@ -4,6 +4,7 @@ import {
   handleAuthorized,
   handleUnauthorized,
   attachAuthHeader,
+  isPublicRoute,
 } from "./auth";
 import { isAuthExpired } from "./isExpired";
 
@@ -15,4 +16,5 @@ export {
   attachAuthHeader,
   isTokenRefreshing,
   isAuthExpired,
+  isPublicRoute,
 };

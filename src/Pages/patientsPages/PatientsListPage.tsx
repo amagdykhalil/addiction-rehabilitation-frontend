@@ -13,7 +13,7 @@ import { TableFilters } from "@/shared/ui/TableFilters";
 import { usePatientsList } from "@/features/patients/hooks";
 import { PatientsMobileView } from "@/features/patients/ui/PatientsMobileView";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 
 export default function PatientsListPage() {

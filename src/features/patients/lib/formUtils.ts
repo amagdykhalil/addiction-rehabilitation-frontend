@@ -1,6 +1,6 @@
 import type { Patient } from "@/entities/patients/model";
 import type { UseFormReturn } from "react-hook-form";
-import type { PatientFormData } from "../types";
+import type { PatientFormData } from "@/features/patients/ui/types";
 import { Gender } from "@/shared/types/enums";
 
 /**

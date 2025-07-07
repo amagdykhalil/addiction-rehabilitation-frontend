@@ -22,13 +22,13 @@ import {
   useSidebar,
 } from "@/shared/ui/sidebar";
 import { generatePath, Link } from "react-router-dom";
-import { USER_ROUTES } from "@/entities/user/routes";
 import { useLogout } from "@/features/auth/hooks";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USER_KEYS } from "@/entities/user/lib/translationKeys";
 import { Spinner } from "@/shared/ui/spinner";
 import type { User } from "@/entities/users/model";
+import { ROUTES } from "@/shared/routes";
 
 export function NavUser({ user, loading }: { user?: User; loading: boolean }) {
   const { isMobile } = useSidebar();
@@ -96,7 +96,7 @@ export function NavUser({ user, loading }: { user?: User; loading: boolean }) {
             <DropdownMenuGroup>
               <Link
                 to={generatePath(
-                  `${USER_ROUTES.MAIN_PATH}/${USER_ROUTES.PROFILE}`
+                  `${ROUTES.USER.MAIN_PATH}/${ROUTES.USER.PROFILE}`
                 )}
               >
                 <DropdownMenuItem className="cursor-pointer">
@@ -107,7 +107,7 @@ export function NavUser({ user, loading }: { user?: User; loading: boolean }) {
               <Link
                 to={
                   generatePath(
-                    `${USER_ROUTES.MAIN_PATH}/${USER_ROUTES.SETTINGS}`
+                    `${ROUTES.USER.MAIN_PATH}/${ROUTES.USER.SETTINGS}`
                   ) + "?section=notifications"
                 }
               >

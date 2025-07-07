@@ -1,8 +1,8 @@
-import { useDeleteUser } from "@/features/users/hooks/useDeleteUser";
+import { useDeleteUser } from "@/features/users/hooks";
 import { DeleteDialog } from "@/shared/ui/DeleteDialog";
 import { useTranslation } from "react-i18next";
 import { USER_KEYS } from "@/entities/users/lib/translationKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 
 interface UserDeleteDialogProps {
   userId: string;

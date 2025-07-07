@@ -1,17 +1,17 @@
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { useTranslation } from "react-i18next";
-import useUpdateRole from "../hooks/useUpdateRole";
+import { useUpdateRole } from "../hooks";
 import { useEffect } from "react";
 import ROLES_KEYS from "@/entities/roles/lib/translationKeys";
 import ActionDialog from "@/shared/ui/ActionDialog";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { RoleDto } from "@/entities/roles/api";
-import { CreateEditRoleSchema, type EditRoleSchemaData } from "../types";
+import { CreateEditRoleSchema, type EditRoleSchemaData } from "../models/types";
 import { Button } from "@/shared/ui";
 import { Edit } from "lucide-react";
 import { FormField } from "@/shared/ui/form/FormField";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { useCurrentLanguage } from "@/shared/hooks";
 
 export function EditRoleDialog({ role }: { role: RoleDto }) {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.roles]);

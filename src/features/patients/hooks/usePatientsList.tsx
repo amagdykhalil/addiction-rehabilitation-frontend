@@ -8,10 +8,10 @@ import type {
   SortConfig,
 } from "@/shared/ui/TableFilters/types";
 import { CountrySelect } from "@/shared/ui/SelectCountry";
-import useGetCountries from "@/features/countries/hooks/useGetCountries";
+import { useGetCountries } from "@/features/countries/hooks";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { Gender, SortDirection } from "@/shared/types/enums";
 

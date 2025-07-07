@@ -1,5 +1,5 @@
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { VALIDATOR_KEYS } from "@/shared/i18n/keys/validatorKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { VALIDATOR_KEYS } from "@/shared/i18n/keys";
 import type { TFunction } from "i18next";
 import { z } from "zod";
 

@@ -5,7 +5,7 @@ import {
   LOCALE_NAMES,
   type Locale,
 } from "@/shared/i18n/constants/locales";
-import { useUpdateLanguage } from "@/shared/hooks/useUpdateLanguage";
+import { useUpdateLanguage } from "@/shared/hooks";
 import I18n from "@/shared/lib/initI18n";
 
 export const LanguageToggle = ({ className }: { className?: string }) => {

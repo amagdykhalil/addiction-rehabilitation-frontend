@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useQueryState } from "nuqs";
-import { useResetPassword } from "../hooks/useResetPassword";
+import { useResetPassword } from "@/features/auth/hooks";
 import {
   AlertDescription,
   Alert,
@@ -11,9 +11,9 @@ import {
   CardHeader,
 } from "@/shared/ui";
 import { AlertTriangle } from "lucide-react";
-import { ResetPasswordForm } from "./ResetPasswordForm";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { AUTH_KEYS } from "../../../entities/auth/lib/translationKeys";
+import { ResetPasswordForm } from "@/features/auth/ui";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
 import { ROUTES } from "@/shared/routes";
 import { Link } from "react-router-dom";
 import { useState } from "react";

@@ -1,5 +1,5 @@
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import type { TFunction } from "i18next";
 import { z } from "zod";
 

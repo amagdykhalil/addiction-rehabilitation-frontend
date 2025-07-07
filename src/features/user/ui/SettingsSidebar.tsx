@@ -4,7 +4,7 @@ import {
   Mail as IconMail,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USER_KEYS } from "@/entities/user/lib/translationKeys";
 type SectionKey = "changeEmail" | "changePassword" | "notifications";
 

@@ -4,7 +4,7 @@ import { Button } from "@/shared/ui/button";
 import { Card, CardContent } from "@/shared/ui/card";
 import { CardHeaderWithTitle } from "@/shared/ui/cards/CardHeaderWithTitle";
 import { CustomFormField } from "@/shared/ui";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import type { PatientFormData } from "../types";
 import { useFormContext } from "react-hook-form";

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { generatePath, useNavigate } from "react-router-dom";
-import useUserExistsById from "@/features/users/hooks/useUserExistsById";
-import useUserExistsByNationalId from "@/features/users/hooks/useUserExistsByNationalId";
-import useUserExistsByPassport from "@/features/users/hooks/useUserExistsByPassport";
-import useUserExistsByEmail from "@/features/users/hooks/useUserExistsByEmail";
-import { USERS_ROUTES } from "@/entities/users/routes/usersRoutesPaths";
+import { useUserExistsById } from "@/features/users/hooks";
+import { useUserExistsByNationalId } from "@/features/users/hooks";
+import { useUserExistsByPassport } from "@/features/users/hooks";
+import { useUserExistsByEmail } from "@/features/users/hooks";
+import { ROUTES } from "@/shared/routes";
 
 export type UserSearchType = "id" | "nationalId" | "passport" | "email";
 interface UserSearchParams {
@@ -57,7 +57,7 @@ export function useUserSearch(initialType: UserSearchType = "id") {
         searchParams.type === "id" ? searchParams.value : (userId ?? null);
       setFoundUserId(FoundId);
       navigate(
-        generatePath(`${USERS_ROUTES.MAIN_PATH}/${USERS_ROUTES.DETAIL}`, {
+        generatePath(`${ROUTES.USERS.MAIN_PATH}/${ROUTES.USERS.DETAIL}`, {
           userId: String(FoundId),
         })
       );

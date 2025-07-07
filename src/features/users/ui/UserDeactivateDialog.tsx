@@ -2,7 +2,7 @@ import { useDeactivateUser } from "@/features/users/hooks/useDeactivateUser";
 import ActionDialog from "@/shared/ui/ActionDialog";
 import { useTranslation } from "react-i18next";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { Button } from "@/shared/ui/button";
 import { Power } from "lucide-react";
 import type { User } from "@/entities/users/model";

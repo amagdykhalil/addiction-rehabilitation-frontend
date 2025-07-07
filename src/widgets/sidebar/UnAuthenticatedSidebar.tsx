@@ -1,9 +1,9 @@
 import { ButtonLink } from "@/shared/ui/button-link";
-import { LanguageToggle } from "../header/LanguageToggle";
+import { LanguageToggle } from "@/widgets/header/LanguageToggle";
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { useTranslation } from "react-i18next";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { useCurrentLanguage } from "@/shared/hooks";
 
 export const UnAuthenticatedSidebar = () => {
   const { t } = useTranslation([NAMESPACE_KEYS.auth]);

@@ -9,10 +9,10 @@ import { UsersTable } from "@/features/users/ui/UsersTable";
 import { PaginationBar } from "@/shared/ui/PaginationBar";
 import { UsersPageHeader } from "@/features/users/ui/UsersPageHeader";
 import { TableFilters } from "@/shared/ui/TableFilters";
-import { useUsersList } from "@/features/users/hooks/useUsersList";
+import { useUsersList } from "@/features/users/hooks";
 import { UsersMobileView } from "@/features/users/ui/UsersMobileView";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 
 export const UsersListPage = () => {

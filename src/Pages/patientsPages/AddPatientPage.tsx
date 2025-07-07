@@ -9,12 +9,12 @@ import { generatePath, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PatientForm } from "@/features/patients/ui/PatientForm";
 import { useAddPatient } from "@/features/patients/hooks/useAddPatient";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { PageHeader } from "@/shared/ui";
 import type { PatientFormData } from "@/features/patients/ui/types";
-import { mapFormDataToPatient } from "@/features/patients/ui/utils/formUtils";
-import { PATIENTS_ROUTES } from "@/entities/patients/routes";
+import { mapFormDataToPatient } from "@/features/patients/lib/formUtils";
+import { ROUTES } from "@/shared/routes";
 
 export default function AddPatientPage() {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.patient]);
@@ -32,7 +32,7 @@ export default function AddPatientPage() {
         if (response?.result) {
           navigate(
             generatePath(
-              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
+              `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.DETAIL}`,
               {
                 patientId: String(response.result),
               }
@@ -40,7 +40,7 @@ export default function AddPatientPage() {
           );
         } else {
           // Fallback to patients list if no id returned
-          navigate(PATIENTS_ROUTES.MAIN_PATH);
+          navigate(ROUTES.PATIENTS.MAIN_PATH);
         }
       },
     });
@@ -54,7 +54,7 @@ export default function AddPatientPage() {
           ns: NAMESPACE_KEYS.patient,
         })}
         backTo={{
-          href: PATIENTS_ROUTES.MAIN_PATH,
+          href: ROUTES.PATIENTS.MAIN_PATH,
           label: t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient }),
         }}
       />

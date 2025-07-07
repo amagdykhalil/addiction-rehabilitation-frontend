@@ -16,15 +16,13 @@ import {
 } from "@/shared/ui/select";
 import { Plus, User } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
-import useUserSearch, {
-  type UserSearchType,
-} from "@/features/users/hooks/useUserSearch";
+import { useUserSearch, type UserSearchType } from "@/features/users/hooks";
 import FormErrorMessage from "@/shared/ui/FormErrorMessage";
 import { Input } from "@/shared/ui";
-import { USERS_ROUTES } from "@/entities/users/routes/usersRoutesPaths";
 import { generatePath } from "react-router-dom";
+import { ROUTES } from "@/shared/routes";
 
 export const UsersPageHeader = () => {
   const { t } = useTranslation([NAMESPACE_KEYS.users]);
@@ -61,7 +59,7 @@ export const UsersPageHeader = () => {
             label: t(USERS_KEYS.search.addUser, {
               ns: NAMESPACE_KEYS.users,
             }),
-            href: generatePath(`${USERS_ROUTES.MAIN_PATH}/add`),
+            href: generatePath(`${ROUTES.USERS.MAIN_PATH}/add`),
             variant: "default",
             size: "default",
             icon: <Plus className="h-4 w-4 mr-2" />,
@@ -97,10 +95,12 @@ export const UsersPageHeader = () => {
               <Select
                 value={searchParams.type}
                 onValueChange={(value) =>
-                  setSearchParams((prev) => ({
-                    ...prev,
-                    type: value as UserSearchType,
-                  }))
+                  setSearchParams(
+                    (prev: { type: UserSearchType; value: string }) => ({
+                      ...prev,
+                      type: value as UserSearchType,
+                    })
+                  )
                 }
               >
                 <SelectTrigger>
@@ -151,10 +151,12 @@ export const UsersPageHeader = () => {
               <Input
                 value={searchParams.value}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setSearchParams((prev) => ({
-                    ...prev,
-                    value: e.target.value,
-                  }))
+                  setSearchParams(
+                    (prev: { type: UserSearchType; value: string }) => ({
+                      ...prev,
+                      value: e.target.value,
+                    })
+                  )
                 }
                 placeholder={
                   searchParams.type === "id"

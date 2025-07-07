@@ -21,14 +21,12 @@ import {
 import { Link, generatePath } from "react-router-dom";
 import { ROUTES } from "@/shared/routes";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { SIDEBAR_KEYS } from "@/shared/i18n/keys/sidebar";
-import { USER_ROUTES } from "@/entities/user/routes";
-import { useCurrentLanguage } from "@/shared/hooks/useCurrentLanguage";
+import { useCurrentLanguage } from "@/shared/hooks";
 import { useAuth } from "@/entities/auth/model/useAuth";
 import { LogoIcon } from "@/shared/ui/LogoIcon";
-import { PATIENTS_ROUTES } from "@/entities/patients/routes";
-import useGetUser from "@/features/users/hooks/useGetUser";
+import { useGetUser } from "@/features/users/hooks";
 
 export function AppSidebar() {
   const { t } = useTranslation([NAMESPACE_KEYS.sidebar, NAMESPACE_KEYS.common]);
@@ -45,7 +43,7 @@ export function AppSidebar() {
       },
       {
         title: t(SIDEBAR_KEYS.patients),
-        url: PATIENTS_ROUTES.MAIN_PATH,
+        url: ROUTES.PATIENTS.MAIN_PATH,
         icon: IconUsers,
       },
       {
@@ -62,7 +60,7 @@ export function AppSidebar() {
     navSecondary: [
       {
         title: t(SIDEBAR_KEYS.settings),
-        url: generatePath(`${USER_ROUTES.MAIN_PATH}/${USER_ROUTES.SETTINGS}`),
+        url: generatePath(`${ROUTES.USER.MAIN_PATH}/${ROUTES.USER.SETTINGS}`),
         icon: IconSettings,
       },
     ],

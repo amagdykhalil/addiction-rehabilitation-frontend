@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { patientsApi } from "@/entities/patients/api";
 import type { Patient } from "@/entities/patients/model";
 import type { ApiResponse } from "@/shared/types";
-import { usersKeys } from "@/features/users/hooks/usersKeys";
+import { usersKeys } from "@/features/users/hooks";
 
 export function useUpdatePatient() {
   const queryClient = useQueryClient();

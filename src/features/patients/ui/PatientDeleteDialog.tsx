@@ -2,7 +2,7 @@ import { useDeletePatient } from "@/features/patients/hooks/useDeletePatient";
 import { DeleteDialog } from "@/shared/ui/DeleteDialog";
 import { useTranslation } from "react-i18next";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import type { Patient } from "@/entities/patients/model";
 // import { useNavigate } from "react-router-dom";
 

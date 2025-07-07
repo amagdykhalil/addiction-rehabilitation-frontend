@@ -3,7 +3,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 
 import { cn } from "@/shared/lib/index";
-import { useCurrentLanguage } from "../hooks/useCurrentLanguage";
+import { useCurrentLanguage } from "../hooks";
 
 function Dialog({
   ...props

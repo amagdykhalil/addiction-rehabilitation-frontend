@@ -7,13 +7,13 @@ import {
 } from "@/shared/ui/dropdown-menu";
 import { Edit, Eye, MoreHorizontal } from "lucide-react";
 import { generatePath, Link } from "react-router-dom";
-import { COMMON_KEYS } from "@/shared/i18n/keys/commonKeys";
+import { COMMON_KEYS } from "@/shared/i18n/keys";
 import PatientDeleteDialog from "@/features/patients/ui/PatientDeleteDialog";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { useTranslation } from "react-i18next";
-import { PATIENTS_ROUTES } from "@/entities/patients/routes";
 import type { Patient } from "@/entities/patients/model";
+import { ROUTES } from "@/shared/routes";
 
 export const PatientMenuAction = ({
   id,
@@ -34,7 +34,7 @@ export const PatientMenuAction = ({
         <DropdownMenuItem asChild className="cursor-pointer">
           <Link
             to={generatePath(
-              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.DETAIL}`,
+              `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.DETAIL}`,
               {
                 patientId: id,
               }
@@ -49,7 +49,7 @@ export const PatientMenuAction = ({
         <DropdownMenuItem asChild className="cursor-pointer">
           <Link
             to={generatePath(
-              `${PATIENTS_ROUTES.MAIN_PATH}/${PATIENTS_ROUTES.EDIT}`,
+              `${ROUTES.PATIENTS.MAIN_PATH}/${ROUTES.PATIENTS.EDIT}`,
               {
                 patientId: id,
               }

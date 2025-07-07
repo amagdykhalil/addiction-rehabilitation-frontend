@@ -9,8 +9,8 @@ import {
 } from "@/shared/ui/dialog";
 import { Button, DeleteButton } from "@/shared/ui/button";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
-import { COMMON_KEYS } from "@/shared/i18n/keys/commonKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS } from "@/shared/i18n/keys";
 
 interface DeleteDialogProps {
   onDelete: (onSuccess: () => void) => Promise<void>;

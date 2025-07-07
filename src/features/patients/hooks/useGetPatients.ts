@@ -29,7 +29,7 @@ export function useGetPatients(params: GetPatientsParams = {}) {
       queryClient.prefetchQuery({
         queryKey: patientsKeys.list(
           nextParams as Record<string, unknown>,
-          current
+          current,
         ),
         queryFn: ({ signal }) => patientsApi.getPatients(nextParams, signal),
       });
@@ -40,7 +40,7 @@ export function useGetPatients(params: GetPatientsParams = {}) {
       queryClient.prefetchQuery({
         queryKey: patientsKeys.list(
           prevParams as Record<string, unknown>,
-          current
+          current,
         ),
         queryFn: ({ signal }) => patientsApi.getPatients(prevParams, signal),
       });

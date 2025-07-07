@@ -6,9 +6,9 @@ import { Skeleton } from "@/shared/ui/skeleton";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys/namespacesKeys";
+import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
-import { PATIENTS_ROUTES } from "@/entities/patients/routes";
+import { ROUTES } from "../routes";
 
 export function PatientPageSkeleton() {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.patient]);
@@ -18,7 +18,7 @@ export function PatientPageSkeleton() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="sm" asChild>
-            <Link to={PATIENTS_ROUTES.MAIN_PATH}>
+            <Link to={ROUTES.PATIENTS.MAIN_PATH}>
               <ArrowLeft className="h-4 w-4 mr-2" />
               {t(PATIENTS_KEYS.backToList, { ns: NAMESPACE_KEYS.patient })}
             </Link>

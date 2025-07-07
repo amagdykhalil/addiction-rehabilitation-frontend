@@ -1,12 +1,9 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 
-const PatientsLayout: React.FC = () => {
+export default function PatientsLayout() {
   return (
     <div className="patients-layout">
       <Outlet />
     </div>
   );
-};
-
-export default PatientsLayout;
+}
