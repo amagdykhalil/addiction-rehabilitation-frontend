@@ -7,5 +7,22 @@
   "invalidFormat": "Invalid format",
   "identificationRequired": "Either National ID or Passport number is required",
   "phoneNumberInvalid": "Phone number must be in format: 01012345678, 01112345678, 01212345678, or 01512345678",
-  "emailInvalid": "Please enter a valid email address."
+  "email": {
+    "emailInvalid": "Please enter a valid email address.",
+    "emailRequired": "Email is required."
+  },
+  "password": {
+    "requirementMinLength": "At least 8 characters long",
+    "requirementMatch": "Must match the confirmation password",
+    "requirementDigit": "At least one digit (0-9)",
+    "requirementUpper": "At least one uppercase letter (A-Z)",
+    "requirementLower": "At least one lowercase letter (a-z)",
+    "requirementNonAlpha": "At least one special character (e.g., !@#$%)",
+    "requirementMaxLength": "No more than 20 characters",
+    "passwordDigit": "Password must contain at least one digit (0-9)",
+    "passwordUpper": "Password must contain at least one uppercase letter (A-Z)",
+    "passwordLower": "Password must contain at least one lowercase letter (a-z)",
+    "passwordNonAlpha": "Password must contain at least one special character (e.g., !@#$%)",
+    "passwordMaxLength": "Password must not exceed 20 characters"
+  }
 }

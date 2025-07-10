@@ -11,7 +11,7 @@ import { CountrySelect } from "@/shared/ui/SelectCountry";
 import { useGetCountries } from "@/features/countries/hooks";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { Gender, SortDirection } from "@/shared/types/enums";
 
@@ -93,12 +93,12 @@ export function usePatientsList() {
             value: "all",
           },
           {
-            label: t(PATIENTS_KEYS.gender.male, { ns: NAMESPACE_KEYS.patient }),
+            label: t(COMMON_KEYS.gender.male, { ns: NAMESPACE_KEYS.common }),
             value: Gender.Male,
           },
           {
-            label: t(PATIENTS_KEYS.gender.female, {
-              ns: NAMESPACE_KEYS.patient,
+            label: t(COMMON_KEYS.gender.female, {
+              ns: NAMESPACE_KEYS.common,
             }),
             value: Gender.Female,
           },

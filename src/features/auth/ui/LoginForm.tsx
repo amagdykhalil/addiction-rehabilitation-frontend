@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { AUTH_KEYS } from "../../../entities/auth/lib/translationKeys";
 import { getLoginValidationSchema } from "../../../entities/auth/model/loginValidationSchema";
 import {
@@ -83,7 +83,9 @@ export const LoginForm = ({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      {t(AUTH_KEYS.login.email, { ns: NAMESPACE_KEYS.auth })}
+                      {t(COMMON_KEYS.fields.email, {
+                        ns: NAMESPACE_KEYS.common,
+                      })}
                     </FormLabel>
                     <FormControl>
                       <div className="relative">
@@ -91,8 +93,8 @@ export const LoginForm = ({
                         <Input
                           {...field}
                           type="email"
-                          placeholder={t(AUTH_KEYS.login.emailPlaceholder, {
-                            ns: NAMESPACE_KEYS.auth,
+                          placeholder={t(COMMON_KEYS.fields.emailPlaceholder, {
+                            ns: NAMESPACE_KEYS.common,
                           })}
                           className="pl-10"
                           disabled={isLoading}
@@ -110,7 +112,9 @@ export const LoginForm = ({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      {t(AUTH_KEYS.login.password, { ns: NAMESPACE_KEYS.auth })}
+                      {t(COMMON_KEYS.fields.password, {
+                        ns: NAMESPACE_KEYS.common,
+                      })}
                     </FormLabel>
                     <FormControl>
                       <div className="relative">
@@ -118,9 +122,12 @@ export const LoginForm = ({
                         <Input
                           {...field}
                           type={showPassword ? "text" : "password"}
-                          placeholder={t(AUTH_KEYS.login.passwordPlaceholder, {
-                            ns: NAMESPACE_KEYS.auth,
-                          })}
+                          placeholder={t(
+                            COMMON_KEYS.fields.passwordPlaceholder,
+                            {
+                              ns: NAMESPACE_KEYS.common,
+                            }
+                          )}
                           className="pl-10 pr-10"
                           disabled={isLoading}
                         />

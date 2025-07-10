@@ -92,10 +92,6 @@ export const USERS_KEYS = {
     password: "details.password",
     personalImage: "details.personalImage",
   },
-  gender: {
-    male: "gender.male",
-    female: "gender.female",
-  },
   add: "add",
   form: {
     personalInfo: "form.personalInfo",

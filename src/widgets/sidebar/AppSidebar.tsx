@@ -4,7 +4,6 @@ import {
   User as IconUser,
   Settings as IconSettings,
   UserCog,
-  UserCog,
 } from "lucide-react";
 import { NavMain } from "./NavMain";
 import { NavSecondary } from "./NavSecondary";
@@ -35,8 +34,7 @@ export function AppSidebar() {
   const { isArabic } = useCurrentLanguage();
   const { isAuthenticated, authData } = useAuth();
   const { user, isLoading } = useGetUser(authData?.userId);
-  const { isAuthenticated, authData } = useAuth();
-  const { user, isLoading } = useGetUser(authData?.userId);
+
   const data = {
     navMain: [
       {
@@ -52,13 +50,7 @@ export function AppSidebar() {
       {
         title: t(SIDEBAR_KEYS.users),
         url: ROUTES.USERS.MAIN_PATH,
-        url: ROUTES.USERS.MAIN_PATH,
         icon: IconUser,
-      },
-      {
-        title: t(SIDEBAR_KEYS.roles),
-        url: ROUTES.ROLES.MAIN_PATH,
-        icon: UserCog,
       },
       {
         title: t(SIDEBAR_KEYS.roles),
@@ -103,7 +95,6 @@ export function AppSidebar() {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={user || undefined} loading={isLoading} />
         <NavUser user={user || undefined} loading={isLoading} />
       </SidebarFooter>
     </Sidebar>

@@ -106,9 +106,5 @@
     "updatePatient": "Update Patient",
     "addPatient": "Add Patient",
     "patient": "Patient"
-  },
-  "gender": {
-    "male": "Male",
-    "female": "Female"
   }
 }

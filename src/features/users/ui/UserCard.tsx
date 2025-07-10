@@ -2,7 +2,7 @@ import type { User } from "@/entities/users/model";
 import { Card, CardContent } from "@/shared/ui";
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 import { UserMenuAction } from "./UserMenuAction";
 import { NotProvidedText } from "@/shared/ui/NotProvidedText";
@@ -47,11 +47,11 @@ export const UserCard = ({ user }: { user: User }) => {
             </span>
             <span>
               {user.gender === 0
-                ? t(USERS_KEYS.gender.male, {
-                    ns: NAMESPACE_KEYS.users,
+                ? t(COMMON_KEYS.gender.male, {
+                    ns: NAMESPACE_KEYS.common,
                   })
-                : t(USERS_KEYS.gender.female, {
-                    ns: NAMESPACE_KEYS.users,
+                : t(COMMON_KEYS.gender.female, {
+                    ns: NAMESPACE_KEYS.common,
                   })}
             </span>
           </div>

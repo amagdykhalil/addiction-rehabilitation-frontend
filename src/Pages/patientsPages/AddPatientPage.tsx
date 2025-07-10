@@ -6,7 +6,6 @@ import {
   CardTitle,
 } from "@/shared/ui/card";
 import { generatePath, useNavigate } from "react-router-dom";
-import { generatePath, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PatientForm } from "@/features/patients/ui/PatientForm";
 import { useAddPatient } from "@/features/patients/hooks/useAddPatient";
@@ -50,10 +49,6 @@ export default function AddPatientPage() {
   return (
     <div className="space-y-6">
       <PageHeader
-        title={t(PATIENTS_KEYS.form.addPatient, { ns: NAMESPACE_KEYS.patient })}
-        subtitle={t(PATIENTS_KEYS.details.title, {
-          ns: NAMESPACE_KEYS.patient,
-        })}
         title={t(PATIENTS_KEYS.form.addPatient, { ns: NAMESPACE_KEYS.patient })}
         subtitle={t(PATIENTS_KEYS.details.title, {
           ns: NAMESPACE_KEYS.patient,

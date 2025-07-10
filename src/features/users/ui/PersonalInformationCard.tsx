@@ -1,7 +1,7 @@
 import type { User } from "@/entities/users/model";
 import { Card, CardContent } from "@/shared/ui";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 import NotProvidedText from "@/shared/ui/NotProvidedText";
 import {
@@ -89,9 +89,9 @@ export const PersonalInformationCard = ({ user }: { user: User }) => {
             </span>
             <span className="ml-2">
               {user.gender === 0 ? (
-                t(USERS_KEYS.gender.male, { ns: NAMESPACE_KEYS.users })
+                t(COMMON_KEYS.gender.male, { ns: NAMESPACE_KEYS.common })
               ) : user.gender === 1 ? (
-                t(USERS_KEYS.gender.female, { ns: NAMESPACE_KEYS.users })
+                t(COMMON_KEYS.gender.female, { ns: NAMESPACE_KEYS.common })
               ) : (
                 <NotProvidedText>
                   {t(USERS_KEYS.details.notProvided, {

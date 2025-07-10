@@ -107,8 +107,4 @@ export const PATIENTS_KEYS = {
     addPatient: "form.addPatient",
     patient: "form.Patient",
   },
-  gender: {
-    male: "gender.male",
-    female: "gender.female",
-  },
 } as const;

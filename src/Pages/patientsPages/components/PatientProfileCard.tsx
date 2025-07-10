@@ -10,7 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import { Separator } from "@/shared/ui/separator";
 import { Calendar, Phone, MapPin, FileText } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { getAge } from "@/shared/lib/utils";
 import type { Patient } from "@/entities/patients/model";
@@ -51,10 +51,8 @@ export function PatientProfileCard({ patient }: PatientProfileCardProps) {
             className="text-sm"
           >
             {patient.gender === 0
-              ? t(PATIENTS_KEYS.gender.male, { ns: NAMESPACE_KEYS.patient })
-              : t(PATIENTS_KEYS.gender.female, { ns: NAMESPACE_KEYS.patient })}
-              ? t(PATIENTS_KEYS.gender.male, { ns: NAMESPACE_KEYS.patient })
-              : t(PATIENTS_KEYS.gender.female, { ns: NAMESPACE_KEYS.patient })}
+              ? t(COMMON_KEYS.gender.male, { ns: NAMESPACE_KEYS.common })
+              : t(COMMON_KEYS.gender.female, { ns: NAMESPACE_KEYS.common })}
           </Badge>
         </div>
 
@@ -70,7 +68,6 @@ export function PatientProfileCard({ patient }: PatientProfileCardProps) {
               </div>
               <div className="text-sm text-muted-foreground">
                 {getAge(patient.birthDate)}{" "}
-                {t(PATIENTS_KEYS.details.yearsOld, {
                 {t(PATIENTS_KEYS.details.yearsOld, {
                   ns: NAMESPACE_KEYS.patient,
                 })}
@@ -96,7 +93,6 @@ export function PatientProfileCard({ patient }: PatientProfileCardProps) {
             <div>
               <div className="text-sm font-medium">
                 {t(PATIENTS_KEYS.details.nationality, {
-                {t(PATIENTS_KEYS.details.nationality, {
                   ns: NAMESPACE_KEYS.patient,
                 })}
               </div>
@@ -111,14 +107,12 @@ export function PatientProfileCard({ patient }: PatientProfileCardProps) {
             <div>
               <div className="text-sm font-medium">
                 {t(PATIENTS_KEYS.details.idDocument, {
-                {t(PATIENTS_KEYS.details.idDocument, {
                   ns: NAMESPACE_KEYS.patient,
                 })}
               </div>
               <div className="text-sm text-muted-foreground">
                 {patient.nationalIdNumber ? (
                   <>
-                    {t(PATIENTS_KEYS.details.nationalId, {
                     {t(PATIENTS_KEYS.details.nationalId, {
                       ns: NAMESPACE_KEYS.patient,
                     })}
@@ -127,13 +121,11 @@ export function PatientProfileCard({ patient }: PatientProfileCardProps) {
                 ) : patient.passportNumber ? (
                   <>
                     {t(PATIENTS_KEYS.details.passport, {
-                    {t(PATIENTS_KEYS.details.passport, {
                       ns: NAMESPACE_KEYS.patient,
                     })}
                     : {patient.passportNumber}
                   </>
                 ) : (
-                  t(PATIENTS_KEYS.details.notProvided, {
                   t(PATIENTS_KEYS.details.notProvided, {
                     ns: NAMESPACE_KEYS.patient,
                   })

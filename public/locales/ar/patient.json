@@ -105,9 +105,5 @@
     "upload": "رفع",
     "updatePatient": "تحديث المريض",
     "addPatient": "إضافة مريض"
-  },
-  "gender": {
-    "male": "ذكر",
-    "female": "أنثى"
   }
 }

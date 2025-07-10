@@ -92,10 +92,7 @@
     "password": "كلمة المرور",
     "personalImage": "رابط صورة الملف الشخصي"
   },
-  "gender": {
-    "male": "ذكر",
-    "female": "أنثى"
-  },
+
   "add": "إضافة",
   "validation": {
     "firstNameRequired": "الاسم الأول مطلوب",

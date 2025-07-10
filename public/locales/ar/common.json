@@ -2,11 +2,13 @@
   "WelcomeMessage": "مرحباً بكم في مركز إعادة التأهيل من الإدمان",
   "loading": "جاري التحميل...",
   "saving": "جاري الحفظ...",
-  "error": "خطأ",
+  "sending": "جاري الإرسال...",
   "errors": {
+    "error": "خطأ",
     "unauthorized": "غير مصرح: يرجى تسجيل الدخول مرة أخرى.",
     "forbidden": "تم رفض الوصول: ليس لديك إذن للوصول إلى هذا.",
-    "unexpected": "حدث خطأ غير متوقع."
+    "unexpected": "حدث خطأ غير متوقع.",
+    "tryAgain": "حاول مرة أخرى."
   },
   "pagination": {
     "previous": "السابق",
@@ -36,13 +38,23 @@
     "viewDetails": "عرض التفاصيل"
   },
   "delete": {
-    "button": "حذف"
+    "button": "حذف",
+    "deleting": "جاري الحذف..."
   },
-  "deleting": "جاري الحذف...",
   "cancel": {
     "button": "إلغاء"
   },
   "confirm": {
     "text": "هل أنت متأكد أنك تريد المتابعة؟"
+  },
+  "fields": {
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "أدخل كلمة المرور"
+  },
+  "gender": {
+    "male": "ذكر",
+    "female": "أنثى"
   }
 }

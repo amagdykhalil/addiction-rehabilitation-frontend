@@ -7,19 +7,16 @@
     "button": "Delete",
     "confirm": "Are you sure you want to delete this user?"
   },
-  "notFound": {
-    "title": "User Not Found",
-    "message": "The user you're looking for could not be found."
+  "profile": {
+    "title": "Your Profile",
+    "subtitle": "Update your personal information",
+    "updated": "Your profile has beed updated successfully"
   },
-  "list": {
-    "title": "Users",
-    "subtitle": "Manage user accounts",
-    "userRecords": "User Records",
-    "showingUsers": "Showing",
-    "ofUsers": "of",
-    "viewDetails": "View Details",
-    "actions": "Actions",
-    "noUsers": "No users found"
+  "settings": {
+    "title": "Settings",
+    "changeEmail": "Chnage email",
+    "changePassword": "Change Password",
+    "notifications": "Notifications"
   },
   "search": {
     "title": "Search Users",

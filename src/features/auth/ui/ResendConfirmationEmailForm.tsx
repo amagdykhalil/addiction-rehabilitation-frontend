@@ -15,7 +15,7 @@ import {
 import { Alert, AlertDescription } from "@/shared/ui/alert";
 import { Mail, CheckCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
 import { getForgotPasswordValidationSchema } from "@/entities/auth/model/forgotPasswordValidationSchema";
 import {
@@ -109,7 +109,7 @@ export const ResendConfirmationEmailForm = ({
               }}
               className="w-full"
             >
-              {t(AUTH_KEYS.login.tryAgain, { ns: NAMESPACE_KEYS.auth })}
+              {t(COMMON_KEYS.errors.tryAgain, { ns: NAMESPACE_KEYS.common })}
             </Button>
           </div>
           <div className="text-center">
@@ -158,7 +158,9 @@ export const ResendConfirmationEmailForm = ({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      {t(AUTH_KEYS.login.email, { ns: NAMESPACE_KEYS.auth })}
+                      {t(COMMON_KEYS.fields.email, {
+                        ns: NAMESPACE_KEYS.common,
+                      })}
                     </FormLabel>
                     <FormControl>
                       <div className="relative">
@@ -166,8 +168,8 @@ export const ResendConfirmationEmailForm = ({
                         <Input
                           {...field}
                           type="email"
-                          placeholder={t(AUTH_KEYS.login.emailPlaceholder, {
-                            ns: NAMESPACE_KEYS.auth,
+                          placeholder={t(COMMON_KEYS.fields.emailPlaceholder, {
+                            ns: NAMESPACE_KEYS.common,
                           })}
                           className="pl-10"
                           disabled={isLoading}

@@ -10,7 +10,7 @@ import { Badge } from "@/shared/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import { User as UserIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { USERS_KEYS } from "@/entities/users/lib/translationKeys";
 import { ActiveStatusText } from "@/shared/ui/ActiveStatusText";
 
@@ -47,8 +47,8 @@ export const UserProfileCard = ({ user }: { user: User }) => {
               className="text-sm flex items-center gap-1"
             >
               {user.gender === 0
-                ? t(USERS_KEYS.gender.male, { ns: NAMESPACE_KEYS.users })
-                : t(USERS_KEYS.gender.female, { ns: NAMESPACE_KEYS.users })}
+                ? t(COMMON_KEYS.gender.male, { ns: NAMESPACE_KEYS.common })
+                : t(COMMON_KEYS.gender.female, { ns: NAMESPACE_KEYS.common })}
             </Badge>
           </div>
           {/* Status */}

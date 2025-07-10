@@ -70,12 +70,7 @@ export default function PatientDetailsPage() {
             patientId={patient.id}
             onSuccess={onSuccess}
             patient={patient}
-          />,
-          <PatientDeleteDialog
-            patientId={patient.id}
-            onSuccess={onSuccess}
-            patient={patient}
-          />,
+          />, 
         ]}
       />
 

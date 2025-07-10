@@ -1,4 +1,5 @@
 export const VALIDATOR_KEYS = {
+  login: "login",
   required: "required",
   betweenLength: "betweenLength",
   mustBeInPast: "mustBeInPast",
@@ -6,5 +7,22 @@ export const VALIDATOR_KEYS = {
   invalidFormat: "invalidFormat",
   identificationRequired: "identificationRequired",
   phoneNumberInvalid: "phoneNumberInvalid",
-  emailInvalid: "emailInvalid",
+  email: {
+    emailInvalid: "email.emailInvalid",
+    emailRequired: "email.emailRequired",
+  },
+  password: {
+    requirementMinLength: "password.requirementMinLength",
+    requirementMatch: "password.requirementMatch",
+    requirementDigit: "password.requirementDigit",
+    requirementUpper: "password.requirementUpper",
+    requirementLower: "password.requirementLower",
+    requirementNonAlpha: "password.requirementNonAlpha",
+    requirementMaxLength: "password.requirementMaxLength",
+    passwordDigit: "password.passwordDigit",
+    passwordUpper: "password.passwordUpper",
+    passwordLower: "password.passwordLower",
+    passwordNonAlpha: "password.passwordNonAlpha",
+    passwordMaxLength: "password.passwordMaxLength",
+  },
 } as const;

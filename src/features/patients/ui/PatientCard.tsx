@@ -3,7 +3,7 @@ import { getAge } from "@/shared/lib/utils";
 import { Card, CardContent } from "@/shared/ui";
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import { useTranslation } from "react-i18next";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { PATIENTS_KEYS } from "@/entities/patients/lib/translationKeys";
 import { PatientMenuAction } from "./PatientMenuAction";
 
@@ -60,11 +60,11 @@ export const PatientCard = ({ patient }: { patient: Patient }) => {
             </span>
             <span>
               {patient.gender === 0
-                ? t(PATIENTS_KEYS.gender.male, {
-                    ns: NAMESPACE_KEYS.patient,
+                ? t(COMMON_KEYS.gender.male, {
+                    ns: NAMESPACE_KEYS.common,
                   })
-                : t(PATIENTS_KEYS.gender.female, {
-                    ns: NAMESPACE_KEYS.patient,
+                : t(COMMON_KEYS.gender.female, {
+                    ns: NAMESPACE_KEYS.common,
                   })}
             </span>
           </div>

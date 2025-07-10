@@ -2,11 +2,13 @@
   "WelcomeMessage": "Welcome to addiction rehabilitation center",
   "loading": "Loading...",
   "saving": "Saving...",
-  "error": "Error",
+  "sending": "Sending...",
   "errors": {
+    "error": "Error",
     "unauthorized": "Unauthorized: Please log in again.",
     "forbidden": "Access Denied: You don't have permission to access this.",
-    "unexpected": "An unexpected error occurred."
+    "unexpected": "An unexpected error occurred.",
+    "tryAgain": "Try Again"
   },
   "pagination": {
     "previous": "Previous",
@@ -36,13 +38,23 @@
     "viewDetails": "View Details"
   },
   "delete": {
-    "button": "Delete"
+    "button": "Delete",
+    "deleting": "Deleting..."
   },
-  "deleting": "Deleting...",
   "cancel": {
     "button": "Cancel"
   },
   "confirm": {
     "text": "Are you sure you want to proceed?"
+  },
+  "fields": {
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password"
+  },
+  "gender": {
+    "male": "Male",
+    "female": "Female"
   }
 }

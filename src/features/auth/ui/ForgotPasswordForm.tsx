@@ -16,7 +16,7 @@ import {
 import { Alert, AlertDescription } from "@/shared/ui/alert";
 import { Mail, ArrowLeft, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { AUTH_KEYS } from "../../../entities/auth/lib/translationKeys";
 import { getForgotPasswordValidationSchema } from "../../../entities/auth/model/forgotPasswordValidationSchema";
 import {
@@ -112,8 +112,8 @@ export const ForgotPasswordForm = ({
               {t(AUTH_KEYS.forgotPassword.noEmail, { ns: NAMESPACE_KEYS.auth })}
             </p>
             <Button variant="outline" onClick={onReset} className="w-full">
-              {t(AUTH_KEYS.forgotPassword.tryAgain, {
-                ns: NAMESPACE_KEYS.auth,
+              {t(COMMON_KEYS.errors.tryAgain, {
+                ns: NAMESPACE_KEYS.common,
               })}
             </Button>
           </div>
@@ -164,8 +164,8 @@ export const ForgotPasswordForm = ({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>
-                      {t(AUTH_KEYS.forgotPassword.email, {
-                        ns: NAMESPACE_KEYS.auth,
+                      {t(COMMON_KEYS.fields.email, {
+                        ns: NAMESPACE_KEYS.common,
                       })}
                     </FormLabel>
                     <FormControl>
@@ -174,12 +174,9 @@ export const ForgotPasswordForm = ({
                         <Input
                           {...field}
                           type="email"
-                          placeholder={t(
-                            AUTH_KEYS.forgotPassword.emailPlaceholder,
-                            {
-                              ns: NAMESPACE_KEYS.auth,
-                            },
-                          )}
+                          placeholder={t(COMMON_KEYS.fields.emailPlaceholder, {
+                            ns: NAMESPACE_KEYS.common,
+                          })}
                           className="pl-10"
                           disabled={isLoading}
                         />

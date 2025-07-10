@@ -24,14 +24,4 @@ export const PageTitle = () => {
       {t(key, { ns: NAMESPACE_KEYS.sidebar })}
     </h1>
   );
-  const { pathname } = useLocation();
-  const { t } = useTranslation([NAMESPACE_KEYS.sidebar]);
-  // Find the best match for the current path
-  const match = Object.keys(ROUTE_TITLES).find((route) => pathname == route);
-  const key = match ? ROUTE_TITLES[match] : SIDEBAR_KEYS.dashboard;
-  return (
-    <h1 className="text-base font-medium min-w-max">
-      {t(key, { ns: NAMESPACE_KEYS.sidebar })}
-    </h1>
-  );
 };

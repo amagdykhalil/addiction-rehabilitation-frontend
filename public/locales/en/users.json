@@ -92,10 +92,7 @@
     "password": "Password",
     "personalImage": "Profile image URL"
   },
-  "gender": {
-    "male": "Male",
-    "female": "Female"
-  },
+  
   "validation": {
     "firstNameRequired": "First name is required",
     "secondNameRequired": "Second name is required",
