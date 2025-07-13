@@ -10,7 +10,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  authData: localStorageService.get(AUTH_KEY) || {"userId":1,"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwiZW1haWwiOiJhbTI1OTIzNzlAZ21haWwuY29tIiwicm9sZSI6WyJBZG1pbiIsIlN1cGVyIEFkbWluIl0sIm5iZiI6MTc1MjQ0MTc1MCwiZXhwIjoxNzUyNTI4MTUwLCJpYXQiOjE3NTI0NDE3NTAsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3QifQ.qVSSV0QDE0Q7wSsEKQXa-oLcc0AGNLOtbnmc0ngV8pU","expiresOn":"2025-07-14T21:22:30.202736Z"},
+  authData: localStorageService.get(AUTH_KEY) || {"userId":1,"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwiZW1haWwiOiJhbTI1OTIzNzlAZ21haWwuY29tIiwicm9sZSI6WyJBZG1pbiIsIlN1cGVyIEFkbWluIl0sIm5iZiI6MTc1MjQ0MTc1MCwiZXhwIjoxNzUyNTI4MTUwLCJpYXQiOjE3NTI0NDE3NTAsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3QifQ.qVSSV0QDE0Q7wSsEKQXa-oLcc0AGNLOtbnmc0ngV8pU","expiresOn":"2025-07-14"},
 };
 
 const authSlice = createSlice({
