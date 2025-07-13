@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { z } from "zod";
 import { useRequestChangeEmail } from "@/features/auth/hooks";
 import { useAuth } from "@/entities/auth/model/useAuth";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
 import { Button } from "@/shared/ui/button";
 import { Alert } from "@/shared/ui/alert";
@@ -87,8 +87,8 @@ export const UserChangeEmailForm = () => {
           <div className="button-to-end">
             <Button type="submit" disabled={isLoading} className="min-w-44 ">
               {isLoading
-                ? t(AUTH_KEYS.settings?.sending ?? "Sending...", {
-                    ns: NAMESPACE_KEYS.auth,
+                ? t(COMMON_KEYS.sending ?? "Sending...", {
+                    ns: NAMESPACE_KEYS.common,
                   })
                 : t(AUTH_KEYS.settings?.changeEmailButton ?? "Request Change", {
                     ns: NAMESPACE_KEYS.auth,

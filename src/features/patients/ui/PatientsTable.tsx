@@ -19,14 +19,12 @@ import { PatientMenuAction } from "./PatientMenuAction";
 interface PatientsTableProps {
   patients: Patient[];
   isLoading: boolean;
-  handleDelete: (id: string) => void;
   getAge: (birthDate: string) => number;
 }
 
 export const PatientsTable = ({
   patients,
   isLoading,
-
   getAge,
 }: PatientsTableProps) => {
   const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.patient]);

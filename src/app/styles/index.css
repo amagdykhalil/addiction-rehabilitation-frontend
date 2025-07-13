@@ -247,3 +247,7 @@ a.active {
 .button-to-end {
   @apply flex justify-end gap-2 mt-4;
 }
+
+.layout {
+  @apply h-full w-full relative;
+}

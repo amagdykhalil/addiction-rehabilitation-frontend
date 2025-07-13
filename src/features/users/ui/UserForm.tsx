@@ -40,7 +40,7 @@ export function UserForm({ userId, onSubmit, isLoading }: UserFormProps) {
   } = useGetUser(userId || "");
 
   const isEdit = !!userId;
-  console.log("isEdit: " + isEdit);
+
   const userFormSchema = createUserFormSchema(t, isEdit);
   const { isArabic } = useCurrentLanguage();
   const form = useForm({
@@ -76,7 +76,6 @@ export function UserForm({ userId, onSubmit, isLoading }: UserFormProps) {
     return !!errors.PersonalImageURL;
   };
 
-  console.log(form.formState.errors);
   useEffect(() => {
     resetFormWithUserData(form, user);
   }, [user, form]);
@@ -88,7 +87,7 @@ export function UserForm({ userId, onSubmit, isLoading }: UserFormProps) {
   if (UserError) {
     return (
       <div>
-        {t(COMMON_KEYS.error, { ns: NAMESPACE_KEYS.common })}:{" "}
+        {t(COMMON_KEYS.errors.error, { ns: NAMESPACE_KEYS.common })}:{" "}
         {UserError.message}
       </div>
     );

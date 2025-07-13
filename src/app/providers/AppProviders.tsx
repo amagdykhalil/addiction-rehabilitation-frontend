@@ -1,4 +1,4 @@
-import { RouterProvider, StoreProvider, QueryProvider } from "@/app/providers";
+import { StoreProvider, QueryProvider } from "@/app/providers";
 import { ErrorBoundaryProvider } from "./ErrorBoundaryProvider";
 import React, { Suspense } from "react";
 import SplashScreen from "@/shared/ui/SplashScreen";
@@ -14,9 +14,7 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
           <Suspense fallback={<SplashScreen />}>
             <AuthProvider>
               <ToasterProvider>
-                <QueryProvider>
-                  <RouterProvider>{children}</RouterProvider>
-                </QueryProvider>
+                <QueryProvider>{children}</QueryProvider>
               </ToasterProvider>
             </AuthProvider>
           </Suspense>

@@ -10,8 +10,8 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  authData: localStorageService.get(AUTH_KEY) || null
-}
+  authData: localStorageService.get(AUTH_KEY) || null,
+};
 
 const authSlice = createSlice({
   name: "auth",

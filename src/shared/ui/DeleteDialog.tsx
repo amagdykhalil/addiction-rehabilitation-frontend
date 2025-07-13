@@ -86,7 +86,7 @@ export const DeleteDialog = ({
           </Button>
           <DeleteButton onClick={handleDelete} disabled={loading}>
             {loading
-              ? t(COMMON_KEYS.deleting, { ns: NAMESPACE_KEYS.common })
+              ? t(COMMON_KEYS.delete.deleting, { ns: NAMESPACE_KEYS.common })
               : t(COMMON_KEYS.delete.button, { ns: NAMESPACE_KEYS.common })}
           </DeleteButton>
         </div>

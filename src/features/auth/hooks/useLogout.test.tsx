@@ -26,7 +26,7 @@ describe("useLogout", () => {
 
   let navigateFn: ReturnType<typeof vi.fn>;
   let logoutFn: ReturnType<typeof vi.fn>;
-  let clearFn: ReturnType<typeof vi.fn>;
+  let clearFn: ReturnType<typeof vi.spyOn>;
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -40,6 +40,7 @@ describe("useLogout", () => {
       authData: null,
       setCredentials: vi.fn(),
       logout: logoutFn,
+      isAuthenticated: false,
     });
 
     // Spy on queryClient.clear

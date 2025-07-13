@@ -8,7 +8,19 @@ import {
 import { refreshToken } from "@/shared/api";
 import { isAtLoginPage, isAuthExpired } from "@/shared/lib/auth";
 import { goToHome } from "@/shared/lib/auth/auth";
+import { ROUTES } from "@/shared/routes";
 import { useRef } from "react";
+
+// Add function to check if on error pages
+const isOnErrorPage = () => {
+  const errorPages = [ROUTES.SERVERERROR];
+
+  const currentPath = window.location.pathname.toLowerCase();
+
+  return errorPages.some((route) =>
+    currentPath.startsWith(route.toLowerCase())
+  );
+};
 
 export const useAuthInitializer = () => {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -26,7 +38,7 @@ export const useAuthInitializer = () => {
 
     const expiresAt = new Date(newAuthData.expiresOn).getTime();
     const refreshThreshold = Number(
-      import.meta.env.APP_TOKEN_REFRESH_THRESHOLD,
+      import.meta.env.APP_TOKEN_REFRESH_THRESHOLD
     );
     const msUntilThreshold = expiresAt - Date.now() - refreshThreshold;
 
@@ -44,6 +56,11 @@ export const useAuthInitializer = () => {
     } catch (error) {
       console.error("Token refresh failed:", error);
     }
+  }
+
+  // Early return if on error pages
+  if (isOnErrorPage()) {
+    return null;
   }
 
   if (getInitPromise() === null) {
@@ -72,7 +89,7 @@ export const useAuthInitializer = () => {
             setAuthInitializerPromise(Promise.resolve(), "fulfilled");
           }
         })(),
-        "pending",
+        "pending"
       );
     }
   }

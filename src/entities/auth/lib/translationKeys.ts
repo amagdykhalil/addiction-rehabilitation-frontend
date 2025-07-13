@@ -48,6 +48,7 @@ export const AUTH_KEYS = {
   errors: {
     invalidCredentials: "errors.invalidCredentials",
     passwordMinLength: "errors.passwordMinLength",
+    emailRequired: "errors.emailRequired",
     emailRequiredForgot: "errors.emailRequiredForgot",
     failedToSend: "errors.failedToSend",
     failedToSendConfirmation: "errors.failedToSendConfirmation",
@@ -62,6 +63,7 @@ export const AUTH_KEYS = {
     forgotPasswordPage: "errors.forgotPasswordPage",
     failedToChangePassword: "errors.failedToChangePassword",
     failedToChangeEmail: "errors.failedToChangeEmail",
+    invalidEmail: "errors.invalidEmail",
   },
   settings: {
     title: "settings.title",

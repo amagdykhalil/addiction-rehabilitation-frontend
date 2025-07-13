@@ -1,7 +1,7 @@
 import type { UseFormReturn } from "react-hook-form";
-import type { UserFormData } from "../types";
 import { Gender } from "@/shared/types/enums";
 import type { User } from "@/entities/users/model";
+import type { UserFormData } from "../ui/types";
 
 /**
  * Creates default form values for a User form
@@ -30,7 +30,7 @@ export function createUserFormDefaultValues(User?: User | null): UserFormData {
  */
 export function resetFormWithUserData(
   form: UseFormReturn<UserFormData>,
-  User: User | null,
+  User: User | null
 ): void {
   if (User) {
     form.reset(createUserFormDefaultValues(User));
@@ -42,7 +42,7 @@ export function resetFormWithUserData(
  */
 export function mapFormDataToUser(
   data: UserFormData,
-  UserId: string,
+  UserId: string
 ): Omit<User, "isActive"> {
   return {
     id: Number(UserId),

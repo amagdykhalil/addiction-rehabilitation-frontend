@@ -4,27 +4,38 @@ import { SidebarInset, SidebarProvider } from "@/shared/ui/sidebar";
 import { Header } from "@/widgets/header/Header";
 import { useAuth } from "@/entities/auth/model/useAuth";
 
-interface AppLayoutProps {
-  children: React.ReactNode;
-}
+import { Outlet, useNavigate } from "react-router-dom";
+import { Suspense, useEffect } from "react";
+import { PageLoader } from "@/shared/ui/PageLoader";
+import { setNavigateFunction } from "@/shared/lib/navigationService";
 
-export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+export const AppLayout = () => {
   const { dir, isArabic } = useCurrentLanguage();
   const { isAuthenticated } = useAuth();
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    setNavigateFunction(navigate);
+  }, [navigate]);
+
   return (
-    <SidebarProvider className="w-full">
+    <SidebarProvider className="layout">
       {!isArabic && <AppSidebar />}
       <SidebarInset
-        className={`${isAuthenticated && "m-2 ml-0 px-6"} flex flex-col overflow-hidden `}
+        className={`${isAuthenticated && "m-2 ml-0 px-6"} flex flex-col`}
       >
         <Header />
         {isAuthenticated ? (
           <main className="py-6 h-full" dir={dir}>
-            {children}
+            <Suspense fallback={<PageLoader />}>
+              <Outlet />
+            </Suspense>
           </main>
         ) : (
           <main className=" bg-gray-50 h-full" dir={dir}>
-            {children}
+            <Suspense fallback={<PageLoader />}>
+              <Outlet />
+            </Suspense>
           </main>
         )}
       </SidebarInset>

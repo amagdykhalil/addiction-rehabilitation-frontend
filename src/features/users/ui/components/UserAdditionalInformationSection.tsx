@@ -17,7 +17,7 @@ export function UserAdditionalInformationSection({
 }) {
   const { t } = useTranslation([NAMESPACE_KEYS.users]);
   const form = useFormContext<UserFormData>();
-  console.log("isEdit: " + isEdit);
+
   return (
     <Card>
       <CardHeaderWithTitle

@@ -85,10 +85,8 @@ export default function AddPatientPage() {
         <CardHeader>
           <CardTitle>
             {t(PATIENTS_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
-            {t(PATIENTS_KEYS.details.title, { ns: NAMESPACE_KEYS.patient })}
           </CardTitle>
           <CardDescription>
-            {t(PATIENTS_KEYS.details.subtitle, { ns: NAMESPACE_KEYS.patient })}
             {t(PATIENTS_KEYS.details.subtitle, { ns: NAMESPACE_KEYS.patient })}
           </CardDescription>
         </CardHeader>

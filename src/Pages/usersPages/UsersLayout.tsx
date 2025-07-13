@@ -1,9 +1,14 @@
+import { PageLoader } from "@/shared/ui/PageLoader";
+
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 const UsersLayout = () => {
   return (
-    <div className="Users-layout">
-      <Outlet />
+    <div className="layout">
+      <Suspense fallback={<PageLoader />}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

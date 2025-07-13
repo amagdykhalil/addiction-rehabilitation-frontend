@@ -17,6 +17,7 @@ export const USER_KEYS = {
   },
   settings: {
     title: "settings.title",
+    subtitle: "settings.subtitle",
     changeEmail: "settings.changeEmail",
     changePassword: "settings.changePassword",
     notifications: "settings.notifications",
@@ -29,5 +30,8 @@ export const USER_KEYS = {
   },
   logout: {
     title: "logout.title",
+  },
+  delete: {
+    confirm: "delete.confirm",
   },
 } as const;

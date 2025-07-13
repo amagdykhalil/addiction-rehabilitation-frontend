@@ -1,8 +1,8 @@
 import { useDeleteUser } from "@/features/users/hooks";
 import { DeleteDialog } from "@/shared/ui/DeleteDialog";
 import { useTranslation } from "react-i18next";
-import { USER_KEYS } from "@/entities/users/lib/translationKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { USER_KEYS } from "@/entities/user/lib/translationKeys";
 
 interface UserDeleteDialogProps {
   userId: string;
@@ -15,7 +15,7 @@ export const UserDeleteDialog = ({
   trigger,
   onSuccess,
 }: UserDeleteDialogProps) => {
-  const { t } = useTranslation([NAMESPACE_KEYS.user]);
+  const { t } = useTranslation([NAMESPACE_KEYS.user, NAMESPACE_KEYS.common]);
   const { deleteUser, isLoading } = useDeleteUser();
 
   const handleDelete = async (onDeleteSuccess: () => void) => {
@@ -33,7 +33,7 @@ export const UserDeleteDialog = ({
       loading={isLoading}
       trigger={trigger}
       className="min-w-40"
-      title={t(USER_KEYS.delete.button, { ns: NAMESPACE_KEYS.user })}
+      title={t(COMMON_KEYS.delete.button, { ns: NAMESPACE_KEYS.user })}
       description={t(USER_KEYS.delete.confirm, {
         ns: NAMESPACE_KEYS.user,
       })}

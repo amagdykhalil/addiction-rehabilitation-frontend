@@ -20,7 +20,7 @@ This document defines the global instructions and conventions for routing within
   import { HomePage } from '@/Pages/HomePage';
   import { LoginPage } from '@/Pages/LoginPage';
   import { InternalServerErrorPage } from '@/Pages/InternalServerErrorPage';
-  import { userRoutes } from '@/entities/user/routes/userRoutes';
+  import { UserRoutes } from '@/entities/user/routes/UserRoutes';
   
   export const ROUTES = {
     HOME: '/',
@@ -33,13 +33,13 @@ This document defines the global instructions and conventions for routing within
     { path: ROUTES.HOME, element: <HomePage /> },
     { path: ROUTES.LOGIN, element: <LoginPage /> },
     { path: ROUTES.SERVERERROR, element: <InternalServerErrorPage /> },
-    userRoutes, // Grouped routes from the user domain
+    UserRoutes, // Grouped routes from the user domain
   ];
 ```
 ## 2 . Grouping Entity-Specific Routes
 Each domain or feature group (e.g., user) must have its own routes file and route paths file. For example, with the User entity:
 ### a. Routes Component
-- Filename: userRoutes.tsx
+- Filename: UserRoutes.tsx
 - Location: src/entities/user/routes/
 - Purpose: Group all user-related route definitions under a parent <Route> (using a common protected layout).
 
@@ -51,7 +51,7 @@ import { UserLayout } from "@/Pages/userpages/UserLayout";
 import { UserProfilePage, UserSettingsPage, UserNotificationsPage } from "@/Pages/userpages";
 
 // Grouped routes for the user entity using a parent route
-export const userRoutes = (
+export const UserRoutes = (
   <Route
     path={USER_ROUTES.MAIN_PATH}
     element={

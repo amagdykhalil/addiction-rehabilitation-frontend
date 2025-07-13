@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
 import { useChangePassword } from "@/features/auth/hooks";
 import { useAuth } from "@/entities/auth/model/useAuth";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { COMMON_KEYS, NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
 import { Button } from "@/shared/ui/button";
 import { Form } from "@/shared/ui/form";
@@ -12,7 +12,11 @@ import { getChangePasswordSchema } from "@/features/patients/models/types";
 import { toast } from "sonner";
 
 export const UserChangePasswordForm = () => {
-  const { t } = useTranslation([NAMESPACE_KEYS.common, NAMESPACE_KEYS.auth]);
+  const { t } = useTranslation([
+    NAMESPACE_KEYS.common,
+    NAMESPACE_KEYS.auth,
+    NAMESPACE_KEYS.validator,
+  ]);
   const { authData } = useAuth();
   const userId = authData?.userId;
   const { changePassword, isLoading } = useChangePassword();
@@ -100,8 +104,8 @@ export const UserChangePasswordForm = () => {
           <div className="button-to-end">
             <Button type="submit" disabled={isLoading} className="min-w-44">
               {isLoading
-                ? t(AUTH_KEYS.settings?.saving, {
-                    ns: NAMESPACE_KEYS.auth,
+                ? t(COMMON_KEYS.saving, {
+                    ns: NAMESPACE_KEYS.common,
                   })
                 : t(AUTH_KEYS.settings?.changePasswordButton, {
                     ns: NAMESPACE_KEYS.auth,

@@ -11,6 +11,7 @@ export const ROUTES = {
   RESET_PASSWORD: "/reset-password",
   RESEND_CONFIRMATION_EMAIL: "/resend-confirmation-email",
   SERVERERROR: "/500",
+  NOT_FOUND: "*",
 
   // User routes
   USER: USER_ROUTES,

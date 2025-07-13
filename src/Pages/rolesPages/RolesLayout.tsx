@@ -2,7 +2,7 @@ import { PageLoader } from "@/shared/ui/PageLoader";
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
-export default function PatientsLayout() {
+export const RolesLayout = () => {
   return (
     <div className="layout">
       <Suspense fallback={<PageLoader />}>
@@ -10,4 +10,4 @@ export default function PatientsLayout() {
       </Suspense>
     </div>
   );
-}
+};

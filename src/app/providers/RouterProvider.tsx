@@ -1,6 +1,12 @@
-import { BrowserRouter } from "react-router-dom";
-import { type ReactNode } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider as ReactRouterProvider,
+  createRoutesFromElements,
+} from "react-router-dom";
+import { routesElement } from "@/shared/routes/routes";
 
-export const RouterProvider = ({ children }: { children: ReactNode }) => {
-  return <BrowserRouter>{children}</BrowserRouter>;
+const router = createBrowserRouter(createRoutesFromElements(routesElement));
+
+export const RouterProvider = () => {
+  return <ReactRouterProvider router={router} />;
 };

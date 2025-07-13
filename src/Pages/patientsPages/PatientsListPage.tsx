@@ -27,7 +27,6 @@ export default function PatientsListPage() {
     sortConfig,
     searchQueryConfig,
     onClear,
-    handleDelete,
     pageNumber,
     setPageNumber,
   } = usePatientsList();
@@ -75,7 +74,6 @@ export default function PatientsListPage() {
               <PatientsTable
                 patients={patients}
                 isLoading={isLoading}
-                handleDelete={handleDelete}
                 getAge={getAge}
               />
             </div>

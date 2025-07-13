@@ -3,6 +3,7 @@ import {
   LogOut as IconLogout,
   Bell as IconNotification,
   UserCircle as IconUserCircle,
+  User as UserIcon,
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
@@ -42,22 +43,27 @@ export function NavUser({ user, loading }: { user?: User; loading: boolean }) {
     <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger asChild disabled={isLoading || !user}>
             <SidebarMenuButton
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer"
             >
-              {isLoading || !user ? (
+              {isLoading ? (
                 <Spinner className="mx-auto" />
-              ) : (
+              ) : user ? (
                 <Avatar className="h-8 w-8 rounded-lg grayscale">
                   <AvatarImage src={user.personalImageURL} alt={initials} />
                   <AvatarFallback className="rounded-lg">
                     {initials}
                   </AvatarFallback>
                 </Avatar>
+              ) : (
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <UserIcon className="h-4 w-4" />
+                  <span>Guest</span>
+                </div>
               )}
-              {!isLoading && user && (
+              {user && (
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{initials}</span>
                   <span className="text-muted-foreground truncate text-xs">
@@ -65,9 +71,7 @@ export function NavUser({ user, loading }: { user?: User; loading: boolean }) {
                   </span>
                 </div>
               )}
-              {!isLoading && user && (
-                <IconDotsVertical className="ml-auto size-4" />
-              )}
+              {user && <IconDotsVertical className="ml-auto size-4" />}
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent

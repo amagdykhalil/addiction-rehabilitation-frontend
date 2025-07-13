@@ -5,13 +5,13 @@ import { usersKeys } from "./usersKeys";
 
 export function useDeleteUser() {
   const queryClient = useQueryClient();
-  const mutation = useMutation<ApiResponse<null>, Error, string>({
-    mutationFn: (id: string) => usersApi.deleteUser(id),
+  const mutation = useMutation<ApiResponse<boolean>, Error, string>({
+    mutationFn: (id: string) => usersApi.deactivateUser(id),
   });
 
   const deleteUser = (
     id: string,
-    { onSuccess }: { onSuccess?: () => void } = {},
+    { onSuccess }: { onSuccess?: () => void } = {}
   ) => {
     mutation.mutate(id, {
       onSuccess: () => {

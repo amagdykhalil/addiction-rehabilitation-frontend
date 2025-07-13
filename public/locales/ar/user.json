@@ -14,6 +14,7 @@
   },
   "settings": {
     "title": "الإعدادات",
+    "subtitle": "قم بإدارة إعدادات حسابك أدناه.",
     "changeEmail": "تغيير البريد الإلكتروني",
     "changePassword": "تغيير كلمة المرور",
     "notifications": "الإشعارات"

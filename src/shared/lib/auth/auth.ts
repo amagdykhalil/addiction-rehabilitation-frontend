@@ -13,14 +13,15 @@ import { ROUTES } from "@/shared/routes";
 const PUBLIC_ROUTES = [
   ROUTES.LOGIN,
   ROUTES.FORGOT_PASSWORD,
-  ROUTES.RESET_PASSWORD, // if it's dynamic like /reset-password/:code, match prefix
+  ROUTES.RESET_PASSWORD,
+  ROUTES.SERVERERROR,
 ];
 
 export const isPublicRoute = () => {
   const currentPath = window.location.pathname.toLowerCase();
 
   return PUBLIC_ROUTES.some((route) =>
-    currentPath.startsWith(route.toLowerCase()),
+    currentPath.startsWith(route.toLowerCase())
   );
 };
 

@@ -6,7 +6,7 @@ import { defineConfig, type UserConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), mkcert()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

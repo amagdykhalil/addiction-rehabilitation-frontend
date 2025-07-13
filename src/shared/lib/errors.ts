@@ -7,12 +7,9 @@ import I18n from "./initI18n";
 import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
 import { ERRORS_KEYS } from "@/shared/i18n/keys";
 import { isPublicRoute } from "./auth/auth";
+import { navigateTo } from "./navigationService";
 
 export const handleError = (error: unknown) => {
-  const navigate = (path: string) => {
-    window.location.href = path;
-  };
-
   let errorMessage = I18n.t(ERRORS_KEYS.unexpected, {
     ns: NAMESPACE_KEYS.common,
   });
@@ -35,10 +32,10 @@ export const handleError = (error: unknown) => {
       break;
     case 401:
       toast.error(
-        I18n.t(ERRORS_KEYS.unauthorized, { ns: NAMESPACE_KEYS.common }),
+        I18n.t(ERRORS_KEYS.unauthorized, { ns: NAMESPACE_KEYS.common })
       );
       store.dispatch(logout());
-      if (!isPublicRoute()) navigate(ROUTES.LOGIN);
+      if (!isPublicRoute()) navigateTo(ROUTES.LOGIN);
       break;
     case 403:
       toast.error(I18n.t(ERRORS_KEYS.forbidden, { ns: NAMESPACE_KEYS.common }));
@@ -49,7 +46,9 @@ export const handleError = (error: unknown) => {
     case 500:
     case 502:
     case 503:
-      navigate("/500");
+      if (window.location.pathname.toLowerCase() !== ROUTES.SERVERERROR) {
+        navigateTo(ROUTES.SERVERERROR);
+      }
       break;
     default:
       toast.error(errorMessage);

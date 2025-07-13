@@ -38,7 +38,7 @@ export const AuthenticatedSidebar = () => {
         <Button
           variant="ghost"
           className="justify-start w-full mt-2 cursor-pointer "
-          onClick={onLogout}
+          onClick={() => onLogout()}
           disabled={isLoading}
         >
           <LogOut className="mr-2 h-4 w-4" />

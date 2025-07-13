@@ -40,7 +40,6 @@ export function PatientProfileCard({ patient }: PatientProfileCardProps) {
         </CardTitle>
         <CardDescription>
           {t(PATIENTS_KEYS.details.patientId, { ns: NAMESPACE_KEYS.patient })}:{" "}
-          {t(PATIENTS_KEYS.details.patientId, { ns: NAMESPACE_KEYS.patient })}:{" "}
           {patient.id}
         </CardDescription>
       </CardHeader>
@@ -64,7 +63,6 @@ export function PatientProfileCard({ patient }: PatientProfileCardProps) {
             <div>
               <div className="text-sm font-medium">
                 {t(PATIENTS_KEYS.details.age, { ns: NAMESPACE_KEYS.patient })}
-                {t(PATIENTS_KEYS.details.age, { ns: NAMESPACE_KEYS.patient })}
               </div>
               <div className="text-sm text-muted-foreground">
                 {getAge(patient.birthDate)}{" "}
@@ -79,7 +77,6 @@ export function PatientProfileCard({ patient }: PatientProfileCardProps) {
             <Phone className="h-4 w-4 text-muted-foreground" />
             <div>
               <div className="text-sm font-medium">
-                {t(PATIENTS_KEYS.details.phone, { ns: NAMESPACE_KEYS.patient })}
                 {t(PATIENTS_KEYS.details.phone, { ns: NAMESPACE_KEYS.patient })}
               </div>
               <div className="text-sm text-muted-foreground">

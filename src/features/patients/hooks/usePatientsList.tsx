@@ -182,15 +182,6 @@ export function usePatientsList() {
     setSelectedCountryId(null);
   };
 
-  const handleDelete = async (patientId: string) => {
-    if (
-      confirm(t(PATIENTS_KEYS.delete.confirm, { ns: NAMESPACE_KEYS.patient }))
-    ) {
-      console.log("Deleting patient:", patientId);
-      // Handle delete API call
-    }
-  };
-
   return {
     patients,
     totalCount,
@@ -200,7 +191,7 @@ export function usePatientsList() {
     sortConfig,
     searchQueryConfig,
     onClear,
-    handleDelete,
+
     pageNumber,
     pageSize,
     setPageNumber,

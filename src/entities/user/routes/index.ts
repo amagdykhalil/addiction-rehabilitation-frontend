@@ -1,4 +1,4 @@
-import { userRoutes } from "./userRoutes";
+import { UserRoutes } from "./UserRoutes";
 import { USER_ROUTES } from "./userRoutePaths";
 
-export { userRoutes, USER_ROUTES };
+export { UserRoutes, USER_ROUTES };

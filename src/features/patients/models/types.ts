@@ -1,5 +1,5 @@
 import { AUTH_KEYS } from "@/entities/auth/lib/translationKeys";
-import { NAMESPACE_KEYS } from "@/shared/i18n/keys";
+import { NAMESPACE_KEYS, VALIDATOR_KEYS } from "@/shared/i18n/keys";
 import type { TFunction } from "i18next";
 import { z } from "zod";
 
@@ -26,28 +26,28 @@ export const getChangePasswordSchema = (t: TFunction) =>
           }),
         })
         .max(20, {
-          message: t(AUTH_KEYS.errors.passwordMaxLength, {
-            ns: NAMESPACE_KEYS.auth,
+          message: t(VALIDATOR_KEYS.password.passwordMaxLength, {
+            ns: NAMESPACE_KEYS.validator,
           }),
         })
         .regex(/[0-9]/, {
-          message: t(AUTH_KEYS.errors.passwordDigit, {
-            ns: NAMESPACE_KEYS.auth,
+          message: t(VALIDATOR_KEYS.password.passwordDigit, {
+            ns: NAMESPACE_KEYS.validator,
           }),
         })
         .regex(/[A-Z]/, {
-          message: t(AUTH_KEYS.errors.passwordUpper, {
-            ns: NAMESPACE_KEYS.auth,
+          message: t(VALIDATOR_KEYS.password.passwordUpper, {
+            ns: NAMESPACE_KEYS.validator,
           }),
         })
         .regex(/[a-z]/, {
-          message: t(AUTH_KEYS.errors.passwordLower, {
-            ns: NAMESPACE_KEYS.auth,
+          message: t(VALIDATOR_KEYS.password.passwordLower, {
+            ns: NAMESPACE_KEYS.validator,
           }),
         })
         .regex(/[^a-zA-Z0-9]/, {
-          message: t(AUTH_KEYS.errors.passwordNonAlpha, {
-            ns: NAMESPACE_KEYS.auth,
+          message: t(VALIDATOR_KEYS.password.passwordNonAlpha, {
+            ns: NAMESPACE_KEYS.validator,
           }),
         }),
       confirmPassword: z.string().min(1, {
