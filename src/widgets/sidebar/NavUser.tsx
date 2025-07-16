@@ -39,6 +39,7 @@ export function NavUser({ user, loading }: { user?: User; loading: boolean }) {
   const initials = user
     ? `${user.firstName?.charAt(0) ?? ""}${user.lastName?.charAt(0) ?? ""}`
     : "";
+  const { setOpenMobile } = useSidebar();
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -97,7 +98,7 @@ export function NavUser({ user, loading }: { user?: User; loading: boolean }) {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup>
+            <DropdownMenuGroup onClick={() => setOpenMobile(false)}>
               <Link
                 to={generatePath(
                   `${ROUTES.USER.MAIN_PATH}/${ROUTES.USER.PROFILE}`

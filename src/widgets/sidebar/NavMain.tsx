@@ -2,10 +2,9 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
+  SidebarNavLink,
 } from "@/shared/ui/sidebar";
-import { NavLink } from "react-router-dom";
 
 export function NavMain({
   items,
@@ -22,16 +21,14 @@ export function NavMain({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton
+              <SidebarNavLink
                 tooltip={item.title}
                 className="cursor-pointer"
-                asChild
+                to={item.url}
               >
-                <NavLink to={item.url}>
-                  {item.icon && <item.icon />}
-                  <span>{item.title}</span>
-                </NavLink>
-              </SidebarMenuButton>
+                {item.icon && <item.icon />}
+                <span>{item.title}</span>
+              </SidebarNavLink>
             </SidebarMenuItem>
           ))}
         </SidebarMenu>

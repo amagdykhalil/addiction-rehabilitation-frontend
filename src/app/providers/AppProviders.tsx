@@ -8,9 +8,9 @@ import { ToasterProvider } from "./ToasterProvider";
 
 const AppProviders = ({ children }: { children: React.ReactNode }) => {
   return (
-    <NuqsAdapter>
-      <StoreProvider>
-        <ErrorBoundaryProvider>
+    <ErrorBoundaryProvider>
+      <NuqsAdapter>
+        <StoreProvider>
           <Suspense fallback={<SplashScreen />}>
             <AuthProvider>
               <ToasterProvider>
@@ -18,9 +18,9 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => {
               </ToasterProvider>
             </AuthProvider>
           </Suspense>
-        </ErrorBoundaryProvider>
-      </StoreProvider>
-    </NuqsAdapter>
+        </StoreProvider>
+      </NuqsAdapter>
+    </ErrorBoundaryProvider>
   );
 };
 

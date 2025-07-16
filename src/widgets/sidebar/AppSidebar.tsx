@@ -4,7 +4,6 @@ import {
   User as IconUser,
   Settings as IconSettings,
   UserCog,
-  X,
 } from "lucide-react";
 import { NavMain } from "./NavMain";
 import { NavSecondary } from "./NavSecondary";
@@ -18,7 +17,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
+  SidebarMobileClose,
 } from "@/shared/ui/sidebar";
 import { Link, generatePath } from "react-router-dom";
 import { ROUTES } from "@/shared/routes";
@@ -29,8 +28,6 @@ import { useCurrentLanguage } from "@/shared/hooks";
 import { useAuth } from "@/entities/auth/model/useAuth";
 import { LogoIcon } from "@/shared/ui/LogoIcon";
 import { useGetUser } from "@/features/users/hooks";
-import { Button } from "@/shared/ui/button";
-import { cn } from "@/shared/lib/utils";
 
 export function AppSidebar() {
   const { t } = useTranslation([NAMESPACE_KEYS.sidebar, NAMESPACE_KEYS.common]);
@@ -38,7 +35,6 @@ export function AppSidebar() {
   const { isArabic } = useCurrentLanguage();
   const { isAuthenticated, authData } = useAuth();
   const { user, isLoading } = useGetUser(authData?.userId || "");
-  const { setOpenMobile } = useSidebar();
 
   const data = {
     navMain: [
@@ -96,19 +92,7 @@ export function AppSidebar() {
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
-          {/* Mobile close button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className={cn(
-              "h-8 w-8 md:hidden",
-              "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-            )}
-            onClick={() => setOpenMobile(false)}
-          >
-            <X className="h-4 w-4" />
-            <span className="sr-only">Close sidebar</span>
-          </Button>
+          <SidebarMobileClose />
         </div>
       </SidebarHeader>
       <SidebarContent className="w-60">

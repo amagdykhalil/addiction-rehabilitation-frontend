@@ -1,7 +1,7 @@
 import type { IAuthenticationResponse } from "@/entities/auth/model/types";
 
 export const isAuthExpired = (
-  authData: IAuthenticationResponse | null,
+  authData: IAuthenticationResponse | null
 ): boolean => {
   if (!authData?.expiresOn) return true;
 

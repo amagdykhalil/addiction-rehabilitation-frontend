@@ -11,7 +11,7 @@ const API_BASE = import.meta.env.APP_API_URL;
 
 export async function BaseFetch<T = unknown>(
   input: RequestInfo,
-  init: RequestInit = {},
+  init: RequestInit = {}
 ): Promise<ApiResponse<T>> {
   // Attach token
 

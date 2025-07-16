@@ -13,28 +13,20 @@ import { EditRoleDialog } from "./EditRoleDialog";
 
 export function RoleMenuAction({ role }: { role: RoleDto }) {
   return (
-    <>
-      <Button
-        variant="ghost"
-        className="h-8 w-8 p-0 cursor-pointer"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0 cursor-pointer">
-              <MoreHorizontal className="h-4 w-4 " />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem asChild className="cursor-pointer">
-              <EditRoleDialog role={role} />
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild className="cursor-pointer">
-              <DeleteRoleDialog role={role} />
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </Button>
-    </>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="h-8 w-8 p-0 cursor-pointer">
+          <MoreHorizontal className="h-4 w-4 " />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <EditRoleDialog role={role} />
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <DeleteRoleDialog role={role} />
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

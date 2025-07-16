@@ -9,6 +9,7 @@ import {
 import { AlertTriangle, Home, RefreshCw, ArrowLeft, Bug } from "lucide-react";
 import type { ReactNode } from "react";
 import { ROUTES } from "../routes";
+import { useAuth } from "@/entities/auth/model/useAuth";
 
 interface ErrorDisplayProps {
   title: string;
@@ -33,8 +34,10 @@ export function ErrorDisplay({
   showTryAgain = false,
   footerText,
 }: ErrorDisplayProps) {
-  const handleGoHome = () => {
-    window.location.href = ROUTES.HOME;
+  const { isAuthenticated } = useAuth();
+  const handleGo = () => {
+    if (isAuthenticated) window.location.href = ROUTES.HOME;
+    else window.location.href = ROUTES.LOGIN;
   };
 
   const handleGoBack = () => {
@@ -111,12 +114,12 @@ export function ErrorDisplay({
                 </Button>
 
                 <Button
-                  onClick={handleGoHome}
+                  onClick={handleGo}
                   variant="outline"
                   className="flex-1 cursor-pointer"
                 >
                   <Home className="mr-2 h-4 w-4" />
-                  Home
+                  {isAuthenticated ? "Home" : "Login"}
                 </Button>
               </div>
             </div>

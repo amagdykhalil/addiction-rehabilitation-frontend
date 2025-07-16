@@ -10,17 +10,16 @@ import { PageLoader } from "@/shared/ui/PageLoader";
 import { setNavigateFunction } from "@/shared/lib/navigationService";
 
 export const AppLayout = () => {
-  const { dir, isArabic } = useCurrentLanguage();
+  const { dir } = useCurrentLanguage();
   const { isAuthenticated } = useAuth();
-
   const navigate = useNavigate();
   useEffect(() => {
     setNavigateFunction(navigate);
   }, [navigate]);
 
   return (
-    <SidebarProvider className="layout">
-      {!isArabic && <AppSidebar />}
+    <SidebarProvider className="layout" autoFocus={false} dir={dir}>
+      <AppSidebar />
       <SidebarInset
         className={`${isAuthenticated && "m-2 ml-0 px-6"} flex flex-col`}
       >
@@ -39,7 +38,6 @@ export const AppLayout = () => {
           </main>
         )}
       </SidebarInset>
-      {isArabic && <AppSidebar />}
     </SidebarProvider>
   );
 };

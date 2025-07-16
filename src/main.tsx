@@ -7,5 +7,5 @@ import "@/shared/lib/initI18n";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 );
