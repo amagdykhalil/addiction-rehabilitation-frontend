@@ -20,18 +20,16 @@ export const AppLayout = () => {
   return (
     <SidebarProvider className="layout" autoFocus={false} dir={dir}>
       <AppSidebar />
-      <SidebarInset
-        className={`${isAuthenticated && "m-2 ml-0 px-6"} flex flex-col`}
-      >
+      <SidebarInset className={`${isAuthenticated && "px-6"} flex flex-col`}>
         <Header />
         {isAuthenticated ? (
-          <main className="py-6 h-full" dir={dir}>
+          <main className="py-6 flex-1" dir={dir}>
             <Suspense fallback={<PageLoader />}>
               <Outlet />
             </Suspense>
           </main>
         ) : (
-          <main className=" bg-gray-50 h-full" dir={dir}>
+          <main className=" bg-gray-50 py-6 flex-1" dir={dir}>
             <Suspense fallback={<PageLoader />}>
               <Outlet />
             </Suspense>

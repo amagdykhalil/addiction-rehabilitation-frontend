@@ -236,7 +236,7 @@
 
 @layer components {
   .main-card {
-    @apply flex items-start justify-center bg-gray-50 h-full pb-12 pt-24 px-4 sm:px-6 lg:px-8;
+    @apply flex items-start justify-center bg-gray-50 h-full pb-4 pt-16 px-4 sm:px-6 lg:px-8;
   }
 }
 
