@@ -8,8 +8,13 @@ export function useUpdateLanguage() {
 
   const mutation = useMutation({
     mutationFn: (culture: Locale) => setLanguageCookie(culture),
-    onSuccess: (_data, culture) => {
-      i18n.changeLanguage(culture);
+    onSuccess: (_data, _culture) => {
+      const locale = _data.result ? _data.result : _culture;
+      i18n.changeLanguage(locale);
+      // Set 'site_lang' cookie with 1 year expiry
+      const expires = new Date();
+      expires.setFullYear(expires.getFullYear() + 1);
+      document.cookie = `site_lang=${locale}; expires=${expires.toUTCString()}; path=/`;
     },
   });
 

@@ -1,7 +1,7 @@
 import I18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { LOCALES } from "@/shared/i18n/constants/locales";
-import { languageDetector } from "@/shared/i18n/config/detector";
+import languageDetector from "@/shared/i18n/config/detector";
 import Backend from "i18next-http-backend";
 
 // i18n initialization
